@@ -30,7 +30,7 @@
         </table>
     </form>
 
-    <table class="J-form-table hide">
+    <table class="hide" id="J-form-table">
         <tbody>
         <tr>
             <td>圣经书卷：</td>
@@ -81,6 +81,7 @@
                 pop.show();
             });
         }
+        bindQueryBible();
     </script>
 
     <script type="text/javascript">
