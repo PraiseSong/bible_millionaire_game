@@ -1,3 +1,6 @@
+<?php include_once("config.php5"); ?>
+<?php include_once(TEMPLATES_PATH."/header.php5"); ?>
+
 <?php
 /**
  * Created by JetBrains PhpStorm.
@@ -8,3 +11,5 @@
  */
 
 ?>
+
+<?php include_once(TEMPLATES_PATH."/footer.php5"); ?>
