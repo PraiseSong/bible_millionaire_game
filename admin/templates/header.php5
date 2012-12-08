@@ -10,5 +10,6 @@
     <title>磐石堂百万富翁游戏后台配置</title>
     <link href="static/css/admin.css" rel="stylesheet" />
     <script type="text/javascript" src="../static/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="static/js/admin.js"></script>
 </head>
 <body>
