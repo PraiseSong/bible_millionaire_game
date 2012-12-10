@@ -307,5 +307,29 @@ class DB
 
         return mysql_fetch_object($result);
     }
+
+    /**
+     * 从数据库中获取多个结果集
+     * @param $query
+     * @param $debug
+     * @return array，array中很多个object
+     */
+    function queryManyObject($query, $debug = -1)
+    {
+        $query = "$query";
+        $row = null;
+        $result = array();
+
+        $this->nbQueries++;
+        $resource = mysql_query($query) or $this->debugAndDie($query);
+
+        $this->debug($debug, $query, $result);
+
+        while($row = mysql_fetch_object($resource)){
+          array_push($result,$row);
+        }
+
+        return $result;
+    }
 } // class DB
 ?>

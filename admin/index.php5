@@ -1,5 +1,7 @@
 <?php include_once("config.php5"); ?>
+<?php include_once(APP_PATH."/db.php5"); ?>
 <?php include_once(TEMPLATES_PATH."/header.php5"); ?>
+<?php include_once("load_app.php5"); ?>
 
 <div class="container">
     <h2>游戏题目配置</h2>
@@ -11,7 +13,7 @@
                   <td><textarea type="text" class="input_text" id="J-content"></textarea></td>
               </tr>
               <tr>
-                  <td>所参考经文：</td>
+                  <td>参考经文：</td>
                   <td><input type="text" class="input_text" id="J-reference" /><a href="javascript:void(0)" class="find-bible" id="J-find-bible">查找经文</a></td>
               </tr>
               <tr>
@@ -74,28 +76,34 @@
             var trigger = $('#J-find-bible');
             var pop = new Pop({
                 element: '#J-form-table',
-                shown:function (){},
-                hidden:function (){}
+                close:'.J-close',
+                beforeShow: function (){
+                    alert(0)
+                }
             });
             trigger.click(function (){
                 pop.show();
             });
         }
         bindQueryBible();
-    </script>
 
-    <script type="text/javascript">
-        var ajaxurl = '/wp-admin/admin-ajax.php';
+        var ajaxurl = '../app/bible.php5';
+
+        $.ajax(ajaxurl,{
+            data: 'action=queryBooktitle'
+        });
+
         function bindSelect(){
-            var booktitle = jQuery('#booktitle'),
+            var ajaxurl = 'http://cross.hk/wp-admin/admin-ajax.php';
+            var booktitle = $('#J-booktitle'),
                 currentTitle = null,
                 currentStart = null,
                 currentStop = null,
-                loading = jQuery('#J-loading'),
-                article_num = jQuery('#article_num'),
-                verse_start = jQuery('#verse_start'),
-                verse_stop = jQuery('#verse_stop'),
-                bibleBox = jQuery('#J-bible-box');
+                loading = $('#J-loading'),
+                article_num = $('#J-article_num'),
+                verse_start = $('#J-verse_start'),
+                verse_stop = $('#J-verse_stop'),
+                bibleBox = $('#J-bible-box');
 
             function error(){
                 loading.html('服务器发生异常，请重试。');
@@ -141,7 +149,7 @@
                 if(!currentTitle){return;}
 
                 start();
-                jQuery.ajax(ajaxurl,{
+                $.ajax(ajaxurl,{
                     data: 'action=query_article_num&id='+currentTitle+'',
                     type: 'get',
                     success: query_article_num_success,
@@ -153,7 +161,7 @@
                 if(!article_num.val() || !booktitle.val()){return;}
 
                 start();
-                jQuery.ajax(ajaxurl,{
+                $.ajax(ajaxurl,{
                     data: 'action=query_verse_num&article='+article_num.val()+'&id='+booktitle.val()+'',
                     type: 'get',
                     success: query_verse_num_success,
@@ -187,7 +195,7 @@
                 start();
                 var _verse_stop = verse_stop.val() || 0;
 
-                jQuery.ajax(ajaxurl,{
+                $.ajax(ajaxurl,{
                     data: 'action=query_bible&article='+article_num.val()+'&id='+booktitle.val()+'&verse_start='+verse_start.val()+'&verse_stop='+_verse_stop+'',
                     type: 'get',
                     success: query_bible_success,
@@ -209,7 +217,7 @@
                 }else{
                     bibleBox.html(data);
                 }
-                jQuery('#J-quickIndex').select().focus();
+                $('#J-quickIndex').select().focus();
             }
 
             query_article_num();
@@ -224,22 +232,22 @@
                 query_bible();
             });
 
-            jQuery('#J-quickIndex').keyup(function (e){
-                var index = jQuery.trim(jQuery(this).val());
-                var booktitles = jQuery('#booktitle option');
+            $('#J-quickIndex').keyup(function (e){
+                var index = $.trim($(this).val());
+                var booktitles = $('#booktitle option');
                 if(!index || !booktitles){return;}
                 booktitles.each(function (k,v){
-                    var booktitle = jQuery(v);
+                    var booktitle = $(v);
                     if(booktitle.attr('data-alias').toLowerCase() === index.toLowerCase()){
-                        jQuery('#J-quickIndex-tip').html(booktitle.html());
-                        jQuery('#booktitle').get(0).selectedIndex = k;
-                        jQuery('#J-query').focus();
+                        $('#J-quickIndex-tip').html(booktitle.html());
+                        $('#booktitle').get(0).selectedIndex = k;
+                        $('#J-query').focus();
                     }
                 });
             });
 
-            jQuery('#J-query').click(function (){
-                if(!jQuery.trim(jQuery('#J-quickIndex').val())){return;}
+            $('#J-query').click(function (){
+                if(!$.trim($('#J-quickIndex').val())){return;}
                 query_article_num();
             });
         }

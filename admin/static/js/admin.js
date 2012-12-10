@@ -1,6 +1,11 @@
 /*pop-box*/
 function Pop(o){
-    var _default = {};
+    var _default = {
+        beforeShow: function (){},
+        afterShow:function (){},
+        afterHide:function (){},
+        beforeHide: function (){}
+    };
     this.options = $.extend(_default,o);
     this.init();
 }
@@ -14,16 +19,20 @@ Pop.prototype = {
     show: function (){
         show.call(this);
         this.sync();
+        this.options.beforeShow();
         this.popBox.css('opacity',1).show();
         this.mask.show();
         $(this.options.element).css('opacity',1).show();
         this.addEvent();
+        this.options.afterShow();
     },
     hide: function (){
+        this.options.beforeHide();
         this.popBox.hide();
         this.mask.hide();
         $(this.options.element).hide();
         this.removeEvent();
+        this.options.afterHide();
     },
     sync: function (){
         var w = this.popBox.outerWidth(),
@@ -41,7 +50,7 @@ Pop.prototype = {
         this.popBox.css({
             left:left,
             top:_top
-        });console.log(00)
+        });
     },
     destroy: function (){
         this.removeEvent();
@@ -54,10 +63,18 @@ Pop.prototype = {
     addEvent: function (){
         $(window).bind('resize.pop', $.proxy(this.sync,this));
         this.mask.bind('click.pop',$.proxy(this.hide,this));
+
+        if(this.options.close){
+            $(this.options.close).bind('click.pop',$.proxy(this.hide,this));
+        }
     },
     removeEvent: function (){
         $(window).unbind('resize.pop');
         this.mask.unbind('click.pop');
+
+        if(this.options.close){
+            $(this.options.close).unbind('click.pop');
+        }
     }
 };
 
