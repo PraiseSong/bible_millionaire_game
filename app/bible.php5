@@ -23,7 +23,19 @@ class Bible{
     }
 
     public function queryBooktitle(){
-        return $this->db -> queryManyObject("SELECT distinct BookTitle,Book,Alias FROM `$this->tablename` ORDER BY ID");
+        $data = '';
+        $resultStatus = 101;
+        $result = array();
+        if(!$this->db){
+            $data = $this->db -> queryManyObject("SELECT distinct BookTitle,Book,Alias FROM `$this->tablename` ORDER BY ID");
+            $result['resultStatus']=$resultStatus;
+        }else{
+            $data = $this->db -> queryManyObject("SELECT distinct BookTitle,Book,Alias FROM `$this->tablename` ORDER BY ID");
+            $result['resultStatus']=100;
+            $result['data']=$data;
+        }
+
+        return json_encode($result);
     }
 }
 
@@ -32,7 +44,7 @@ if(isset($_GET['action']) && $action = $_GET['action']){
 
     switch($action){
         case 'queryBooktitle':
-              echo json_encode($bible->queryBooktitle());
+              print $bible->queryBooktitle();
             break;
         default:
             break;

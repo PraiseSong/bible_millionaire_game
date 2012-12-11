@@ -82,3 +82,7 @@ function show(){
     this.popBox.css('opacity',0).show();
     $(this.options.element).css('opacity',0).show();
 }
+
+function AjaxGlobalError(){
+    alert('与服务器通信发生故障');
+}

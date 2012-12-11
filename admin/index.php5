@@ -78,7 +78,7 @@
                 element: '#J-form-table',
                 close:'.J-close',
                 beforeShow: function (){
-                    alert(0)
+
                 }
             });
             trigger.click(function (){
@@ -87,14 +87,37 @@
         }
         bindQueryBible();
 
-        var ajaxurl = '../app/bible.php5';
+        var bibleAjaxurl = '../app/bible.php5';
+        function queryBooktitle(){
+            $.ajax(bibleAjaxurl,{
+                data: 'action=queryBooktitle',
+                dataType: 'json',
+                success: success,
+                error:AjaxGlobalError
+            });
 
-        $.ajax(ajaxurl,{
-            data: 'action=queryBooktitle'
-        });
+            function success(data){
+                if(data && data.data.length >= 1){
+                    renderBooktitle(data.data);
+                }
+            }
+
+            function renderBooktitle(data){
+                var box = $('#J-booktitle'),
+                    html = '';
+                $.each(data,function (k,v){
+                    html += '<option value="'+v["Book"]+'" data-alias="'+v["Alias"]+'">'+v["BookTitle"]+'</option>';
+                });
+
+                if(html){
+                    box.html(html);
+                    bindSelect();
+                }
+            }
+        }
+        queryBooktitle();
 
         function bindSelect(){
-            var ajaxurl = 'http://cross.hk/wp-admin/admin-ajax.php';
             var booktitle = $('#J-booktitle'),
                 currentTitle = null,
                 currentStart = null,
@@ -149,7 +172,7 @@
                 if(!currentTitle){return;}
 
                 start();
-                $.ajax(ajaxurl,{
+                $.ajax(bibleAjaxurl,{
                     data: 'action=query_article_num&id='+currentTitle+'',
                     type: 'get',
                     success: query_article_num_success,
@@ -161,7 +184,7 @@
                 if(!article_num.val() || !booktitle.val()){return;}
 
                 start();
-                $.ajax(ajaxurl,{
+                $.ajax(bibleAjaxurl,{
                     data: 'action=query_verse_num&article='+article_num.val()+'&id='+booktitle.val()+'',
                     type: 'get',
                     success: query_verse_num_success,
@@ -195,7 +218,7 @@
                 start();
                 var _verse_stop = verse_stop.val() || 0;
 
-                $.ajax(ajaxurl,{
+                $.ajax(bibleAjaxurl,{
                     data: 'action=query_bible&article='+article_num.val()+'&id='+booktitle.val()+'&verse_start='+verse_start.val()+'&verse_stop='+_verse_stop+'',
                     type: 'get',
                     success: query_bible_success,
