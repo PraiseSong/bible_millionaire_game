@@ -168,6 +168,7 @@
                 query_verse();
             }
 
+            //根据书卷查询章数
             function query_article_num(){
                 currentTitle = booktitle.val();
 
@@ -182,6 +183,7 @@
                 });
             }
 
+            //根据书卷、章数查询节数
             function query_verse(){
                 if(!article_num.val() || !booktitle.val()){return;}
 
@@ -214,6 +216,7 @@
                 query_bible();
             }
 
+            //根据书卷、章数、节数查询具体的经文
             function query_bible(){
                 if(!article_num.val() || !verse_start.val() || !booktitle.val()){return;}
 
