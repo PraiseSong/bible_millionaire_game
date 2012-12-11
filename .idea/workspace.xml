@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/index.php5" afterPath="$PROJECT_DIR$/admin/index.php5" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/static/js/admin.js" afterPath="$PROJECT_DIR$/admin/static/js/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bible.php5" afterPath="$PROJECT_DIR$/app/bible.php5" />
     </list>
     <ignored path="bible_millionaire_game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,20 +25,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php5" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.php5" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/index.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="162" column="27" selection-start="5220" selection-end="5231" vertical-scroll-proportion="0.7631976">
+            <state line="87" column="25" selection-start="2804" selection-end="9074" vertical-scroll-proportion="-1.949367">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="admin.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/static/js/admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="23" selection-start="2431" selection-end="2431" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="18" column="40" selection-start="572" selection-end="572" vertical-scroll-proportion="0.4023845">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,7 +48,7 @@
       <file leaf-file-name="bible.php5" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/bible.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="24" selection-start="1901" selection-end="1901" vertical-scroll-proportion="-25.0">
+            <state line="62" column="24" selection-start="1901" selection-end="1901" vertical-scroll-proportion="-28.0">
               <folding>
                 <element signature="e#6#162#0" expanded="true" />
               </folding>
@@ -89,9 +89,9 @@
         <option value="$PROJECT_DIR$/admin/db.php5" />
         <option value="$PROJECT_DIR$/admin/config.php5" />
         <option value="$PROJECT_DIR$/admin/load_app.php5" />
-        <option value="$PROJECT_DIR$/admin/static/js/admin.js" />
         <option value="$PROJECT_DIR$/app/bible.php5" />
         <option value="$PROJECT_DIR$/admin/index.php5" />
+        <option value="$PROJECT_DIR$/admin/static/js/admin.js" />
       </list>
     </option>
   </component>
@@ -460,16 +460,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/static/js/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="23" selection-start="2431" selection-end="2431" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/bible.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="24" selection-start="1901" selection-end="1901" vertical-scroll-proportion="-25.0">
+        <state line="62" column="24" selection-start="1901" selection-end="1901" vertical-scroll-proportion="-28.0">
           <folding>
             <element signature="e#6#162#0" expanded="true" />
           </folding>
@@ -478,8 +471,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="27" selection-start="5220" selection-end="5231" vertical-scroll-proportion="0.7631976">
+        <state line="87" column="25" selection-start="2804" selection-end="9074" vertical-scroll-proportion="-1.949367">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/static/js/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="40" selection-start="572" selection-end="572" vertical-scroll-proportion="0.4023845">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

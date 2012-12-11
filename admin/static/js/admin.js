@@ -7,14 +7,16 @@ function Pop(o){
         beforeHide: function (){}
     };
     this.options = $.extend(_default,o);
-    this.init();
+    this.initializer();
 }
 Pop.prototype = {
-    init: function (){
+    initializer: function (){
         this.popBox = $('<div class="pop-box">');
         this.mask = $('<div class="mask">');
         $('body').append(this.mask.hide()).append(this.popBox.hide());
-        $(this.options.element).hide().appendTo(this.popBox);
+
+        var node = $(this.options.element).hide().get(0);
+        this.popBox.get(0).insertBefore(node);
     },
     show: function (){
         show.call(this);
