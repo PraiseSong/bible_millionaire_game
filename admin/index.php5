@@ -32,7 +32,8 @@
         </table>
     </form>
 
-    <table class="hide" id="J-form-table">
+    <div id="J-form-table" class="hide">
+    <table>
         <tbody>
         <tr>
             <td>圣经书卷：</td>
@@ -70,11 +71,13 @@
         </tbody>
     </table>
     <p id="J-bible-box"></p>
+    </div>
 
     <script type="text/javascript">
+        var pop = null;
         function bindQueryBible(){
             var trigger = $('#J-find-bible');
-            var pop = new Pop({
+            pop = new Pop({
                 element: '#J-form-table',
                 close:'.J-close',
                 beforeShow: function (){
@@ -201,7 +204,7 @@
                 }
 
                 var html = '';
-                for(var i=1;i<=data;i++){
+                for(var i=1;i<=data.data;i++){
                     html += '<option value="'+i+'">'+i+'</option>';
                 }
 
@@ -219,9 +222,9 @@
 
                 $.ajax(bibleAjaxurl,{
                     data: 'action=query_bible&article='+article_num.val()+'&id='+booktitle.val()+'&verse_start='+verse_start.val()+'&verse_stop='+_verse_stop+'',
-                    type: 'get',
+                    dataType: 'json',
                     success: query_bible_success,
-                    error:error
+                    error:AjaxGlobalError
                 });
             }
 
@@ -230,16 +233,16 @@
 
                 loading.empty();
 
-                if(!data){
+                if(!data.data){
                     html = '没有'+booktitle+article_num+":"+verse_start+'的经文。';
                     if(verse_stop.val()>verse_start.val()){
                         html = '没有'+booktitle+article_num+":"+verse_start+"-"+verse_stop+'的经文。';
                     }
                     return bibleBox.html(html);
                 }else{
-                    bibleBox.html(data);
+                    bibleBox.html(data.data);
+                    pop.sync();
                 }
-                $('#J-quickIndex').select().focus();
             }
 
             query_article_num();
@@ -252,25 +255,6 @@
             verse_stop.change(function (){
                 if(parseInt(verse_stop.val()) < parseInt(verse_start.val())){return;}
                 query_bible();
-            });
-
-            $('#J-quickIndex').keyup(function (e){
-                var index = $.trim($(this).val());
-                var booktitles = $('#booktitle option');
-                if(!index || !booktitles){return;}
-                booktitles.each(function (k,v){
-                    var booktitle = $(v);
-                    if(booktitle.attr('data-alias').toLowerCase() === index.toLowerCase()){
-                        $('#J-quickIndex-tip').html(booktitle.html());
-                        $('#booktitle').get(0).selectedIndex = k;
-                        $('#J-query').focus();
-                    }
-                });
-            });
-
-            $('#J-query').click(function (){
-                if(!$.trim($('#J-quickIndex').val())){return;}
-                query_article_num();
             });
         }
     </script>

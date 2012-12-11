@@ -4,14 +4,15 @@ function Pop(o){
         beforeShow: function (){},
         afterShow:function (){},
         afterHide:function (){},
-        beforeHide: function (){}
+        beforeHide: function (){},
+        width:400
     };
     this.options = $.extend(_default,o);
     this.initializer();
 }
 Pop.prototype = {
     initializer: function (){
-        this.popBox = $('<div class="pop-box">');
+        this.popBox = $('<div class="pop-box" style="width:'+this.options.width+'px;overflow:hidden;">');
         this.mask = $('<div class="mask">');
         $('body').append(this.mask.hide()).append(this.popBox.hide());
 
@@ -37,8 +38,8 @@ Pop.prototype = {
         this.options.afterHide();
     },
     sync: function (){
-        var w = this.popBox.outerWidth(),
-            h = this.popBox.outerHeight();
+        var w = this.popBox.get(0).offsetWidth,
+            h = this.popBox.get(0).offsetHeight;
             docW = $(window).width(),
             docH = $(document).height(),
             scrollTop = $(window).scrollTop(),
