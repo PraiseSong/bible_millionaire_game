@@ -26,7 +26,7 @@
               </tr>
               <tr>
                   <td></td>
-                  <td><input type="submit" value="确定" class="btn-ok" /></td>
+                  <td><input type="submit" value="确定" class="btn-ok left" /></td>
               </tr>
             </tbody>
         </table>
@@ -65,7 +65,7 @@
             </td>
         </tr>
         <tr class="form-field">
-            <td><input type="button" class="btn-blue" value="使用" id="J-query" /></td>
+            <td><input type="button" class="btn-blue" value="使用" id="J-use" /></td>
             <td><a href="javascript:void(0)" class="J-close">关闭</a><span id="J-loading" class="left"></span></td>
         </tr>
         </tbody>
@@ -75,13 +75,32 @@
 
     <script type="text/javascript">
         var pop = null;
+        //使用经文
+        function useBible(){
+            var bt = $('#J-booktitle').find('option:selected').html(),
+                article = $('#J-article_num').val(),
+                verse_start = $('#J-verse_start').val(),
+                verse_stop = $('#J-verse_stop').val(),
+                verse = verse_start+"-"+verse_stop,
+                reference = $('#J-reference'),
+                currentFerence = reference.val();
+
+            if(verse_start === verse_stop){
+                verse = verse_start;
+            }
+
+            var data = bt+" "+article+":"+verse+"; ";
+
+            reference.val(currentFerence+data);
+            pop.hide();
+        }
         function bindQueryBible(){
             var trigger = $('#J-find-bible');
             pop = new Pop({
                 element: '#J-form-table',
                 close:'.J-close',
-                beforeShow: function (){
-
+                afterShow: function (){
+                    $('#J-use').unbind().bind('click',useBible);
                 }
             });
             trigger.click(function (){
