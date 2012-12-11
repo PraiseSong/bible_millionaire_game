@@ -65,7 +65,7 @@
         </tr>
         <tr class="form-field">
             <td><input type="button" class="btn-blue" value="使用" id="J-query" /></td>
-            <td><a href="javascript:void(0)" class="J-close">关闭</a><span id="J-loading></span></td>
+            <td><a href="javascript:void(0)" class="J-close">关闭</a><span id="J-loading" class="left"></span></td>
         </tr>
         </tbody>
     </table>
@@ -162,7 +162,7 @@
 
                 article_num.html(html);
 
-                //query_verse();
+                query_verse();
             }
 
             function query_article_num(){
@@ -185,9 +185,9 @@
                 start();
                 $.ajax(bibleAjaxurl,{
                     data: 'action=query_verse_num&article='+article_num.val()+'&id='+booktitle.val()+'',
-                    type: 'get',
+                    dataType: 'json',
                     success: query_verse_num_success,
-                    error:error
+                    error:AjaxGlobalError
                 });
             }
 
