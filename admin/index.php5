@@ -10,19 +10,19 @@
             <tbody>
               <tr>
                   <td>题目内容：</td>
-                  <td><textarea type="text" class="input_text" id="J-content"></textarea></td>
+                  <td><textarea type="text" class="input_text" id="J-content" required></textarea></td>
               </tr>
               <tr>
                   <td>参考经文：</td>
-                  <td><input type="text" class="input_text" id="J-reference" /><a href="javascript:void(0)" class="find-bible" id="J-find-bible">查找经文</a></td>
+                  <td><input type="text" class="input_text" id="J-reference" required /><a href="javascript:void(0)" class="find-bible" id="J-find-bible">查找经文</a></td>
               </tr>
               <tr>
                   <td>完成游戏所需时间：</td>
-                  <td><input type="text" class="input_text" id="J-time" /></td>
+                  <td><input type="number" class="input_text" value="5" id="J-time" required placeholder="请填整数，以分钟为单位" /></td>
               </tr>
               <tr>
                   <td>所属的主题：</td>
-                  <td><input type="text" class="input_text" id="J-topic" /><a href="javascript:void(0)" class="find-bible">查找主题</a></td>
+                  <td><input type="text" class="input_text" id="J-topic" required /><a href="javascript:void(0)" class="find-bible">查找主题</a></td>
               </tr>
               <tr>
                   <td></td>
@@ -30,6 +30,30 @@
               </tr>
             </tbody>
         </table>
+    </form>
+
+    <h2>创建主题</h2>
+    <form action="javascript:void(0)">
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                名称
+            </td>
+            <td><input type="text" class="input_text" id="J-topic-name" required /></td>
+        </tr>
+        <tr>
+            <td>
+                它的父级
+            </td>
+            <td><select name="" id="J-topic-name-parent"></select></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="确定" class="btn-ok left" id="J-submit-topic" /></td>
+        </tr>
+        </tbody>
+    </table>
     </form>
 
     <div id="J-form-table" class="hide">
@@ -279,6 +303,25 @@
                 query_bible();
             });
         }
+    </script>
+    <script type="text/javascript">
+        function submitTopic(){
+            var ajaxurl = '../app/ajax.php5';
+            var topic = encodeURI($.trim($('#J-topic-name').val()));
+            var topic_parent = $('#J-topic-name-parent').val() ? encodeURI($('#J-topic-name-parent').val()) : '';
+
+            $.ajax(ajaxurl,{
+                dataType: 'json',
+                data:'action=submit_topic&topic='+topic+'&topic_parent='+topic_parent+'',
+                success:success,
+                error:AjaxGlobalError
+            });
+
+            function success(data){
+                console.log(data);
+            }
+        }
+        $('#J-submit-topic').click(submitTopic);
     </script>
 </div>
 
