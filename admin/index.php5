@@ -65,7 +65,7 @@
         </tr>
         <tr class="form-field">
             <td><input type="button" class="btn-blue" value="使用" id="J-query" /></td>
-            <td><a href="javascript:void(0)" class="J-close">关闭</a></td>
+            <td><a href="javascript:void(0)" class="J-close">关闭</a><span id="J-loading></span></td>
         </tr>
         </tbody>
     </table>
@@ -128,10 +128,6 @@
                 verse_stop = $('#J-verse_stop'),
                 bibleBox = $('#J-bible-box');
 
-            function error(){
-                loading.html('服务器发生异常，请重试。');
-            }
-
             function quest_end(){
                 booktitle.attr('disabled',false);
                 article_num.attr('disabled',false);
@@ -152,18 +148,21 @@
 
                 loading.empty();
 
-                if(data <= 0){
+                if(data.resultStatus !== 100){
+                    return AjaxGlobalError(data);
+                }
+                if(data.data <= 0){
                     return loading.html('数据有误，请重试。');
                 }
 
                 var html = '';
-                for(var i=1;i<=data;i++){
+                for(var i=1;i<=data.data;i++){
                     html += '<option value="'+i+'">'+i+'</option>';
                 }
 
                 article_num.html(html);
 
-                query_verse();
+                //query_verse();
             }
 
             function query_article_num(){
@@ -173,10 +172,10 @@
 
                 start();
                 $.ajax(bibleAjaxurl,{
+                    dataType: 'json',
                     data: 'action=query_article_num&id='+currentTitle+'',
-                    type: 'get',
                     success: query_article_num_success,
-                    error:error
+                    error:AjaxGlobalError
                 });
             }
 

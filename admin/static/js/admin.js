@@ -83,6 +83,6 @@ function show(){
     $(this.options.element).css('opacity',0).show();
 }
 
-function AjaxGlobalError(){
-    alert('与服务器通信发生故障');
+function AjaxGlobalError(data){
+    alert(data.memo || '与服务器通信发生故障');
 }
