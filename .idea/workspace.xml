@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/index.php5" afterPath="$PROJECT_DIR$/admin/index.php5" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/static/css/admin.css" afterPath="$PROJECT_DIR$/admin/static/css/admin.css" />
     </list>
     <ignored path="bible_millionaire_game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,10 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php5" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.php5" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/index.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="188" column="33" selection-start="6451" selection-end="6451" vertical-scroll-proportion="0.6095791">
+            <state line="188" column="33" selection-start="6451" selection-end="6451" vertical-scroll-proportion="-17.5">
               <folding />
             </state>
           </provider>
@@ -44,10 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="admin.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="20" selection-start="3102" selection-end="3102" vertical-scroll-proportion="-22.384615">
+            <state line="135" column="17" selection-start="3048" selection-end="3048" vertical-scroll-proportion="0.7161572">
               <folding />
             </state>
           </provider>
@@ -96,9 +96,9 @@
         <option value="$PROJECT_DIR$/admin/load_app.php5" />
         <option value="$PROJECT_DIR$/app/bible.php5" />
         <option value="$PROJECT_DIR$/admin/static/js/admin.js" />
-        <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
         <option value="$PROJECT_DIR$/app/ajax.php5" />
         <option value="$PROJECT_DIR$/admin/index.php5" />
+        <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
       </list>
     </option>
   </component>
@@ -475,13 +475,6 @@
         <state line="14" column="100" selection-start="426" selection-end="426" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="20" selection-start="3102" selection-end="3102" vertical-scroll-proportion="-22.384615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/db.php5">
       <provider selected="true" editor-type-id="text-editor">
         <state line="100" column="30" selection-start="3473" selection-end="3490" vertical-scroll-proportion="-15.5">
@@ -500,7 +493,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="188" column="33" selection-start="6451" selection-end="6451" vertical-scroll-proportion="0.6095791">
+        <state line="188" column="33" selection-start="6451" selection-end="6451" vertical-scroll-proportion="-17.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="17" selection-start="3048" selection-end="3048" vertical-scroll-proportion="0.7161572">
           <folding />
         </state>
       </provider>

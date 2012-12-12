@@ -133,7 +133,8 @@ textarea.input_text{
     height:200px;
 }
 h2{
-    border-bottom:2px solid #dedede;
+    color:#236999;
+    border-bottom:2px solid #84BBE0;
 }
 td.t-right{
     text-align:left;
