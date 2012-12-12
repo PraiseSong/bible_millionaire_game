@@ -132,5 +132,11 @@ textarea.input_text{
     width:200px;
     height:200px;
 }
+h2{
+    border-bottom:2px solid #dedede;
+}
+td.t-right{
+    text-align:left;
+}
 
 

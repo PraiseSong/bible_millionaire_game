@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/index.php5" afterPath="$PROJECT_DIR$/admin/index.php5" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/static/css/admin.css" afterPath="$PROJECT_DIR$/admin/static/css/admin.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ajax.php5" afterPath="$PROJECT_DIR$/app/ajax.php5" />
@@ -30,7 +29,7 @@
       <file leaf-file-name="index.php5" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/index.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="338" column="43" selection-start="11027" selection-end="11027" vertical-scroll-proportion="0.5428157">
+            <state line="147" column="42" selection-start="4978" selection-end="4978" vertical-scroll-proportion="0.80406386">
               <folding />
             </state>
           </provider>
@@ -39,7 +38,7 @@
       <file leaf-file-name="ajax.php5" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/ajax.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="23" selection-start="1240" selection-end="1250" vertical-scroll-proportion="-9.875">
+            <state line="24" column="64" selection-start="698" selection-end="698" vertical-scroll-proportion="-7.375">
               <folding>
                 <element signature="e#6#164#0" expanded="true" />
               </folding>
@@ -50,7 +49,7 @@
       <file leaf-file-name="admin.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="12" selection-start="3019" selection-end="3019" vertical-scroll-proportion="0.0">
+            <state line="138" column="20" selection-start="3102" selection-end="3102" vertical-scroll-proportion="-22.384615">
               <folding />
             </state>
           </provider>
@@ -68,7 +67,7 @@
       <file leaf-file-name="db.php5" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/db.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="316" column="28" selection-start="11445" selection-end="11460" vertical-scroll-proportion="-14.25">
+            <state line="100" column="30" selection-start="3473" selection-end="3490" vertical-scroll-proportion="-15.5">
               <folding />
             </state>
           </provider>
@@ -99,8 +98,8 @@
         <option value="$PROJECT_DIR$/admin/load_app.php5" />
         <option value="$PROJECT_DIR$/app/bible.php5" />
         <option value="$PROJECT_DIR$/admin/static/js/admin.js" />
-        <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
         <option value="$PROJECT_DIR$/app/ajax.php5" />
+        <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
         <option value="$PROJECT_DIR$/admin/index.php5" />
       </list>
     </option>
@@ -473,37 +472,37 @@
         <state line="21" column="45" selection-start="495" selection-end="525" vertical-scroll-proportion="0.4571843" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/db.php5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="30" selection-start="3473" selection-end="3490" vertical-scroll-proportion="-15.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/static/js/admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="100" selection-start="426" selection-end="426" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="12" selection-start="3019" selection-end="3019" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/db.php5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="316" column="28" selection-start="11445" selection-end="11460" vertical-scroll-proportion="-14.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/ajax.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="23" selection-start="1240" selection-end="1250" vertical-scroll-proportion="-9.875">
+        <state line="24" column="64" selection-start="698" selection-end="698" vertical-scroll-proportion="-7.375">
           <folding>
             <element signature="e#6#164#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="20" selection-start="3102" selection-end="3102" vertical-scroll-proportion="-22.384615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="338" column="43" selection-start="11027" selection-end="11027" vertical-scroll-proportion="0.5428157">
+        <state line="147" column="42" selection-start="4978" selection-end="4978" vertical-scroll-proportion="0.80406386">
           <folding />
         </state>
       </provider>

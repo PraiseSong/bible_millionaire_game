@@ -20,6 +20,19 @@ if(isset($_GET['action'])){
         $action = $_GET['action'];
         $topic = $_GET['topic'];
         $topic_parent = $_GET['topic_parent'];
+
+        if(!$topic){
+            $data = array('resultStatus'=>101,'memo' => "请输入主题内容");
+            return json_encode($data);
+        }
+
+        $exsit = $db->queryUniqueObject("select * from $tablename where content='$topic'");
+
+        if($exsit){
+            $data = array('resultStatus'=>101,'memo' => "该主题已经存在");
+            return json_encode($data);
+        }
+
         $sql = "insert into $tablename (content,parent) values('$topic','$topic_parent')";
 
         if(!$topic_parent){
@@ -29,9 +42,7 @@ if(isset($_GET['action'])){
         $db->query($sql);
 
         if($db->lastInsertedId()){
-            $id = $db->lastInsertedId();
-            $result = $db->queryUniqueObject("select * from $tablename where id=$id");
-            $data = array('resultStatus'=>100,'data'=>$result);
+            $data = array('resultStatus'=>100);
             return json_encode($data);
         }else{
             $data = array('resultStatus'=>101);

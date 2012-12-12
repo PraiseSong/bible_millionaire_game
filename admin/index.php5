@@ -22,7 +22,7 @@
               </tr>
               <tr>
                   <td>所属的主题：</td>
-                  <td><input type="text" class="input_text" id="J-topic" required /><a href="javascript:void(0)" class="find-bible">查找主题</a></td>
+                  <td class="t-right"><div id="J-topics-labels"></div><!--<input type="text" class="input_text" id="J-topic" required /><a href="javascript:void(0)" class="find-bible" id="J-find-topics">查找主题</a>--></td>
               </tr>
               <tr>
                   <td></td>
@@ -99,7 +99,60 @@
     <p id="J-bible-box"></p>
     </div>
 
+    <!--<div id="J-topics-box">
+        <div id="J-topics-labels">
+
+        </div>
+        <a href="javascript:void(0)" class="J-close J-topic-close">关闭</a>
+    </div>-->
+
     <script type="text/javascript">
+        var topicPop = null;
+        //绑定查询主题的事件
+        function bindQueryTopic(){return;
+            var trigger = $("#J-find-topics");
+            topicPop = new Pop({
+                element: '#J-topics-box',
+                close:'.J-topic-close',
+                afterShow: function (){
+                    //$('#J-use').unbind().bind('click',useBible);
+                }
+            });
+            trigger.click(function (){
+                topicPop.show();
+            });
+        }
+        bindQueryTopic();
+        //渲染浮层中的所有主题
+        var selected = [];
+        function renderTopicsLabels(data){
+            var box = $('#J-topics-labels');
+            var html = '';
+            $.each(data,function (k,v){
+                var br = k %3 === 0 ? '<br />' : '';
+                var checked = selected.indexOf(v.id) !== -1 ? 'checked="checked"' : '';
+                html += '<label style="margin:0px 10px 5px 0;"><input type="checkbox" id="'+ v.id+'" data-parent="'+ v.parent+'" '+checked+'>'+ v.content+'</label>'+br;
+            });
+            box.html(html);
+
+            bindTopicClick(box);
+        }
+
+        //向所有的topic复选框绑定单击事件
+        function bindTopicClick(dom){
+            var handler = function (e){
+                if($(e.target).attr('type') === 'checkbox'){
+                    var currentTopic = $(e.target);
+                    var id = currentTopic.attr('id');
+                    if(selected.indexOf(id) <= 0){
+                        selected.push(id);
+                    }
+
+                }
+            }
+            dom.unbind('change').change(handler);
+        }
+
         var pop = null;
         //使用经文
         function useBible(){
@@ -120,6 +173,7 @@
             reference.val(currentFerence+data);
             pop.hide();
         }
+        //绑定查询圣经的事件
         function bindQueryBible(){
             var trigger = $('#J-find-bible');
             pop = new Pop({
@@ -305,11 +359,16 @@
                 query_bible();
             });
         }
+
+
     </script>
     <script type="text/javascript">
         var ajaxurl = '../app/ajax.php5';
         function submitTopic(){
             var topic = encodeURI($.trim($('#J-topic-name').val()));
+            if(!topic){
+                return;
+            }
             var topic_parent = $('#J-topic-name-parent').val() ? $('#J-topic-name-parent').val().toString() : '';
 
             $.ajax(ajaxurl,{
@@ -320,13 +379,16 @@
             });
 
             function success(data){
-                if(data.data){
+                if(data.resultStatus === 100){
                     queryTopic();
+                }else{
+                    return alert(data.memo);
                 }
             }
         }
         $('#J-submit-topic').click(submitTopic);
 
+        //查询所有的主题，并渲染到多项的select
         function queryTopic(){
             $.ajax(ajaxurl,{
                 dataType: 'json',
@@ -338,6 +400,7 @@
                 if(data.data){
                     var topics = data.data;
                     var html = '';
+                    renderTopicsLabels(topics);
                     $.each(topics,function (k,v){
                        html += '<option value="'+v.id+'" data-parent="'+v.parent+'">'+v.content+'</option>';
                     });
