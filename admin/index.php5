@@ -439,6 +439,9 @@
                 topics = $.trim(selected.toString()),
                 api = '../app/ajax.php5';
 
+            if(!content || !reference || !time || !topics){
+                return;
+            }
             function success(data){
                 if(data.resultStatus === 100){
                     alert('题目添加成功');
