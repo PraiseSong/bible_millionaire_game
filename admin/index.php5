@@ -80,7 +80,7 @@
     </form>
 
     <h2>当前游戏的主题结构图</h2>
-    <div id="J-topics-structure" class="clear"></div>
+    <div id="J-topics-structure" class="clear">暂无主题</div>
 
     <div id="J-form-table" class="hide">
     <table>
@@ -499,8 +499,12 @@
         //绘制游戏的当前主题结构
         function drawTopicsStructure(data){
             var dom = $('#J-topics-structure');
+            if(!data){
+                return dom.html('暂无主题');
+            }
             var noParent = [];
             var haveParent = [];
+            var newTopics = {};
 
             $.each(data,function (k,v){
                 if(v.parent){
@@ -534,53 +538,77 @@
                 dom.append(html);
             }
 
-            var html = '<ul class="topics-tree">';
-
-            $.each(data,function (k,v){
-                var pids = v.parent;
-                var id = v.id;
-                var c = v.content;
-                var pidAttr = '';
-
-                if(pids){
-                    pidAttr = 'data-topic-parent-id="'+ pids+'"';
-                }
-
-                var subTopics = subTopicsCallback(id,data,v);
-
-                if(!subTopics){
-                    html += '<li data-topic-id="'+ id+'" '+pidAttr+'>'+ c+'</li>';
-                }else{
-                    
-                }
+            $.each(haveParent,function (k,v){
+                var pids = v.parent.split(',');
+                haveParentToNewObject(pids,v);
             });
 
-            //根据给定的主题id，查找该id下面的子主题，并且返回拼装好的html片段
-            function subTopicsCallback(id,data,topic){
-                var html = '<ul class="subTopics-box">';
-                var tmp = [];
+            $.each(noParent,function (k,v){
+                newTopics[v.id]=v;
+            });
 
+            //将有父级主题的topic放到一个新对象中
+            function haveParentToNewObject(pids,o){
                 $.each(data,function (k,v){
-                    if(v.id !== id){
-                        var pids = v.parent.split(',');
-                        if(pids.indexOf(id) !== -1){
+                    if(pids.indexOf(v.id) !== -1){
+                        //如果在新主题对象中找到当前这个有子主题的对象，则直接在这个对象
+                        //上push这个子主题
+                        if(newTopics[v.id]){
+                            newTopics[v.id].subTopics.push(o);
+                        }else{
+                            if(!v.subTopics){
+                                v.subTopics = [];
+                            }
+                            v.subTopics.push(o);
 
+                            if(!v.parent){
+                                newTopics[v.id] = v;
+                            }
                         }
                     }
                 });
+            }
 
-                //如果给定主题没有父级主题，则退出
-                if(!topic.parent){
-                    return false;
+            function renderStructure(){
+                var html = '<ul class="topics-tree" data-topic-root="true">';
+
+                for(i in newTopics){
+                    var v = newTopics[i];
+                    var id = v.id;
+                    var c = v.content;
+
+                    if(v.subTopics){
+                        subTopicsCallbackCount ? subTopicsCallbackCount = 0 : '';
+                        c += subTopicsCallback(v.subTopics);
+                    }
+
+                    html += '<li data-topic-id="'+ id+'">'+ c+'</li>';
                 }
 
                 html += '</ul>';
                 return html;
             }
 
-            html += '</ul>';
+            //渲染子主题，并且返回拼装好的html片段
+            var subTopicsCallbackCount = 0;//记录子主题回调函数的递归次数
+            function subTopicsCallback(data){
+                var tem = ++subTopicsCallbackCount;
+                var html = '<ul class="subTopics-box" data-topic-level="'+tem+'">';
 
-            dom.html(html);
+                $.each(data,function (k,v){
+                    var c = v.content;
+                    if(v.subTopics){
+                        c += subTopicsCallback(v.subTopics);
+                    }
+                    html += '<li data-topic-id="'+ v.id+'">'+ c+'</li>';
+                    subTopicsCallbackCount = tem;
+                });
+
+                html += '</ul>';
+                return html;
+            }
+
+            dom.html(renderStructure());
         }
     </script>
 </div>

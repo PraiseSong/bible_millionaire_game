@@ -154,4 +154,21 @@ td.t-right{
     line-height:25px;
     font-size:14px;
 }
-
+.subTopics-box{
+    margin-left:24px;
+}
+ul[data-topic-root=true]{
+    color:green;
+}
+ul[data-topic-level='1']{
+ color:purple;
+}
+ul[data-topic-level='2']{
+    color:red;
+}
+ul[data-topic-level='3']{
+    color:blue;
+}
+ul[data-topic-level='4']{
+    color:orange;
+}
