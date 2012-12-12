@@ -22,7 +22,7 @@
               </tr>
               <tr>
                   <td>完成游戏所需的时间：</td>
-                  <td><input type="number" class="input_text" value="5" id="J-time" required placeholder="请填整数，以分钟为单位" />以分钟为单位</td>
+                  <td><input type="number" class="input_text" value="5" id="J-time" required placeholder="请填整数，以分钟为单位" />以分钟为单位，默认为5分钟</td>
               </tr>
               <tr>
                   <td>该题目所属的游戏主题：</td>
@@ -58,13 +58,14 @@
         <tbody>
         <tr>
             <td>
-                名称
+                主题名称
             </td>
             <td><input type="text" class="input_text" id="J-topic-name" required /></td>
         </tr>
         <tr>
             <td>
-                它的父级
+                主题的父级主题
+                <p>可多选</p>
             </td>
             <td><select name="" id="J-topic-name-parent" multiple="50" class="multiple">
                 <option value="0" disabled="disabled">正在加载主题</option>
@@ -77,6 +78,9 @@
         </tbody>
     </table>
     </form>
+
+    <h2>当前游戏的主题结构图</h2>
+    <div id="J-topics-structure" class="clear"></div>
 
     <div id="J-form-table" class="hide">
     <table>
@@ -411,7 +415,7 @@
         }
         $('#J-submit-topic').click(submitTopic);
 
-        //查询所有的主题，并渲染到多项的select并且也会触发游戏题目中的topics的创建
+        //查询所有的主题，并渲染到多项的select并且也会触发游戏题目中的topics的创建以及重新绘制游戏主题结构图
         function queryTopic(){
             $.ajax(ajaxurl,{
                 dataType: 'json',
@@ -424,6 +428,7 @@
                     var topics = data.data;
                     var html = '';
                     renderTopicsCheckboxes(topics);
+                    drawTopicsStructure(topics);
                     $.each(topics,function (k,v){
                        html += '<option value="'+v.id+'" data-parent="'+v.parent+'">'+v.content+'</option>';
                     });
@@ -489,6 +494,94 @@
             });
         }
         addSolutions();
+    </script>
+    <script type="text/javascript">
+        //绘制游戏的当前主题结构
+        function drawTopicsStructure(data){
+            var dom = $('#J-topics-structure');
+            var noParent = [];
+            var haveParent = [];
+
+            $.each(data,function (k,v){
+                if(v.parent){
+                    haveParent.push(v);
+                }else{
+                    noParent.push(v);
+                }
+            });
+
+            function noParentCallback(){
+                var html = '<ul class="topics-tree"><li class="title">没有父级主题的</li>';
+
+                $.each(noParent,function (k,v){
+                    html += '<li data-topic-id="'+ v.id+'">'+ v.content+'</li>';
+                });
+
+                html += '</ul>';
+
+                dom.html(html);
+            }
+
+            function haveParentCallback(){
+                var html = '<ul class="topics-tree"><li class="title">有父级主题的</li>';
+
+                $.each(haveParent,function (k,v){
+                    html += '<li data-topic-id="'+ v.id+'" data-topic-parent-id="'+ v.parent+'">'+ v.content+'</li>';
+                });
+
+                html += '</ul>';
+
+                dom.append(html);
+            }
+
+            var html = '<ul class="topics-tree">';
+
+            $.each(data,function (k,v){
+                var pids = v.parent;
+                var id = v.id;
+                var c = v.content;
+                var pidAttr = '';
+
+                if(pids){
+                    pidAttr = 'data-topic-parent-id="'+ pids+'"';
+                }
+
+                var subTopics = subTopicsCallback(id,data,v);
+
+                if(!subTopics){
+                    html += '<li data-topic-id="'+ id+'" '+pidAttr+'>'+ c+'</li>';
+                }else{
+                    
+                }
+            });
+
+            //根据给定的主题id，查找该id下面的子主题，并且返回拼装好的html片段
+            function subTopicsCallback(id,data,topic){
+                var html = '<ul class="subTopics-box">';
+                var tmp = [];
+
+                $.each(data,function (k,v){
+                    if(v.id !== id){
+                        var pids = v.parent.split(',');
+                        if(pids.indexOf(id) !== -1){
+
+                        }
+                    }
+                });
+
+                //如果给定主题没有父级主题，则退出
+                if(!topic.parent){
+                    return false;
+                }
+
+                html += '</ul>';
+                return html;
+            }
+
+            html += '</ul>';
+
+            dom.html(html);
+        }
     </script>
 </div>
 

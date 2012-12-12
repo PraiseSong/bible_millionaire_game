@@ -146,4 +146,12 @@ td.t-right{
     display:block;
     margin-bottom:5px;
 }
+.topics-tree{
+    margin:10px 30px 0 0;
+    float:left;
+}
+.topics-tree .title{
+    line-height:25px;
+    font-size:14px;
+}
 
