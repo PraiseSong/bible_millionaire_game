@@ -10,7 +10,7 @@
             <tbody>
               <tr>
                   <td>题目内容：</td>
-                  <td><textarea type="text" class="input_text" id="J-content" required></textarea></td>
+                  <td><textarea type="text" class="input_text" id="J-content" required autofocus></textarea></td>
               </tr>
               <tr>
                   <td>参考经文：</td>
@@ -116,7 +116,7 @@
                 element: '#J-topics-box',
                 close:'.J-topic-close',
                 afterShow: function (){
-                    //$('#J-use').unbind().bind('click',useBible);
+                    $('#J-use').unbind().bind('click',useBible);
                 }
             });
             trigger.click(function (){
@@ -186,6 +186,7 @@
 
             reference.val(currentFerence+data);
             pop.hide();
+            $('#J-time').focus();
         }
         //绑定查询圣经的事件
         function bindQueryBible(){
@@ -199,6 +200,7 @@
                 close:'.J-close',
                 afterShow: function (){
                     $('#J-use').unbind().bind('click',useBible);
+                    $('#J-booktitle').focus();
                 }
             });
             trigger.click(function (){
