@@ -64,12 +64,36 @@ if(isset($_GET['action'])){
         }
     }
 
+    function submitSubject(){
+        global $db;
+        $tablename = 'subjects';
+        $content = $_GET['reference'];
+        $reference = $_GET['reference'];
+        $topic = $_GET['topic'];
+        $time = $_GET['time'];
+
+        $sql = "insert into $tablename (content,reference,topic,time) values('$content','$reference','$topic','$time')";
+
+        $db->query($sql);
+
+        if($db->lastInsertedId()){
+            $data = array('resultStatus'=>100);
+            return json_encode($data);
+        }else{
+            $data = array('resultStatus'=>101);
+            return json_encode($data);
+        }
+    }
+
     switch($_GET['action']){
         case 'submit_topic':
             echo submitTopic();
             break;
         case 'query_topic':
             echo queryTopic();
+            break;
+        case 'submit_subject':
+            echo submitSubject();
             break;
         default:
             break;

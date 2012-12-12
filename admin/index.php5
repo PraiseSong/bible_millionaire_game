@@ -5,7 +5,7 @@
 
 <div class="container">
     <h2>游戏题目配置</h2>
-    <form action="#" id="J-subjects">
+    <form action="javascript:void(0)" id="J-subjects">
         <table>
             <tbody>
               <tr>
@@ -14,11 +14,12 @@
               </tr>
               <tr>
                   <td>参考经文：</td>
-                  <td><input type="text" class="input_text" id="J-reference" required /><a href="javascript:void(0)" class="find-bible" id="J-find-bible">查找经文</a></td>
+                  <td><input disabled="disabled" type="text" class="input_text" id="J-reference" required /><a href="javascript:void(0)" class="find-bible" id="J-find-bible">查找经文</a> |
+                      <a href="javascript:void(0)" id="J-bible-clean">清空</a></td>
               </tr>
               <tr>
                   <td>完成游戏所需时间：</td>
-                  <td><input type="number" class="input_text" value="5" id="J-time" required placeholder="请填整数，以分钟为单位" /></td>
+                  <td><input type="number" class="input_text" value="5" id="J-time" required placeholder="请填整数，以分钟为单位" />以分钟为单位</td>
               </tr>
               <tr>
                   <td>所属的主题：</td>
@@ -26,7 +27,7 @@
               </tr>
               <tr>
                   <td></td>
-                  <td><input type="submit" value="确定" class="btn-ok left" /></td>
+                  <td><input type="submit" value="确定" class="btn-ok left" id="J-submit-subject" /></td>
               </tr>
             </tbody>
         </table>
@@ -188,6 +189,10 @@
         }
         //绑定查询圣经的事件
         function bindQueryBible(){
+            $('#J-bible-clean').click(function (){
+                $('#J-reference').val('');
+            });
+
             var trigger = $('#J-find-bible');
             pop = new Pop({
                 element: '#J-form-table',
@@ -424,6 +429,32 @@
             }
         }
         queryTopic();
+    </script>
+    <script type="text/javascript">
+        //提交游戏题目配置
+        function submitSubject(){
+            var content = $.trim($('#J-content').val()),
+                reference = $.trim($('#J-reference').val()),
+                time = $.trim($('#J-time').val()),
+                topics = $.trim(selected.toString()),
+                api = '../app/ajax.php5';
+
+            function success(data){
+                if(data.resultStatus === 100){
+                    alert('题目添加成功');
+                }else{
+                    alert('题目添加失败');
+                }
+            }
+
+            $.ajax(api,{
+                dataType: 'json',
+                data:'action=submit_subject&content='+encodeURI(content)+'&reference='+encodeURI(reference)+'&time='+time+'&topic='+encodeURI(topics),
+                success:success,
+                error:AjaxGlobalError
+            });
+        }
+        $('#J-submit-subject').click(submitSubject);
     </script>
 </div>
 
