@@ -9,14 +9,16 @@
 if(isset($_GET['action']) && $action = $_GET['action']){
     include("../config.php5");
     include("db.php5");
-    $tablename = 'topic';
+    $topics_tablename = 'topics';
+    $subjects_tablename = 'subjects';
     $db = new DB('bible_millionaire_game',$host,$db_user,$db_pass);
     $db->query("SET NAMES 'UTF8'");
 }
 
 if(isset($_GET['action'])){
+    //提交游戏主题
     function submitTopic(){
-        global $db,$tablename;
+        global $db,$topics_tablename;
         $action = $_GET['action'];
         $topic = $_GET['topic'];
         $topic_parent = $_GET['topic_parent'];
@@ -26,17 +28,17 @@ if(isset($_GET['action'])){
             return json_encode($data);
         }
 
-        $exsit = $db->queryUniqueObject("select * from $tablename where content='$topic'");
+        $exsit = $db->queryUniqueObject("select * from $topics_tablename where content='$topic'");
 
         if($exsit){
             $data = array('resultStatus'=>101,'memo' => "该主题已经存在");
             return json_encode($data);
         }
 
-        $sql = "insert into $tablename (content,parent) values('$topic','$topic_parent')";
+        $sql = "insert into $topics_tablename (content,parent) values('$topic','$topic_parent')";
 
         if(!$topic_parent){
-            $sql = "insert into $tablename (content) values('$topic')";
+            $sql = "insert into $topics_tablename (content) values('$topic')";
         }
 
         $db->query($sql);
@@ -50,9 +52,10 @@ if(isset($_GET['action'])){
         }
     }
 
-    function queryTopic(){
-        global $db,$tablename;
-        $row = $db->queryManyObject("select * from $tablename");
+    //查询所有游戏主题
+    function queryTopics(){
+        global $db,$topics_tablename;
+        $row = $db->queryManyObject("select * from $topics_tablename");
 
         if($row){
             $result = $row;
@@ -64,15 +67,15 @@ if(isset($_GET['action'])){
         }
     }
 
+    //提交题目
     function submitSubject(){
-        global $db;
-        $tablename = 'subjects';
+        global $db,$subjects_tablename;
         $content = $_GET['reference'];
         $reference = $_GET['reference'];
-        $topic = $_GET['topic'];
+        $topics = $_GET['topics'];
         $time = $_GET['time'];
 
-        $sql = "insert into $tablename (content,reference,topic,time) values('$content','$reference','$topic','$time')";
+        $sql = "insert into $subjects_tablename (content,reference,topics,time) values('$content','$reference','$topics','$time')";
 
         $db->query($sql);
 
@@ -90,7 +93,7 @@ if(isset($_GET['action'])){
             echo submitTopic();
             break;
         case 'query_topic':
-            echo queryTopic();
+            echo queryTopics();
             break;
         case 'submit_subject':
             echo submitSubject();

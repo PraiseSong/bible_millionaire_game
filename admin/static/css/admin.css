@@ -48,7 +48,7 @@ td{
 td textarea,td .input_text,td select{
     float:left;
 }
-td.no-float *{
+td.no-float *,.no-float{
     float:none;
 }
 .input_text{
@@ -139,5 +139,11 @@ h2{
 td.t-right{
     text-align:left;
 }
-
+.t-left{
+    text-align:left;
+}
+#J-solutions label{
+    display:block;
+    margin-bottom:5px;
+}
 

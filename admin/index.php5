@@ -4,26 +4,45 @@
 <?php include_once("load_app.php5"); ?>
 
 <div class="container">
-    <h2>游戏题目配置</h2>
+    <h2>创建游戏题目</h2>
     <form action="javascript:void(0)" id="J-subjects">
         <table>
             <tbody>
               <tr>
-                  <td>题目内容：</td>
+                  <td>题目的内容：</td>
                   <td><textarea type="text" class="input_text" id="J-content" required autofocus></textarea></td>
               </tr>
               <tr>
-                  <td>参考经文：</td>
-                  <td><input disabled="disabled" type="text" class="input_text" id="J-reference" required /><a href="javascript:void(0)" class="find-bible" id="J-find-bible">查找经文</a> |
-                      <a href="javascript:void(0)" id="J-bible-clean">清空</a></td>
+                  <td>所需参考经文：</td>
+                  <td>
+                      <input disabled="disabled" type="text" class="input_text" id="J-reference" required />
+                      <a href="javascript:void(0)" class="find-bible" id="J-find-bible">查找经文</a> |
+                      <a href="javascript:void(0)" id="J-bible-clean">清空</a>
+                  </td>
               </tr>
               <tr>
-                  <td>完成游戏所需时间：</td>
+                  <td>完成游戏所需的时间：</td>
                   <td><input type="number" class="input_text" value="5" id="J-time" required placeholder="请填整数，以分钟为单位" />以分钟为单位</td>
               </tr>
               <tr>
-                  <td>所属的主题：</td>
+                  <td>该题目所属的游戏主题：</td>
                   <td class="t-right"><div id="J-topics-labels">暂无主题</div><!--<input type="text" class="input_text" id="J-topic" required /><a href="javascript:void(0)" class="find-bible" id="J-find-topics">查找主题</a>--></td>
+              </tr>
+              <tr>
+                  <td>该题目的可选答案：</td>
+                  <td class="no-float t-left">
+                      <div id="J-solutions-box" class="left">
+                          <div id="J-solutions">
+                              <label>答案1:<input type="text" required class="input_text" /></label>
+                          </div>
+                          <a href="javascript:void(0)" id="J-add-solutions">增加可选答案</a>
+                      </div>
+                      一般题目有4个答案，除1个正确答案外，其余3个为可选的
+                  </td>
+              </tr>
+              <tr>
+                  <td>该题目的正确答案：</td>
+                  <td><input type="text" class="input_text" required id="J-right-solution"/></td>
               </tr>
               <tr>
                   <td></td>
@@ -33,7 +52,7 @@
         </table>
     </form>
 
-    <h2>创建主题</h2>
+    <h2>创建一个游戏主题(如摩西五经、幕道友专题等)</h2>
     <form action="javascript:void(0)">
     <table>
         <tbody>
@@ -108,25 +127,9 @@
     </div>-->
 
     <script type="text/javascript">
-        var topicPop = null;
-        //绑定查询主题的事件
-        function bindQueryTopic(){return;
-            var trigger = $("#J-find-topics");
-            topicPop = new Pop({
-                element: '#J-topics-box',
-                close:'.J-topic-close',
-                afterShow: function (){
-                    $('#J-use').unbind().bind('click',useBible);
-                }
-            });
-            trigger.click(function (){
-                topicPop.show();
-            });
-        }
-        bindQueryTopic();
         //渲染浮层中的所有主题
-        var selected = [];
-        function renderTopicsLabels(data){
+        var selectedTopics = [];
+        function renderTopicsCheckboxes(data){
             var box = $('#J-topics-labels');
             if(!data){
                 return box.html('暂无主题');
@@ -134,7 +137,7 @@
             var html = '';
             $.each(data,function (k,v){
                 var br = (k+1) %3 === 0 ? '<br />' : '';
-                var checked = selected.indexOf(v.id) !== -1 ? 'checked="checked"' : '';
+                var checked = selectedTopics.indexOf(v.id) !== -1 ? 'checked="checked"' : '';
                 html += '<label style="margin:0px 10px 5px 0;"><input type="checkbox" id="'+ v.id+'" data-parent="'+ v.parent+'" '+checked+'>'+ v.content+'</label>'+br;
             });
             box.html(html);
@@ -142,7 +145,7 @@
             bindTopicClick(box);
         }
 
-        //向所有的topic复选框绑定单击事件
+        //向所有的topics复选框绑定单击事件
         function bindTopicClick(dom){
             var handler = function (e){
                 if($(e.target).attr('type') === 'checkbox'){
@@ -150,15 +153,15 @@
                     var id = currentTopic.attr('id');
 
                     if(currentTopic.attr('checked')){
-                        if(selected.indexOf(id) === -1){
-                            selected.push(id);
+                        if(selectedTopics.indexOf(id) === -1){
+                            selectedTopics.push(id);
                         }
                     }
 
-                    if(!currentTopic.attr('checked') && selected.indexOf(id) !== -1){
-                        $.each(selected,function (k,v){
+                    if(!currentTopic.attr('checked') && selectedTopics.indexOf(id) !== -1){
+                        $.each(selectedTopics,function (k,v){
                             if(v === id){
-                                selected.splice(k,1)
+                                selectedTopics.splice(k,1)
                             }
                         });
                     }
@@ -210,6 +213,7 @@
         bindQueryBible();
 
         var bibleAjaxurl = '../app/bible.php5';
+        //查找圣经中的所有书卷
         function queryBooktitle(){
             $.ajax(bibleAjaxurl,{
                 data: 'action=queryBooktitle',
@@ -379,11 +383,10 @@
                 query_bible();
             });
         }
-
-
     </script>
     <script type="text/javascript">
         var ajaxurl = '../app/ajax.php5';
+        //提交一个游戏主题
         function submitTopic(){
             var topic = encodeURI($.trim($('#J-topic-name').val()));
             if(!topic){
@@ -408,7 +411,7 @@
         }
         $('#J-submit-topic').click(submitTopic);
 
-        //查询所有的主题，并渲染到多项的select
+        //查询所有的主题，并渲染到多项的select并且也会触发游戏题目中的topics的创建
         function queryTopic(){
             $.ajax(ajaxurl,{
                 dataType: 'json',
@@ -420,7 +423,7 @@
                 if(data.data){
                     var topics = data.data;
                     var html = '';
-                    renderTopicsLabels(topics);
+                    renderTopicsCheckboxes(topics);
                     $.each(topics,function (k,v){
                        html += '<option value="'+v.id+'" data-parent="'+v.parent+'">'+v.content+'</option>';
                     });
@@ -438,7 +441,7 @@
             var content = $.trim($('#J-content').val()),
                 reference = $.trim($('#J-reference').val()),
                 time = $.trim($('#J-time').val()),
-                topics = $.trim(selected.toString()),
+                topics = $.trim(selectedTopics.toString()),
                 api = '../app/ajax.php5';
 
             if(!content || !reference || !time || !topics){
@@ -454,12 +457,29 @@
 
             $.ajax(api,{
                 dataType: 'json',
-                data:'action=submit_subject&content='+encodeURI(content)+'&reference='+encodeURI(reference)+'&time='+time+'&topic='+encodeURI(topics),
+                data:'action=submit_subject&content='+encodeURI(content)+'&reference='+encodeURI(reference)+'&time='+time+'&topics='+encodeURI(topics),
                 success:success,
                 error:AjaxGlobalError
             });
         }
         $('#J-submit-subject').click(submitSubject);
+    </script>
+    <script type="text/javascript">
+        //增加可选答案
+        function addSolutions(){
+            var trigger = $('#J-add-solutions'),
+                box = $('#J-solutions');
+            trigger.click(function (){
+                var currentSolutionsNum = box.find('label').length;
+                var html = $('<label>答案:'+(++currentSolutionsNum)+'<input type="text" required class="input_text" /></label>');
+                box.append(html);
+                html.find('input[type=text]').focus();
+                if(currentSolutionsNum === 3){
+                    trigger.remove();
+                }
+            });
+        }
+        addSolutions();
     </script>
 </div>
 
