@@ -46,7 +46,9 @@
             <td>
                 它的父级
             </td>
-            <td><select name="" id="J-topic-name-parent"></select></td>
+            <td><select name="" id="J-topic-name-parent" multiple="50" class="multiple">
+                <option value="0" disabled="disabled">正在加载主题</option>
+            </select></td>
         </tr>
         <tr>
             <td></td>
@@ -305,10 +307,10 @@
         }
     </script>
     <script type="text/javascript">
+        var ajaxurl = '../app/ajax.php5';
         function submitTopic(){
-            var ajaxurl = '../app/ajax.php5';
             var topic = encodeURI($.trim($('#J-topic-name').val()));
-            var topic_parent = $('#J-topic-name-parent').val() ? encodeURI($('#J-topic-name-parent').val()) : '';
+            var topic_parent = $('#J-topic-name-parent').val() ? $('#J-topic-name-parent').val().toString() : '';
 
             $.ajax(ajaxurl,{
                 dataType: 'json',
@@ -318,10 +320,34 @@
             });
 
             function success(data){
-                console.log(data);
+                if(data.data){
+                    queryTopic();
+                }
             }
         }
         $('#J-submit-topic').click(submitTopic);
+
+        function queryTopic(){
+            $.ajax(ajaxurl,{
+                dataType: 'json',
+                data:'action=query_topic',
+                success:success,
+                error:AjaxGlobalError
+            });
+            function success(data){
+                if(data.data){
+                    var topics = data.data;
+                    var html = '';
+                    $.each(topics,function (k,v){
+                       html += '<option value="'+v.id+'" data-parent="'+v.parent+'">'+v.content+'</option>';
+                    });
+                    $('#J-topic-name-parent').html(html);
+                }else{
+                    $('#J-topic-name-parent').html('<option disabled="disabled">暂无主题</option>');
+                }
+            }
+        }
+        queryTopic();
     </script>
 </div>
 

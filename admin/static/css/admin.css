@@ -124,5 +124,13 @@ textarea.input_text{
 #J-loading{
     height:25px;
 }
+.multiple{
+    background:#eee;
+    border:1px solid #ddd;
+    border-radius: 5px;
+    cursor:pointer;
+    width:200px;
+    height:200px;
+}
 
 
