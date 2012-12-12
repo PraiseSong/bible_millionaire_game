@@ -74,8 +74,10 @@ if(isset($_GET['action'])){
         $reference = $_GET['reference'];
         $topics = $_GET['topics'];
         $time = $_GET['time'];
+        $right_solution = $_GET['rightSolution'];
+        $solutions = $_GET['solutions'];
 
-        $sql = "insert into $subjects_tablename (content,reference,topics,time) values('$content','$reference','$topics','$time')";
+        $sql = "insert into $subjects_tablename (content,reference,topics,time,right_solution,solutions) values('$content','$reference','$topics','$time','$right_solution','$solutions')";
 
         $db->query($sql);
 

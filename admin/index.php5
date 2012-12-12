@@ -442,11 +442,19 @@
                 reference = $.trim($('#J-reference').val()),
                 time = $.trim($('#J-time').val()),
                 topics = $.trim(selectedTopics.toString()),
+                solutions = [],
+                solutions_box = $('#J-solutions').find('input[type=text]'),
+                rightSolution = $.trim($('#J-right-solution').val()),
                 api = '../app/ajax.php5';
 
-            if(!content || !reference || !time || !topics){
+            $.each(solutions_box,function (k,v){
+                solutions.push($.trim($(v).val()));
+            });
+
+            if(!content || !reference || !time || !topics || !rightSolution || solutions.length <= 0){
                 return;
             }
+
             function success(data){
                 if(data.resultStatus === 100){
                     alert('题目添加成功');
@@ -457,7 +465,8 @@
 
             $.ajax(api,{
                 dataType: 'json',
-                data:'action=submit_subject&content='+encodeURI(content)+'&reference='+encodeURI(reference)+'&time='+time+'&topics='+encodeURI(topics),
+                data:'action=submit_subject&content='+encodeURI(content)+'&reference='+encodeURI(reference)+'&time='+time+'&topics='+encodeURI(topics)+
+                '&rightSolution='+encodeURI(rightSolution)+'&solutions='+encodeURI(solutions),
                 success:success,
                 error:AjaxGlobalError
             });
