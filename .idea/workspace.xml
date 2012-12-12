@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/index.php5" afterPath="$PROJECT_DIR$/admin/index.php5" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/static/css/admin.css" afterPath="$PROJECT_DIR$/admin/static/css/admin.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ajax.php5" afterPath="$PROJECT_DIR$/app/ajax.php5" />
     </list>
     <ignored path="bible_millionaire_game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +27,7 @@
       <file leaf-file-name="index.php5" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/index.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="42" selection-start="4978" selection-end="4978" vertical-scroll-proportion="0.80406386">
+            <state line="134" column="39" selection-start="4333" selection-end="4333" vertical-scroll-proportion="0.32510886">
               <folding />
             </state>
           </provider>
@@ -502,7 +500,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="42" selection-start="4978" selection-end="4978" vertical-scroll-proportion="0.80406386">
+        <state line="134" column="39" selection-start="4333" selection-end="4333" vertical-scroll-proportion="0.32510886">
           <folding />
         </state>
       </provider>

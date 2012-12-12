@@ -22,7 +22,7 @@
               </tr>
               <tr>
                   <td>所属的主题：</td>
-                  <td class="t-right"><div id="J-topics-labels"></div><!--<input type="text" class="input_text" id="J-topic" required /><a href="javascript:void(0)" class="find-bible" id="J-find-topics">查找主题</a>--></td>
+                  <td class="t-right"><div id="J-topics-labels">暂无主题</div><!--<input type="text" class="input_text" id="J-topic" required /><a href="javascript:void(0)" class="find-bible" id="J-find-topics">查找主题</a>--></td>
               </tr>
               <tr>
                   <td></td>
@@ -127,9 +127,12 @@
         var selected = [];
         function renderTopicsLabels(data){
             var box = $('#J-topics-labels');
+            if(!data){
+                return box.html('暂无主题');
+            }
             var html = '';
             $.each(data,function (k,v){
-                var br = k %3 === 0 ? '<br />' : '';
+                var br = (k+1) %3 === 0 ? '<br />' : '';
                 var checked = selected.indexOf(v.id) !== -1 ? 'checked="checked"' : '';
                 html += '<label style="margin:0px 10px 5px 0;"><input type="checkbox" id="'+ v.id+'" data-parent="'+ v.parent+'" '+checked+'>'+ v.content+'</label>'+br;
             });
@@ -144,10 +147,20 @@
                 if($(e.target).attr('type') === 'checkbox'){
                     var currentTopic = $(e.target);
                     var id = currentTopic.attr('id');
-                    if(selected.indexOf(id) <= 0){
-                        selected.push(id);
+
+                    if(currentTopic.attr('checked')){
+                        if(selected.indexOf(id) === -1){
+                            selected.push(id);
+                        }
                     }
 
+                    if(!currentTopic.attr('checked') && selected.indexOf(id) !== -1){
+                        $.each(selected,function (k,v){
+                            if(v === id){
+                                selected.splice(k,1)
+                            }
+                        });
+                    }
                 }
             }
             dom.unbind('change').change(handler);
