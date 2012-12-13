@@ -480,7 +480,10 @@
                 api = '../app/ajax.php5';
 
             $.each(solutions_box,function (k,v){
-                solutions.push($.trim($(v).val()));
+                var val = $.trim($(v).val());
+                if(val){
+                    solutions.push(val);
+                }
             });
 
             if(!content || !reference || !time || !rightSolution || solutions.length <= 0){
@@ -488,6 +491,10 @@
                     alert('请提供《圣经》参考');
                     $('#J-find-bible').focus();
                 }
+                return;
+            }
+
+            if(solutions_box.length !== solutions.length){
                 return;
             }
 
@@ -561,7 +568,8 @@
         //增加可选答案
         function addSolutions(){
             var trigger = $('#J-add-solutions'),
-                box = $('#J-solutions');
+                box = $('#J-solutions'),
+                maxSolutions = 4;
             trigger.click(function (){
                 var currentSolutionsNum = box.find('label').length;
                 var html = $('<label>答案<span>'+(++currentSolutionsNum)+'</span>:<input type="text" required class="input_text" /><a href="javascript:void(0)">删除</a></label>');
@@ -569,7 +577,7 @@
                 $(html).find('a').click(function (){
                     $(html).remove();
                     currentSolutionsNum--;
-                    if(currentSolutionsNum < 3){
+                    if(currentSolutionsNum < maxSolutions){
                         trigger.show();
                     }
                     //更新答案序号
@@ -579,7 +587,7 @@
                     })
                 });
                 html.find('input[type=text]').focus();
-                if(currentSolutionsNum === 3){
+                if(currentSolutionsNum === maxSolutions){
                     trigger.hide();
                 }
             });
