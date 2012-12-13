@@ -92,6 +92,22 @@ if(isset($_GET['action'])){
         }
     }
 
+    //查询所有游戏题目
+    function querySubjects(){
+        global $db,$subjects_tablename;
+
+        $row = $db->queryManyObject("select * from $subjects_tablename");
+
+        if($row){
+            $result = $row;
+            $data = array('resultStatus'=>100,'data'=>$result);
+            return json_encode($data);
+        }else{
+            $data = array('resultStatus'=>101);
+            return json_encode($data);
+        }
+    }
+
     switch($_GET['action']){
         case 'submit_topic':
             echo submitTopic();
@@ -101,6 +117,9 @@ if(isset($_GET['action'])){
             break;
         case 'submit_subject':
             echo submitSubject();
+            break;
+        case 'query_subjects':
+            echo querySubjects();
             break;
         default:
             break;
