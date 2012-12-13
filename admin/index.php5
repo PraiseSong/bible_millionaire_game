@@ -16,7 +16,7 @@
               <tr>
                   <td>所需参考经文：</td>
                   <td>
-                      <input type="text" class="input_text" id="J-reference" required />
+                      <input type="text" class="input_text" id="J-reference" disabled="disabled"  />
                       <a href="javascript:void(0)" class="find-bible" id="J-find-bible">查找经文</a> |
                       <a href="javascript:void(0)" id="J-bible-clean">清空</a>
                   </td>
@@ -132,8 +132,6 @@
     </div>-->
 
     <script type="text/javascript">
-        //禁止用户在圣经参考字段中输入数据
-        $('#J-reference').keypress(function (e){e.preventDefault();});
         //渲染浮层中的所有主题
         var selectedTopics = [];
         function renderTopicsCheckboxes(data){
@@ -410,21 +408,33 @@
             }
             var topic_parent = $('#J-topic-name-parent').val() ? $('#J-topic-name-parent').val().toString() : '';
 
-            AjaxGlobalStart();
-            $.ajax(ajaxurl,{
-                dataType: 'json',
-                data:'action=submit_topic&topic='+topic+'&topic_parent='+topic_parent+'',
-                success:success,
-                error:AjaxGlobalError
-            });
+            if(!topic_parent){
+                var dialog = window.confirm('你确认 “'+$.trim($('#J-topic-name').val())+'” 不关联任何父级主题？');
+                if(dialog){
+                    send();
+                }
+            }else{
+                send();
+            }
 
-            function success(data){
-                if(data.resultStatus === 100){
-                    AjaxGlobalEnd();
-                    queryTopic();
-                }else{
-                    AjaxGlobalTips(data.memo || '创建游戏主题失败','error');
-                    return;
+            function send(){
+                AjaxGlobalStart();
+                $.ajax(ajaxurl,{
+                    dataType: 'json',
+                    data:'action=submit_topic&topic='+topic+'&topic_parent='+topic_parent+'',
+                    success:success,
+                    error:AjaxGlobalError
+                });
+
+                function success(data){
+                    if(data.resultStatus === 100){
+                        $('#J-topic-name').val('');
+                        AjaxGlobalEnd();
+                        queryTopic();
+                    }else{
+                        AjaxGlobalTips(data.memo || '创建游戏主题失败','error');
+                        return;
+                    }
                 }
             }
         }
@@ -474,6 +484,10 @@
             });
 
             if(!content || !reference || !time || !rightSolution || solutions.length <= 0){
+                if(content && time && rightSolution && solutions && !reference){
+                    alert('请提供《圣经》参考');
+                    $('#J-find-bible').focus();
+                }
                 return;
             }
 
@@ -507,7 +521,7 @@
                 }
             }
 
-            if(solutions.indexOf(rightSolution) <= 0){
+            if(solutions.indexOf(rightSolution) < 0){
                 $('#J-right-solution').focus().select();
                 return alert("正确答案必须是可选答案中的一个哦");
             }
