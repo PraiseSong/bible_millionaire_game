@@ -172,3 +172,26 @@ ul[data-topic-level='3']{
 ul[data-topic-level='4']{
     color:orange;
 }
+#J-global-loading{
+    display:block;
+    padding:2px 5px;
+    color:#fff;
+    border-radius:0 0 0 5px;
+    border-top:none;
+    border-right:none;
+    background:green;
+    position:fixed;
+    right:0;
+    top:0;
+    z-index:99999999;
+    text-align:center;
+    line-height:23px;
+    display:none;
+}
+sup{
+    color:#f50;
+}
+#J-reset-submiteSubject-form{
+    margin-left:30px;
+    font-size:15px;
+}

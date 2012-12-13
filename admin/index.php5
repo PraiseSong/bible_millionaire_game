@@ -4,6 +4,7 @@
 <?php include_once("load_app.php5"); ?>
 
 <div class="container">
+    <span id="J-global-loading">处理中...</span>
     <h2>创建游戏题目</h2>
     <form action="javascript:void(0)" id="J-subjects">
         <table>
@@ -46,7 +47,7 @@
               </tr>
               <tr>
                   <td></td>
-                  <td><input type="submit" value="确定" class="btn-ok left" id="J-submit-subject" /></td>
+                  <td class="t-left"><input type="submit" value="确定" class="btn-ok left" id="J-submit-subject" /><a href="javascript:void(0)" id="J-reset-submiteSubject-form">清空表单</a></td>
               </tr>
             </tbody>
         </table>
@@ -149,6 +150,10 @@
             bindTopicClick(box);
         }
 
+        $('#J-reset-submiteSubject-form').click(function (){
+            location.reload();
+        });
+
         //向所有的topics复选框绑定单击事件
         function bindTopicClick(dom){
             var handler = function (e){
@@ -219,6 +224,7 @@
         var bibleAjaxurl = '../app/bible.php5';
         //查找圣经中的所有书卷
         function queryBooktitle(){
+            AjaxGlobalStart();
             $.ajax(bibleAjaxurl,{
                 data: 'action=queryBooktitle',
                 dataType: 'json',
@@ -227,8 +233,11 @@
             });
 
             function success(data){
-                if(data && data.data.length >= 1){
+                if(data.resultStatus === 100 && data && data.data.length >= 1){
+                    AjaxGlobalEnd();
                     renderBooktitle(data.data);
+                }else{
+                    AjaxGlobalTips('没有圣经书卷数据','error');
                 }
             }
 
@@ -263,6 +272,7 @@
                 article_num.attr('disabled',false);
                 verse_start.attr('disabled',false);
                 verse_stop.attr('disabled',false);
+                AjaxGlobalEnd();
             }
 
             function start(){
@@ -271,6 +281,7 @@
                 article_num.attr('disabled',true);
                 verse_start.attr('disabled',true);
                 verse_stop.attr('disabled',true);
+                AjaxGlobalStart();
             }
 
             function query_article_num_success(data){
@@ -282,7 +293,7 @@
                     return AjaxGlobalError(data);
                 }
                 if(data.data <= 0){
-                    return loading.html('数据有误，请重试。');
+                    return AjaxGlobalTips($('#J-booktitle option:selected').html()+'的章数有误，请重试','error');
                 }
 
                 var html = '';
@@ -302,6 +313,7 @@
                 if(!currentTitle){return;}
 
                 start();
+
                 $.ajax(bibleAjaxurl,{
                     dataType: 'json',
                     data: 'action=query_article_num&id='+currentTitle+'',
@@ -315,6 +327,7 @@
                 if(!article_num.val() || !booktitle.val()){return;}
 
                 start();
+
                 $.ajax(bibleAjaxurl,{
                     data: 'action=query_verse_num&article='+article_num.val()+'&id='+booktitle.val()+'',
                     dataType: 'json',
@@ -329,7 +342,7 @@
                 loading.empty();
 
                 if(data <= 0){
-                    return loading.html('数据有误，请重试。');
+                    return AjaxGlobalTips($('#J-booktitle option:selected').html()+'的第'+$('#J-article_num option:selected').html()+'章'+'的节数有误，请重试','error');
                 }
 
                 var html = '';
@@ -364,11 +377,8 @@
                 loading.empty();
 
                 if(!data.data){
-                    html = '没有'+booktitle+article_num+":"+verse_start+'的经文。';
-                    if(verse_stop.val()>verse_start.val()){
-                        html = '没有'+booktitle+article_num+":"+verse_start+"-"+verse_stop+'的经文。';
-                    }
-                    return bibleBox.html(html);
+                    AjaxGlobalTips('没有'+$('#J-booktitle option:selected').html()+' '+$('#J-article_num option:selected').html()+':'+verse_start.val()+'-'+verse_stop.val()+'的经文','error');
+                    return;
                 }else{
                     bibleBox.html(data.data);
                     pop.sync();
@@ -398,6 +408,7 @@
             }
             var topic_parent = $('#J-topic-name-parent').val() ? $('#J-topic-name-parent').val().toString() : '';
 
+            AjaxGlobalStart();
             $.ajax(ajaxurl,{
                 dataType: 'json',
                 data:'action=submit_topic&topic='+topic+'&topic_parent='+topic_parent+'',
@@ -407,9 +418,11 @@
 
             function success(data){
                 if(data.resultStatus === 100){
+                    AjaxGlobalEnd();
                     queryTopic();
                 }else{
-                    return alert(data.memo);
+                    AjaxGlobalTips(data.memo || '创建游戏主题失败','error');
+                    return;
                 }
             }
         }
@@ -417,6 +430,7 @@
 
         //查询所有的主题，并渲染到多项的select并且也会触发游戏题目中的topics的创建以及重新绘制游戏主题结构图
         function queryTopic(){
+            AjaxGlobalStart();
             $.ajax(ajaxurl,{
                 dataType: 'json',
                 data:'action=query_topic',
@@ -433,6 +447,7 @@
                        html += '<option value="'+v.id+'" data-parent="'+v.parent+'">'+v.content+'</option>';
                     });
                     $('#J-topic-name-parent').html(html);
+                    AjaxGlobalEnd();
                 }else{
                     $('#J-topic-name-parent').html('<option disabled="disabled">暂无主题</option>');
                 }
@@ -456,25 +471,73 @@
                 solutions.push($.trim($(v).val()));
             });
 
-            if(!content || !reference || !time || !topics || !rightSolution || solutions.length <= 0){
+            if(!content || !reference || !time || !rightSolution || solutions.length <= 0){
                 return;
+            }
+
+            if(time <= 0){
+                $('#J-time').focus().select();
+                return alert("题目完成时间不得小于或等于0");
+            }
+
+            var haveSameSolution = false;
+            $.each(solutions,function (k,v){
+                if(getSameSolutions(solutions,v)){
+                    haveSameSolution = true;
+                    return false;
+                }
+            })
+            if(haveSameSolution){
+                return alert("在所有的可选答案中出现重复的情况");
+            }
+
+            function getSameSolutions(solutions,salution){
+                var tem = [];
+                $.each(solutions,function (k,v){
+                    if(v === salution){
+                        tem.push(salution);
+                    }
+                })
+                if(tem.length >= 2){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
+            if(solutions.indexOf(rightSolution) <= 0){
+                $('#J-right-solution').focus().select();
+                return alert("正确答案必须是可选答案中的一个哦");
             }
 
             function success(data){
                 if(data.resultStatus === 100){
                     alert('题目添加成功');
+                    AjaxGlobalEnd();
                 }else{
-                    alert('题目添加失败');
+                    AjaxGlobalTips('题目添加失败','error');
                 }
             }
 
-            $.ajax(api,{
-                dataType: 'json',
-                data:'action=submit_subject&content='+encodeURI(content)+'&reference='+encodeURI(reference)+'&time='+time+'&topics='+encodeURI(topics)+
-                '&rightSolution='+encodeURI(rightSolution)+'&solutions='+encodeURI(solutions),
-                success:success,
-                error:AjaxGlobalError
-            });
+            if(!topics){
+                var dialog = window.confirm('你确定这个题目不关联任何游戏主题？');
+                if(dialog){
+                    send();
+                }
+            }else{
+                send();
+            }
+
+            function send(){
+                AjaxGlobalStart();
+                $.ajax(api,{
+                    dataType: 'json',
+                    data:'action=submit_subject&content='+encodeURI(content)+'&reference='+encodeURI(reference)+'&time='+time+'&topics='+encodeURI(topics)+
+                        '&rightSolution='+encodeURI(rightSolution)+'&solutions='+encodeURI(solutions),
+                    success:success,
+                    error:AjaxGlobalError
+                });
+            }
         }
         $('#J-submit-subject').click(submitSubject);
     </script>

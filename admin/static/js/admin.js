@@ -88,4 +88,26 @@ function show(){
 
 function AjaxGlobalError(data){
     alert(data.memo || '与服务器通信发生故障');
+    AjaxGlobalTips('与服务器通信发生故障','error');
+}
+
+function AjaxGlobalStart(){
+    $('#J-global-loading').show();
+}
+
+function AjaxGlobalEnd(){
+    $('#J-global-loading').hide();
+}
+
+function AjaxGlobalTips(html,type){
+    var loadingBox = $('#J-global-loading');
+    loadingBox.show().html(html);
+    switch(type){
+        case 'error':
+            loadingBox.css('background','red');
+            break;
+        default:
+            loadingBox.css('background','green');
+            break;
+    }
 }

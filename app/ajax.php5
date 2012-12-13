@@ -71,7 +71,7 @@ if(isset($_GET['action'])){
     //提交题目
     function submitSubject(){
         global $db,$subjects_tablename;
-        $content = $_GET['reference'];
+        $content = $_GET['content'];
         $reference = $_GET['reference'];
         $topics = $_GET['topics'];
         $time = $_GET['time'];
