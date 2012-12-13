@@ -22,6 +22,7 @@ if(isset($_GET['action'])){
         $action = $_GET['action'];
         $topic = $_GET['topic'];
         $topic_parent = $_GET['topic_parent'];
+        $timestamp = date("Y-m-d H:i:s",time()+8*60*60);
 
         if(!$topic){
             $data = array('resultStatus'=>101,'memo' => "请输入主题内容");
@@ -35,10 +36,10 @@ if(isset($_GET['action'])){
             return json_encode($data);
         }
 
-        $sql = "insert into $topics_tablename (content,parent) values('$topic','$topic_parent')";
+        $sql = "insert into $topics_tablename (content,parent,timestamp) values('$topic','$topic_parent','$timestamp')";
 
         if(!$topic_parent){
-            $sql = "insert into $topics_tablename (content) values('$topic')";
+            $sql = "insert into $topics_tablename (content,timestamp) values('$topic','$timestamp')";
         }
 
         $db->query($sql);
@@ -76,8 +77,9 @@ if(isset($_GET['action'])){
         $time = $_GET['time'];
         $right_solution = $_GET['rightSolution'];
         $solutions = $_GET['solutions'];
+        $timestamp = date("Y-m-d H:i:s",time()+8*60*60);
 
-        $sql = "insert into $subjects_tablename (content,reference,topics,time,right_solution,solutions) values('$content','$reference','$topics','$time','$right_solution','$solutions')";
+        $sql = "insert into $subjects_tablename (content,reference,topics,time,right_solution,solutions,timestamp) values('$content','$reference','$topics','$time','$right_solution','$solutions','$timestamp')";
 
         $db->query($sql);
 
