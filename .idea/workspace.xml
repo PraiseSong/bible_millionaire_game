@@ -4,9 +4,6 @@
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/index.php5" afterPath="$PROJECT_DIR$/admin/index.php5" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/static/css/admin.css" afterPath="$PROJECT_DIR$/admin/static/css/admin.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/static/js/admin.js" afterPath="$PROJECT_DIR$/admin/static/js/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ajax.php5" afterPath="$PROJECT_DIR$/app/ajax.php5" />
     </list>
     <ignored path="bible_millionaire_game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php5" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.php5" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/index.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="35" selection-start="2282" selection-end="2282" vertical-scroll-proportion="-4.5">
+            <state line="134" column="26" selection-start="4730" selection-end="4730" vertical-scroll-proportion="0.26546004">
               <folding />
             </state>
           </provider>
@@ -55,10 +52,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="admin.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="195" column="19" selection-start="4009" selection-end="4009" vertical-scroll-proportion="0.95792425">
+            <state line="195" column="19" selection-start="4009" selection-end="4009" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -108,8 +105,8 @@
         <option value="$PROJECT_DIR$/app/bible.php5" />
         <option value="$PROJECT_DIR$/admin/static/js/admin.js" />
         <option value="$PROJECT_DIR$/app/ajax.php5" />
-        <option value="$PROJECT_DIR$/admin/index.php5" />
         <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
+        <option value="$PROJECT_DIR$/admin/index.php5" />
       </list>
     </option>
   </component>
@@ -495,13 +492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/index.php5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="35" selection-start="2282" selection-end="2282" vertical-scroll-proportion="-4.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/ajax.php5">
       <provider selected="true" editor-type-id="text-editor">
         <state line="75" column="33" selection-start="2258" selection-end="2258" vertical-scroll-proportion="-4.3333335">
@@ -511,7 +501,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="195" column="19" selection-start="4009" selection-end="4009" vertical-scroll-proportion="0.95792425">
+        <state line="195" column="19" selection-start="4009" selection-end="4009" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/index.php5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="134" column="26" selection-start="4730" selection-end="4730" vertical-scroll-proportion="0.26546004">
           <folding />
         </state>
       </provider>

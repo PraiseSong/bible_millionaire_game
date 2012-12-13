@@ -16,7 +16,7 @@
               <tr>
                   <td>所需参考经文：</td>
                   <td>
-                      <input disabled="disabled" type="text" class="input_text" id="J-reference" required />
+                      <input type="text" class="input_text" id="J-reference" required />
                       <a href="javascript:void(0)" class="find-bible" id="J-find-bible">查找经文</a> |
                       <a href="javascript:void(0)" id="J-bible-clean">清空</a>
                   </td>
@@ -132,6 +132,8 @@
     </div>-->
 
     <script type="text/javascript">
+        //禁止用户在圣经参考字段中输入数据
+        $('#J-reference').keypress(function (e){e.preventDefault();});
         //渲染浮层中的所有主题
         var selectedTopics = [];
         function renderTopicsCheckboxes(data){
@@ -548,11 +550,23 @@
                 box = $('#J-solutions');
             trigger.click(function (){
                 var currentSolutionsNum = box.find('label').length;
-                var html = $('<label>答案:'+(++currentSolutionsNum)+'<input type="text" required class="input_text" /></label>');
+                var html = $('<label>答案<span>'+(++currentSolutionsNum)+'</span>:<input type="text" required class="input_text" /><a href="javascript:void(0)">删除</a></label>');
                 box.append(html);
+                $(html).find('a').click(function (){
+                    $(html).remove();
+                    currentSolutionsNum--;
+                    if(currentSolutionsNum < 3){
+                        trigger.show();
+                    }
+                    //更新答案序号
+                    var labels = box.find('label');
+                    $.each(labels,function (k,v){
+                        $(v).find('span').html(k+1);
+                    })
+                });
                 html.find('input[type=text]').focus();
                 if(currentSolutionsNum === 3){
-                    trigger.remove();
+                    trigger.hide();
                 }
             });
         }
