@@ -109,3 +109,52 @@ body{
 .fling-reverse{
     -webkit-animation: fling-reverse .8s ease-in;
 }
+.introducing-main{
+    display:-webkit-box;
+}
+.flex{
+    -webkit-box-flex:1;
+}
+.introducing-main nav{
+    width:200px;
+    text-align:center;
+    display:block;
+    margin-right:30px;
+}
+.introducing-main nav li{
+    display:block;
+    width:180px;
+    height:60px;
+    line-height:60px;
+    padding:0 10px;
+    cursor:pointer;
+    font-size:40px;
+    margin:0 auto 30px;
+    background:-webkit-linear-gradient(top, #55c1f3 5%, #066fa0 50%);
+    border-radius:20px;
+    -webkit-box-shadow:2px 5px 2px #000;
+    border:5px solid #333;
+}
+.introducing-main nav ul{
+    margin-top:10px;
+}
+.introducing-main nav li:hover,.introducing-main nav li.current{
+    color:yellow;
+    background:-webkit-linear-gradient(top, #e687fa 5%, #8c09a8 50%);
+    border:5px solid #f2c6fc;
+}
+.introducing-main nav li:last-child{
+    margin:0 auto;
+}
+.introducing-main .flex{
+    width:470px;
+}
+.introducing-main .flex h1{
+    font-size:40px;
+    letter-spacing: 40px;
+    text-align:center;
+}
+.introducing-main .flex .content{
+    margin-top:100px;
+    letter-spacing: 5px;
+}
