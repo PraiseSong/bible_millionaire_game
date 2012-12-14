@@ -7,7 +7,8 @@ $(function (){
     var subjects = {};
 
     var introduceBox = $('#J-introducing'),
-        loadingBox = $('#J-loading');
+        loadingBox = $('#J-loading'),
+        topicBox = $('#J-topics-box');
 
     //调整游戏界面
     function adjustLayout(){
@@ -36,7 +37,7 @@ $(function (){
             getData();
         },false);
     }
-    //loading();
+    loading();
 
     //获取所有数据
     function getData(){
@@ -57,7 +58,9 @@ $(function (){
                 var topics = data.data;
                 var html = '';
                 drawTopicsStructure(topics);
-                console.log(newTopics,topicsHtml)
+                setTimeout(function (){
+                    introducing();
+                },2000);
             }
         }
     }
@@ -164,10 +167,13 @@ $(function (){
         }
 
         topicsHtml = renderStructure();
+        $('#J-topics').html(topicsHtml);
     }
 
     //介绍模块
     function introducing(){
+        loadingBox.hide();
+        introduceBox.show();
         introduceBox.find('nav li').click(function (){
             if($(this).hasClass('current')){return;}
             introduceBox.find('nav li').removeClass('current');
@@ -181,6 +187,12 @@ $(function (){
                 $('#J-ps-logo').addClass('rotating2');
             },5000);
         },false);
+        $('#J-starting').click(starting);
     }
-    introducing();
+
+    //开始游戏
+    function starting(){
+        introduceBox.hide();
+        topicBox.show();
+    }
 })
