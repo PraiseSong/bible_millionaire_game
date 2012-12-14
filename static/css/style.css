@@ -42,7 +42,7 @@ body{
     font-size:15px;
 }
 .container{
-    width:700px;
+    width:820px;
     height:700px;
     margin:0 auto;
     overflow:hidden;
@@ -100,6 +100,9 @@ body{
 .rotating {
     -webkit-animation: rotating 1.5s ease-out infinite;
 }
+.rotating2 {
+    -webkit-animation: rotating 2s ease-in 2;
+}
 .fling{
     -webkit-animation: fling .8s ease-in;
 }
@@ -147,14 +150,17 @@ body{
     margin:0 auto;
 }
 .introducing-main .flex{
-    width:470px;
+    width:590px;
 }
 .introducing-main .flex h1{
-    font-size:40px;
+    font-size:60px;
     letter-spacing: 40px;
     text-align:center;
+    color:#f50;
 }
 .introducing-main .flex .content{
     margin-top:100px;
     letter-spacing: 5px;
+    font-size:17px;
+    padding-left:30px;
 }

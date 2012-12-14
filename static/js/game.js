@@ -6,6 +6,9 @@ $(function (){
     //最终的所有游戏题目数据
     var subjects = {};
 
+    var introduceBox = $('#J-introducing'),
+        loadingBox = $('#J-loading');
+
     //调整游戏界面
     function adjustLayout(){
         var winH = $(window).height(),
@@ -33,7 +36,7 @@ $(function (){
             getData();
         },false);
     }
-    loading();
+    //loading();
 
     //获取所有数据
     function getData(){
@@ -162,4 +165,22 @@ $(function (){
 
         topicsHtml = renderStructure();
     }
+
+    //介绍模块
+    function introducing(){
+        introduceBox.find('nav li').click(function (){
+            if($(this).hasClass('current')){return;}
+            introduceBox.find('nav li').removeClass('current');
+            var role = $(this).addClass('current').attr('data-role');
+            introduceBox.find('.panel').hide();
+            introduceBox.find('[data-role='+role+']').show();
+        });
+        $('#J-ps-logo').addClass('rotating2').get(0).addEventListener('webkitAnimationEnd',function (){
+            $('#J-ps-logo').removeClass('rotating2');
+            setTimeout(function (){
+                $('#J-ps-logo').addClass('rotating2');
+            },5000);
+        },false);
+    }
+    introducing();
 })

@@ -10,24 +10,24 @@
     <div id="J-introducing" class="introducing">
         <div class="introducing-main">
             <nav class="block">
-                <img src="static/images/logo.png" />
+                <img src="static/images/logo.png" id="J-ps-logo"/>
                 <ul>
-                    <li data-role="start">开始游戏</li>
+                    <li>开始游戏</li>
                     <li class="current" data-role="rules">游戏规则</li>
                     <li data-role="push">诚意推介</li>
                     <li data-role="people">制作人员</li>
                 </ul>
             </nav>
             <div class="flex">
-                <div data-role="rules">
+                <div data-role="rules" class="panel">
                     <h1>游戏规则</h1>
                     <div class="content">这里是游戏规则的内容</div>
                 </div>
-                <div data-role="push" class="hide">
+                <div data-role="push" class="hide panel">
                     <h1>诚意推介</h1>
                     <div class="content">这里是诚意推介的内容</div>
                 </div>
-                <div data-role="people" class="hide">
+                <div data-role="people" class="hide panel">
                     <h1>制作人员</h1>
                     <div class="content">这里是制作人员的内容</div>
                 </div>
