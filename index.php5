@@ -38,6 +38,7 @@
         <div class="introducing-main">
             <nav class="block">
                 <img src="static/images/logo.png" />
+                <a href="javascript:void(0)" class="back"><返回</a>
             </nav>
             <div class="flex">
                 <div data-role="rules" class="panel">

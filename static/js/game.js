@@ -5,6 +5,8 @@ $(function (){
     var topicsHtml = '';
     //最终的所有游戏题目数据
     var subjects = {};
+    //当前选择的主题
+    var currentTopics = [];
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
@@ -133,14 +135,14 @@ $(function (){
             for(i in newTopics){
                 var v = newTopics[i];
                 var id = v.id;
-                var c = v.content;
+                var c = '<ins>'+v.content+'</ins>';
 
                 if(v.subTopics){
                     subTopicsCallbackCount ? subTopicsCallbackCount = 0 : '';
                     c += subTopicsCallback(v.subTopics);
                 }
 
-                html += '<li data-topic-id="'+ id+'">'+ c+'</li>';
+                html += '<li data-topic-id="'+ id+'"><span>'+ c+'</span></li>';
             }
 
             html += '</ul>';
@@ -154,11 +156,11 @@ $(function (){
             var html = '<ul class="subTopics-box" data-topic-level="'+tem+'">';
 
             $.each(data,function (k,v){
-                var c = v.content;
+                var c = '<ins>'+v.content+'</ins>';
                 if(v.subTopics){
                     c += subTopicsCallback(v.subTopics);
                 }
-                html += '<li data-topic-id="'+ v.id+'">'+ c+'</li>';
+                html += '<li data-topic-id="'+ v.id+'"><span>'+ c+'</span></li>';
                 subTopicsCallbackCount = tem;
             });
 
@@ -167,7 +169,17 @@ $(function (){
         }
 
         topicsHtml = renderStructure();
-        $('#J-topics').html(topicsHtml);
+        $('#J-topics').html(topicsHtml).find('li').click(function (e){
+            e.stopPropagation();
+            var obj = $(this);
+            var parents = obj.parents('li');
+            currentTopics = [];
+            currentTopics.push(obj.attr('data-topic-id'));
+            $.each(parents,function (k,v){
+                currentTopics.push($(v).attr('data-topic-id'));
+            });
+            goToSubject();
+        });
     }
 
     //介绍模块
@@ -194,5 +206,10 @@ $(function (){
     function starting(){
         introduceBox.hide();
         topicBox.show();
+    }
+
+    //去题目页面
+    function goToSubject(){
+        console.log(currentTopics);
     }
 })
