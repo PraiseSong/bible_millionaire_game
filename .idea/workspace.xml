@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/importExcel.php5" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php5" afterPath="$PROJECT_DIR$/index.php5" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/game.js" afterPath="$PROJECT_DIR$/static/js/game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/index.php5" afterPath="$PROJECT_DIR$/admin/index.php5" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/static/css/admin.css" afterPath="$PROJECT_DIR$/admin/static/css/admin.css" />
     </list>
     <ignored path="bible_millionaire_game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,27 +28,49 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="index.php5" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php5">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="59" selection-start="1735" selection-end="1735" vertical-scroll-proportion="-19.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/game.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="211" column="20" selection-start="6126" selection-end="6126" vertical-scroll-proportion="0.80714285">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php5" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/index.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="70" selection-start="1070" selection-end="1070" vertical-scroll-proportion="-15.625">
+            <state line="9" column="29" selection-start="300" selection-end="300" vertical-scroll-proportion="-2.7">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="importExcel.php5" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/importExcel.php5">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="40" selection-start="610" selection-end="610" vertical-scroll-proportion="0.4022082">
+              <folding>
+                <marker date="1355751224000" expanded="true" signature="3164:3550" placeholder="..." />
+                <marker date="1355751224000" expanded="true" signature="3248:3468" placeholder="..." />
+                <marker date="1355751224000" expanded="true" signature="3519:3550" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.php5" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/db.php5">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="100" column="30" selection-start="3473" selection-end="3490" vertical-scroll-proportion="-0.6666667">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.php5" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/templates/header.php5">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="16" selection-start="489" selection-end="489" vertical-scroll-proportion="-6.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bible.php5" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/bible.php5">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="45" selection-start="386" selection-end="525" vertical-scroll-proportion="-6.875">
               <folding />
             </state>
           </provider>
@@ -57,25 +79,9 @@
       <file leaf-file-name="ajax.php5" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/ajax.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="70" selection-start="3076" selection-end="3076" vertical-scroll-proportion="0.0">
+            <state line="12" column="35" selection-start="338" selection-end="346" vertical-scroll-proportion="-1.8">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="208" column="15" selection-start="4777" selection-end="4777" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logo.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/images/logo.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -92,22 +98,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/config.php5" />
         <option value="$PROJECT_DIR$/templates/header.php5" />
         <option value="$PROJECT_DIR$/templates/footer.php5" />
         <option value="$PROJECT_DIR$/admin/templates/footer.php5" />
-        <option value="$PROJECT_DIR$/admin/templates/header.php5" />
         <option value="$PROJECT_DIR$/admin/db.php5" />
         <option value="$PROJECT_DIR$/admin/config.php5" />
         <option value="$PROJECT_DIR$/admin/load_app.php5" />
         <option value="$PROJECT_DIR$/app/bible.php5" />
         <option value="$PROJECT_DIR$/admin/static/js/admin.js" />
-        <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
-        <option value="$PROJECT_DIR$/admin/index.php5" />
         <option value="$PROJECT_DIR$/app/ajax.php5" />
         <option value="$PROJECT_DIR$/index.php5" />
-        <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/static/js/game.js" />
+        <option value="$PROJECT_DIR$/admin/index.php5" />
+        <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
+        <option value="$PROJECT_DIR$/static/css/style.css" />
+        <option value="$PROJECT_DIR$/admin/templates/header.php5" />
+        <option value="$PROJECT_DIR$/app/importExcel.php5" />
       </list>
     </option>
   </component>
@@ -146,6 +152,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -174,43 +190,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bible_millionaire_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bible_millionaire_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bible_millionaire_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bible_millionaire_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -274,44 +254,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bible_millionaire_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bible_millionaire_game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -323,8 +267,8 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="options.lastSelected" value="File.Encoding" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -392,6 +336,13 @@
         <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method>
         <option name="FtpUpload" enabled="false">
@@ -426,7 +377,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32209468" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32711622" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -498,44 +449,14 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/footer.php5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="4" selection-start="0" selection-end="25" vertical-scroll-proportion="0.021367522" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/templates/footer.php5">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="7" selection-start="2" selection-end="17" vertical-scroll-proportion="0.021367522" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/templates/header.php5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="40" selection-start="655" selection-end="655" vertical-scroll-proportion="0.25641027" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/config.php5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="21" selection-start="392" selection-end="392" vertical-scroll-proportion="0.36324787" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/load_app.php5">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="10" selection-start="327" selection-end="327" vertical-scroll-proportion="0.2777778" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bible.php5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="34" selection-start="553" selection-end="567" vertical-scroll-proportion="0.021770682" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/db.php5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="30" selection-start="3473" selection-end="3490" vertical-scroll-proportion="0.021367522" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="1" selection-start="0" selection-end="4012" vertical-scroll-proportion="0.56802243" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/header.php5">
@@ -548,14 +469,16 @@
         <state line="22" column="20" selection-start="704" selection-end="729" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/ajax.php5">
+    <entry file="file://$PROJECT_DIR$/index.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="70" selection-start="3076" selection-end="3076" vertical-scroll-proportion="0.0" />
+        <state line="40" column="59" selection-start="1735" selection-end="1735" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/index.php5">
+    <entry file="file://$PROJECT_DIR$/static/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="70" selection-start="1070" selection-end="1070" vertical-scroll-proportion="-15.625">
+        <state line="211" column="20" selection-start="6126" selection-end="6126" vertical-scroll-proportion="0.8140496">
           <folding />
         </state>
       </provider>
@@ -565,24 +488,68 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php5">
+    <entry file="file://$PROJECT_DIR$/app/bible.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="59" selection-start="1735" selection-end="1735" vertical-scroll-proportion="-19.875">
+        <state line="21" column="45" selection-start="386" selection-end="525" vertical-scroll-proportion="-6.875">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/config.php5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="21" selection-start="392" selection-end="392" vertical-scroll-proportion="0.36324787" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="208" column="15" selection-start="4777" selection-end="4777" vertical-scroll-proportion="0.0">
+        <state line="209" column="1" selection-start="4779" selection-end="4779" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/game.js">
+    <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="20" selection-start="6126" selection-end="6126" vertical-scroll-proportion="0.80714285">
+        <state line="208" column="0" selection-start="4187" selection-end="4275" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ajax.php5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="35" selection-start="338" selection-end="346" vertical-scroll-proportion="-1.8">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/templates/header.php5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="16" selection-start="489" selection-end="489" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/db.php5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="30" selection-start="3473" selection-end="3490" vertical-scroll-proportion="-0.6666667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/index.php5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="29" selection-start="300" selection-end="300" vertical-scroll-proportion="-2.7">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/importExcel.php5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="40" selection-start="610" selection-end="610" vertical-scroll-proportion="0.4022082">
+          <folding>
+            <marker date="1355751224000" expanded="true" signature="3164:3550" placeholder="..." />
+            <marker date="1355751224000" expanded="true" signature="3248:3468" placeholder="..." />
+            <marker date="1355751224000" expanded="true" signature="3519:3550" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

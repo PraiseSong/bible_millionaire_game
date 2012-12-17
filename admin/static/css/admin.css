@@ -195,3 +195,20 @@ sup{
     margin-left:30px;
     font-size:15px;
 }
+#J-importExcel{
+    margin:5px;
+    font-size:13px;
+    font-weight:normal;
+}
+#J-importExcel input{
+    float:none;
+}
+#J-importExcel input[type=file]{
+    overflow: hidden;
+}
+.xmlSubjects{
+    border:1px solid #ddd;
+}
+.xmlSubjects td{
+    border:1px solid #ddd;
+}

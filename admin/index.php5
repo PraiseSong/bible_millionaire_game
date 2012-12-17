@@ -5,7 +5,14 @@
 
 <div class="container">
     <span id="J-global-loading">处理中...</span>
-    <h2>创建游戏题目</h2>
+    <h2>
+        创建游戏题目
+        <form action="../app/importExcel.php5" id="J-importExcel" method="post" enctype="multipart/form-data">
+            快速导入：
+            <input type="file" name="file" required pattern="^.+\.xml" />
+            <input type="submit" value="确定" class="btn-ok left" id="J-submit-importExcel" />
+        </form>
+    </h2>
     <form action="javascript:void(0)" id="J-subjects">
         <table>
             <tbody>
@@ -709,6 +716,32 @@
 
             dom.html(renderStructure());
         }
+    </script>
+    <script type="text/javascript">
+        function uploadXML(){
+            var xmlfile = $.trim($('#J-importExcel input[type=file]').val());
+            if(!xmlfile){return;}
+            if(!/^.+\.xml$/.test(xmlfile)){
+                $('#J-importExcel input[type=file]').focus();
+                alert('请上传一个xml格式的文件');
+                return false;
+            }else{
+                return true;
+            }
+            $('#J-submit-importExcel').val('处理中...').unbind();
+            $.ajax('../app/importExcel.php5',{
+                error:function (){
+                    $('#J-submit-importExcel').click(uploadXML).val('确定');
+                    AjaxGlobalError();
+                },
+                dataType: 'json',
+                success: function (data){
+                    console.log(data)
+                    $('#J-submit-importExcel').click(uploadXML).val('确定');
+                }
+            });
+        }
+        $('#J-submit-importExcel').click(uploadXML);
     </script>
 </div>
 
