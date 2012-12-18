@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/importExcel.php5" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/index.php5" afterPath="$PROJECT_DIR$/admin/index.php5" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/static/css/admin.css" afterPath="$PROJECT_DIR$/admin/static/css/admin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php5" afterPath="$PROJECT_DIR$/index.php5" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/game.js" afterPath="$PROJECT_DIR$/static/js/game.js" />
     </list>
     <ignored path="bible_millionaire_game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,58 +28,27 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="index.php5" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/index.php5">
+        <entry file="file://$PROJECT_DIR$/index.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="29" selection-start="300" selection-end="300" vertical-scroll-proportion="-2.7">
+            <state line="64" column="46" selection-start="2644" selection-end="2644" vertical-scroll-proportion="-19.875">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="importExcel.php5" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/importExcel.php5">
+      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="40" selection-start="610" selection-end="610" vertical-scroll-proportion="0.4022082">
-              <folding>
-                <marker date="1355751224000" expanded="true" signature="3164:3550" placeholder="..." />
-                <marker date="1355751224000" expanded="true" signature="3248:3468" placeholder="..." />
-                <marker date="1355751224000" expanded="true" signature="3519:3550" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.php5" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/db.php5">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="30" selection-start="3473" selection-end="3490" vertical-scroll-proportion="-0.6666667">
+            <state line="277" column="19" selection-start="5874" selection-end="5874" vertical-scroll-proportion="0.95792425">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.php5" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/templates/header.php5">
+      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="16" selection-start="489" selection-end="489" vertical-scroll-proportion="-6.25">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bible.php5" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/bible.php5">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="45" selection-start="386" selection-end="525" vertical-scroll-proportion="-6.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajax.php5" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/ajax.php5">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="35" selection-start="338" selection-end="346" vertical-scroll-proportion="-1.8">
+            <state line="12" column="24" selection-start="250" selection-end="266" vertical-scroll-proportion="-6.923077">
               <folding />
             </state>
           </provider>
@@ -107,13 +76,13 @@
         <option value="$PROJECT_DIR$/app/bible.php5" />
         <option value="$PROJECT_DIR$/admin/static/js/admin.js" />
         <option value="$PROJECT_DIR$/app/ajax.php5" />
-        <option value="$PROJECT_DIR$/index.php5" />
-        <option value="$PROJECT_DIR$/static/js/game.js" />
         <option value="$PROJECT_DIR$/admin/index.php5" />
         <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
-        <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/admin/templates/header.php5" />
         <option value="$PROJECT_DIR$/app/importExcel.php5" />
+        <option value="$PROJECT_DIR$/static/js/game.js" />
+        <option value="$PROJECT_DIR$/index.php5" />
+        <option value="$PROJECT_DIR$/static/css/style.css" />
       </list>
     </option>
   </component>
@@ -177,6 +146,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bible_millionaire_game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bible_millionaire_game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bible_millionaire_game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -338,7 +325,7 @@
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -377,7 +364,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32711622" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33715925" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -469,20 +456,6 @@
         <state line="22" column="20" selection-start="704" selection-end="729" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php5">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="59" selection-start="1735" selection-end="1735" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="20" selection-start="6126" selection-end="6126" vertical-scroll-proportion="0.8140496">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/images/logo.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -490,9 +463,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/bible.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="45" selection-start="386" selection-end="525" vertical-scroll-proportion="-6.875">
-          <folding />
-        </state>
+        <state line="21" column="45" selection-start="386" selection-end="525" vertical-scroll-proportion="0.2394775" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/config.php5">
@@ -500,56 +471,54 @@
         <state line="17" column="21" selection-start="392" selection-end="392" vertical-scroll-proportion="0.36324787" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="209" column="1" selection-start="4779" selection-end="4779" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/static/css/admin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="208" column="0" selection-start="4187" selection-end="4275" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="208" column="0" selection-start="4187" selection-end="4275" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/ajax.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="35" selection-start="338" selection-end="346" vertical-scroll-proportion="-1.8">
-          <folding />
-        </state>
+        <state line="12" column="35" selection-start="338" selection-end="346" vertical-scroll-proportion="0.13574661" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/templates/header.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="16" selection-start="489" selection-end="489" vertical-scroll-proportion="-6.25">
-          <folding />
-        </state>
+        <state line="10" column="16" selection-start="489" selection-end="489" vertical-scroll-proportion="0.21770681" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/db.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="30" selection-start="3473" selection-end="3490" vertical-scroll-proportion="-0.6666667">
-          <folding />
-        </state>
+        <state line="100" column="30" selection-start="3473" selection-end="3490" vertical-scroll-proportion="0.022792023" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="29" selection-start="300" selection-end="300" vertical-scroll-proportion="-2.7">
-          <folding />
-        </state>
+        <state line="9" column="29" selection-start="300" selection-end="300" vertical-scroll-proportion="-2.7" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/importExcel.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="40" selection-start="610" selection-end="610" vertical-scroll-proportion="0.4022082">
-          <folding>
-            <marker date="1355751224000" expanded="true" signature="3164:3550" placeholder="..." />
-            <marker date="1355751224000" expanded="true" signature="3248:3468" placeholder="..." />
-            <marker date="1355751224000" expanded="true" signature="3519:3550" placeholder="..." />
-          </folding>
+        <state line="21" column="40" selection-start="610" selection-end="610" vertical-scroll-proportion="0.4022082" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="24" selection-start="250" selection-end="266" vertical-scroll-proportion="-6.923077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php5">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="46" selection-start="2644" selection-end="2644" vertical-scroll-proportion="-19.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="277" column="19" selection-start="5874" selection-end="5874" vertical-scroll-proportion="0.95792425">
+          <folding />
         </state>
       </provider>
     </entry>

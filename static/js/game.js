@@ -7,6 +7,10 @@ $(function (){
     var subjects = {};
     //当前选择的主题
     var currentTopics = [];
+    //随机抽出的题目
+    var activitySubject = [];
+    //当前主题内容
+    var currentTopicHtml = '';
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
@@ -77,7 +81,7 @@ $(function (){
         });
         function success(data){
             if(data.data){
-                console.log(data)
+                subjects = data.data;
             }
         }
     }
@@ -179,6 +183,7 @@ $(function (){
                 currentTopics.push($(v).attr('data-topic-id'));
             });
             goToSubject();
+            currentTopicHtml = obj.find('ins').html();
         });
     }
 
@@ -210,6 +215,17 @@ $(function (){
 
     //去题目页面
     function goToSubject(){
-        console.log(currentTopics);
+        activitySubject = [];
+        $.each(subjects,function (k,v){
+            var topics = currentTopics;//.join(',');
+            var subject_topicId = v.topics;
+            $.each(topics,function (i,topic){
+                if(subject_topicId.indexOf(topic) !== -1){
+                    activitySubject.push(v);
+                }
+            })
+        })
+
+        console.log(activitySubject)
     }
 })
