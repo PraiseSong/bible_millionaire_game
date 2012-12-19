@@ -2,7 +2,7 @@
 <?php include_once(TEMPLATES_PATH."/header.php5"); ?>
 
 <div class="container center-box" id="J-container">
-    <!--<div class="loading" id="J-loading">
+    <div class="loading" id="J-loading">
         <img src="static/images/bwfw.png" class="fling" id="J-bwfw-logo" />
         <p class="fling-reverse2">圣经问答游戏</p>
         <p class="title fling-reverse"><img src="static/images/logo-small.png" class="logo-small"/>杭州基督教磐石堂</p>
@@ -47,8 +47,9 @@
                 </div>
             </div>
         </div>
-    </div>-->
-    <div id="J-subject-box" class="subject-box">
+    </div>
+
+    <div id="J-subject-box" class="subject-box hide">
         <div class="webkit-box">
             <div class="score flex">
                 <ul>
@@ -66,14 +67,17 @@
                     <li>4<>4000</li>
                     <li>3<>3000</li>
                     <li>2<>2000</li>
-                    <li>1<>1000</li>
+                    <li class="next-score">1<>1000</li>
                 </ul>
             </div>
             <div class="flex bwfw-logo"><img src="static/images/bwfw.png" /></div>
-            <p class="currentTopicDes flex">当前的主题内容</p>
+            <div class="currentTopicDes flex" id="J-currentTopicDes-box">
+                当前的主题内容
+                <p id="J-reference">经文参考</p>
+            </div>
         </div>
-        <div class="questionAndsolutionsBox">
-            <p id="J-solution-title">
+        <div class="questionAndsolutionsBox" id="J-questionAndsolutionsBox">
+            <p class="solution-title">
                 title
             </p>
             <p class="webkit-box">
@@ -87,8 +91,9 @@
                 <span class="solution flex">D</span>
             </p>
         </div>
-        <div class="webkit-box" id="J-controler">
-            <p class="flex">时限</p>
+        <div class="webkit-box controler">
+            <p class="flex" id="J-maxTime">时限</p>
+            <p class="flex"><a href="javascript:void(0)" id="J-ok" class="hide">确定</a></p>
             <p class="flex">
                 <a href="javascript:void(0)" id="J-filter">过滤</a>
                 <a href="javascript:void(0)" id="J-skip">跳过</a>

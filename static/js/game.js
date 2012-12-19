@@ -14,7 +14,8 @@ $(function (){
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
-        topicBox = $('#J-topics-box');
+        topicBox = $('#J-topics-box'),
+        subjectBox = $('#J-subject-box');
 
     //调整游戏界面
     function adjustLayout(){
@@ -182,8 +183,8 @@ $(function (){
             $.each(parents,function (k,v){
                 currentTopics.push($(v).attr('data-topic-id'));
             });
-            goToSubject();
             currentTopicHtml = obj.find('ins').html();
+            goToSubject();
         });
     }
 
@@ -215,6 +216,8 @@ $(function (){
 
     //去题目页面
     function goToSubject(){
+        topicBox.hide();
+        subjectBox.show();
         activitySubject = [];
         $.each(subjects,function (k,v){
             var topics = currentTopics;//.join(',');
@@ -226,6 +229,129 @@ $(function (){
             })
         })
 
-        console.log(activitySubject)
+        renderQuestion();
+    }
+
+    //渲染一个问题
+    function renderQuestion(){
+        if(activitySubject.length <= 0){
+            return alert('对不起，已经没有题目了');
+        }
+        var data = null;
+        $.each(activitySubject,function (k,v){
+            data = v;
+            activitySubject.splice(k,1);
+            return false;
+        });
+
+        var topic_des_box = $('#J-currentTopicDes-box'),
+            questionAndsolutionsBox = $('#J-questionAndsolutionsBox'),
+            maxTimeBox = $('#J-maxTime'),
+            referenceBox = $('#J-reference');
+
+        topic_des_box.html(currentTopicHtml);
+        maxTimeBox.html("时限："+data.time+":00");
+
+        var solutions = data.solutions.split(','),
+            solutionsHtml = '<p class="webkit-box">';
+        $.each(solutions,function (k,v){
+            solutionsHtml += '<span class="solution flex">'+(++k)+' : '+v+'</span>';
+            if(k %2 !== 0 || k === 0){
+                solutionsHtml += '<span class="space flex"></span>';
+            }
+            if(k >0 && k %2 === 0){
+                solutionsHtml += '</p><p class="webkit-box">';
+            }
+        });
+        solutionsHtml += '</p>';
+        questionAndsolutionsBox.html('<p class="solution-title">'+data.content+'</p>'+solutionsHtml);
+    }
+
+    /*pop-box*/
+    function Pop(o){
+        var _default = {
+            beforeShow: function (){},
+            afterShow:function (){},
+            afterHide:function (){},
+            beforeHide: function (){},
+            width:400
+        };
+        this.options = $.extend(_default,o);
+        this.initializer();
+    }
+    Pop.prototype = {
+        initializer: function (){
+            this.popBox = $('<div class="pop-box" style="width:'+this.options.width+'px;overflow:hidden;">');
+            this.mask = $('<div class="mask">');
+            $('body').append(this.mask.hide()).append(this.popBox.hide());
+
+            var node = $(this.options.element).hide().get(0);
+            this.popBox.get(0).insertBefore(node);
+        },
+        show: function (){
+            show.call(this);
+            this.sync();
+            this.options.beforeShow();
+            this.popBox.css('opacity',1).show();
+            this.mask.show();
+            $(this.options.element).css('opacity',1).show();
+            this.addEvent();
+            this.options.afterShow();
+        },
+        hide: function (){
+            this.options.beforeHide();
+            this.popBox.hide();
+            this.mask.hide();
+            $(this.options.element).hide();
+            this.removeEvent();
+            this.options.afterHide();
+        },
+        sync: function (){
+            var w = this.popBox.get(0).offsetWidth,
+                h = this.popBox.get(0).offsetHeight;
+            docW = $(window).width(),
+                docH = $(document).height(),
+                scrollTop = $(window).scrollTop(),
+                left = (docW - w) / 2,
+                _top =  ($(window).height() - h) / 2 + scrollTop;
+
+            this.mask.css({
+                height:docH,
+                width:docW
+            });
+            this.popBox.css({
+                left:left,
+                top:_top
+            });
+        },
+        destroy: function (){
+            this.removeEvent();
+            this.popBox.remove();
+            this.mask.remove();
+            $(this.options.element).remove();
+            this.popBox = null;
+            this.mask = null;
+        },
+        addEvent: function (){
+            $(window).bind('resize.pop', $.proxy(this.sync,this));
+            this.mask.bind('click.pop',$.proxy(this.hide,this));
+
+            if(this.options.close){
+                $(this.options.close).bind('click.pop',$.proxy(this.hide,this));
+            }
+        },
+        removeEvent: function (){
+            $(window).unbind('resize.pop');
+            this.mask.unbind('click.pop');
+
+            if(this.options.close){
+                $(this.options.close).unbind('click.pop');
+            }
+        }
+    };
+
+    function show(){
+        this.popBox.css('opacity',0).show();
+        $(this.options.element).css('opacity',0).show();
     }
 })
