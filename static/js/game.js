@@ -287,9 +287,13 @@ $(function (){
             $('#J-questionAndsolutionsBox .solution').removeClass('current');
             $(this).addClass('current');
             currentSolutionNode = $(this);
+            if(currentSolutionNode){
+                $('#J-ok').show();
+            }
         });
 
         $('#J-ok').unbind().click(function (){
+            if(!currentSolutionNode){return;}
             var solution = $.trim(currentSolutionNode.attr('data-value'));
             if(solution && currentQuestion.right_solution === solution){
                 currentAnswerResult = true;

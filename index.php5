@@ -93,7 +93,7 @@
         </div>
         <div class="webkit-box controler">
             <p class="flex" id="J-maxTime">时限</p>
-            <p class="flex"><a href="javascript:void(0)" id="J-ok" class="hide">确定</a></p>
+            <p class="flex"><a href="javascript:void(0)" id="J-ok" style="display:none;">确定</a></p>
             <p class="flex">
                 <a href="javascript:void(0)" id="J-filter">过滤</a>
                 <a href="javascript:void(0)" id="J-skip">跳过</a>
