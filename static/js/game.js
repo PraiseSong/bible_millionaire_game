@@ -11,6 +11,10 @@ $(function (){
     var activitySubject = [];
     //当前主题内容
     var currentTopicHtml = '';
+    //当前题目
+    var currentQuestion = null;
+    //当前答题结果
+    var currentAnswerResult = false;
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
@@ -237,9 +241,8 @@ $(function (){
         if(activitySubject.length <= 0){
             return alert('对不起，已经没有题目了');
         }
-        var data = null;
         $.each(activitySubject,function (k,v){
-            data = v;
+            currentQuestion = v;
             activitySubject.splice(k,1);
             return false;
         });
@@ -250,12 +253,12 @@ $(function (){
             referenceBox = $('#J-reference');
 
         topic_des_box.html(currentTopicHtml);
-        maxTimeBox.html("时限："+data.time+":00");
+        maxTimeBox.html("时限："+currentQuestion.time+":00");
 
-        var solutions = data.solutions.split(','),
+        var solutions = currentQuestion.solutions.split(','),
             solutionsHtml = '<p class="webkit-box">';
         $.each(solutions,function (k,v){
-            solutionsHtml += '<span class="solution flex">'+(++k)+' : '+v+'</span>';
+            solutionsHtml += '<span class="solution flex" data-value="'+v+'">'+(++k)+' : '+v+'</span>';
             if(k %2 !== 0 || k === 0){
                 solutionsHtml += '<span class="space flex"></span>';
             }
@@ -264,7 +267,47 @@ $(function (){
             }
         });
         solutionsHtml += '</p>';
-        questionAndsolutionsBox.html('<p class="solution-title">'+data.content+'</p>'+solutionsHtml);
+        questionAndsolutionsBox.html('<p class="solution-title">'+currentQuestion.content+'</p>'+solutionsHtml);
+
+        bindUItoQuestionPage();
+    }
+
+    //绑定事件到题目页面
+    function bindUItoQuestionPage(){
+        var currentSolutionNode = null;
+        $('#J-questionAndsolutionsBox .solution').unbind().click(function (){
+            $('#J-questionAndsolutionsBox .solution').removeClass('current');
+            $(this).addClass('current');
+            currentSolutionNode = $(this);
+        });
+
+        $('#J-ok').unbind().click(function (){
+            var solution = $.trim(currentSolutionNode.attr('data-value'));
+            if(solution && currentQuestion.right_solution === solution){
+                currentAnswerResult = true;
+                right();
+            }else{
+                currentAnswerResult = false;
+                wrong();
+            }
+
+            answerEnd();
+        });
+    }
+
+    //正确答题
+    function right(){
+        console.log('right')
+    }
+
+    //错误答题
+    function wrong(){
+        console.log('wrong');
+    }
+
+    //答题结束
+    function answerEnd(){
+        console.log(currentAnswerResult)
     }
 
     /*pop-box*/

@@ -29,7 +29,7 @@
       <file leaf-file-name="index.php5" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="36" selection-start="3228" selection-end="3242" vertical-scroll-proportion="-2.898734">
+            <state line="83" column="50" selection-start="3362" selection-end="3369" vertical-scroll-proportion="-3.658228">
               <folding />
             </state>
           </provider>
@@ -38,7 +38,7 @@
       <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="313" column="19" selection-start="6468" selection-end="6468" vertical-scroll-proportion="-11.418181">
+            <state line="265" column="19" selection-start="5710" selection-end="5710" vertical-scroll-proportion="-8.418181">
               <folding />
             </state>
           </provider>
@@ -47,7 +47,7 @@
       <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="266" column="78" selection-start="7981" selection-end="7981" vertical-scroll-proportion="0.8042857">
+            <state line="309" column="39" selection-start="9149" selection-end="9149" vertical-scroll-proportion="0.92142856">
               <folding />
             </state>
           </provider>
@@ -79,8 +79,8 @@
         <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
         <option value="$PROJECT_DIR$/admin/templates/header.php5" />
         <option value="$PROJECT_DIR$/app/importExcel.php5" />
-        <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/index.php5" />
+        <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/static/js/game.js" />
       </list>
     </option>
@@ -544,21 +544,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="313" column="19" selection-start="6468" selection-end="6468" vertical-scroll-proportion="-11.418181">
+        <state line="265" column="19" selection-start="5710" selection-end="5710" vertical-scroll-proportion="-8.418181">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="36" selection-start="3228" selection-end="3242" vertical-scroll-proportion="-2.898734">
+        <state line="83" column="50" selection-start="3362" selection-end="3369" vertical-scroll-proportion="-3.658228">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="266" column="78" selection-start="7981" selection-end="7981" vertical-scroll-proportion="0.8042857">
+        <state line="309" column="39" selection-start="9149" selection-end="9149" vertical-scroll-proportion="0.92142856">
           <folding />
         </state>
       </provider>

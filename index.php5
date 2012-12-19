@@ -81,7 +81,7 @@
                 title
             </p>
             <p class="webkit-box">
-                <span class="solution flex">A</span>
+                <span class="solution flex current">A</span>
                 <span class="space flex"></span>
                 <span class="solution flex">B</span>
             </p>

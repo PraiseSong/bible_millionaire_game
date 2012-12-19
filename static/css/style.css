@@ -263,6 +263,11 @@ body{
     border:5px solid #999;
     height:60px;
     line-height:60px;
+    cursor:pointer;
+}
+.solution.current{
+    background:#f50;
+    color:#fff;
 }
 .space{
     width:50px;
