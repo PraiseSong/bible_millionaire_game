@@ -223,15 +223,23 @@ $(function (){
         topicBox.hide();
         subjectBox.show();
         activitySubject = [];
-        $.each(subjects,function (k,v){
-            var topics = currentTopics;//.join(',');
-            var subject_topicId = v.topics;
-            $.each(topics,function (i,topic){
-                if(subject_topicId.indexOf(topic) !== -1){
+        var topics = currentTopics;
+
+        /**
+         * 按照游戏主题从前到后的顺序把所关联的题目拿出来
+         * 比如：用户选择的主题是：科技->手机->iphone，
+         * 那么查询题目时将按照：iphone->手机->科技，这样的顺序把题目列出来
+         * 这样就把最接近用户想要的主题数据提取到最前面了
+         */
+        if(topics[0]){
+            $.each(subjects,function (k,v){
+                var subject_topicId = v.topics;
+                if(subject_topicId.indexOf(topics[0]) !== -1){
                     activitySubject.push(v);
+                    topics.splice(0,1);
                 }
             })
-        })
+        }
 
         renderQuestion();
     }
