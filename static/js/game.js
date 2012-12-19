@@ -71,7 +71,7 @@ $(function (){
                 drawTopicsStructure(topics);
                 setTimeout(function (){
                     introducing();
-                },2000);
+                },1000);
             }
         }
     }
