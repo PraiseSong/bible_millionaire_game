@@ -237,10 +237,13 @@ $(function (){
     function starting(){
         introduceBox.hide();
         topicBox.show();
-        
+
         //一个新用户开始玩游戏时，清除本地缓存的数据
         localStorage.clear();
         resetSubjectsData();
+
+        $('#J-filter').show();
+        $('#J-skip').show();
     }
 
     //恢复所有题目的数据
@@ -341,6 +344,7 @@ $(function (){
         if(activitySubject.length <= 0){
             return noSubjects();
         }
+
         $.each(activitySubject,function (k,v){
             if(v){
               currentQuestion = v;
@@ -426,12 +430,12 @@ $(function (){
         });
 
         $('#J-skip').unbind().click(function (){
-            $('#J-skip').unbind().remove();
+            $('#J-skip').unbind().hide();
             renderQuestion();
         });
 
         $('#J-filter').unbind().click(function (){
-            $('#J-filter').unbind().remove();
+            $('#J-filter').unbind().hide();
             filterSolution();
         });
     }
