@@ -242,7 +242,7 @@ body{
 }
 .solution-title{
     background:#fff;
-    height:80px;
+    padding-bottom:20px;
     border-radius:10px;
     text-align:center;
     font-size:40px;
@@ -317,4 +317,34 @@ body{
     font-size:14px;
     font-weight:normal;
     padding:0 35px;
+}
+.getScrore{
+    text-align:center;
+    font-size:100px;
+    color:#f50;
+    background:rgba(255,255,255,.8);
+    border:15px solid #333;
+    height:150px;
+    border-radius:30px;
+    font-weight:bold;
+    margin:0 auto 10px;
+}
+#J-getScroe .webkit-box a{
+    border-radius:30px;
+    color:#fff;
+    font-size:35px;
+    font-weight:bold;
+    text-align:center;
+    display:block;
+    width:150px;
+    margin:0 auto;
+}
+#J-exit{
+    background:#ff0000;
+}
+#J-recycle{
+    background:green;
+}
+#J-next{
+    background:blue;
 }

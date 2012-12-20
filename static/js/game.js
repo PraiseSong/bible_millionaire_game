@@ -15,6 +15,8 @@ $(function (){
     var currentQuestion = null;
     //当前答题结果
     var currentAnswerResult = false;
+    //浮层对象
+    var pop = null;
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
@@ -231,16 +233,28 @@ $(function (){
          * 那么查询题目时将按照：iphone->手机->科技，这样的顺序把题目列出来
          * 这样就把最接近用户想要的主题数据提取到最前面了
          */
-        if(topics[0]){
-            $.each(subjects,function (k,v){
-                var subject_topicId = v.topics;
-                if(subject_topicId.indexOf(topics[0]) !== -1){
-                    activitySubject.push(v);
-                    topics.splice(0,1);
+        function getActivitySubject(){
+            if(topics[0]){
+                $.each(subjects,function (k,v){
+                    if(!v){
+                        return false;
+                    }
+                    var subject_topicId = v.topics;
+                    if(subject_topicId.indexOf(topics[0]) !== -1){
+                        activitySubject.push(v);
+                        //过滤已经查询出的题目
+                        subjects.splice(k,1);
+                    }
+                })
+                topics.splice(0,1);
+                if(topics[0]){
+                    getActivitySubject();
                 }
-            })
+            }
         }
+        getActivitySubject();
 
+        console.log(activitySubject,subjects)
         renderQuestion();
     }
 
@@ -294,6 +308,10 @@ $(function (){
 
         $('#J-ok').unbind().click(function (){
             if(!currentSolutionNode){return;}
+
+            if(pop){
+              pop = null;
+            }
             var solution = $.trim(currentSolutionNode.attr('data-value'));
             if(solution && currentQuestion.right_solution === solution){
                 currentAnswerResult = true;
@@ -302,24 +320,39 @@ $(function (){
                 currentAnswerResult = false;
                 wrong();
             }
-
             answerEnd();
         });
+
+        $('#J-next').unbind().click(nextSubject);
     }
 
     //正确答题
     function right(){
-        console.log('right')
+        pop = new Pop({
+            element: '#J-getScroe',
+            width: 500
+        });
+        pop.show();
+        $('#J-next').show();
     }
 
     //错误答题
     function wrong(){
+        pop && pop.hide();
+
         console.log('wrong');
     }
 
     //答题结束
     function answerEnd(){
         console.log(currentAnswerResult)
+    }
+
+    //进入下一题
+    function nextSubject(){
+        pop && pop.hide();
+        $('#J-next').hide();
+        renderQuestion();
     }
 
     /*pop-box*/
@@ -329,18 +362,18 @@ $(function (){
             afterShow:function (){},
             afterHide:function (){},
             beforeHide: function (){},
-            width:400
+            width:530
         };
         this.options = $.extend(_default,o);
         this.initializer();
     }
     Pop.prototype = {
         initializer: function (){
-            this.popBox = $('<div class="pop-box" style="width:'+this.options.width+'px;overflow:hidden;">');
+            this.popBox = $('<div class="pop-box" style="width:'+this.options.width+'px;overflow:hidden;position:absolute;z-index:9999999">');
             this.mask = $('<div class="mask">');
             $('body').append(this.mask.hide()).append(this.popBox.hide());
 
-            var node = $(this.options.element).hide().get(0);
+            var node = $(this.options.element).css('position','static').hide().get(0);
             this.popBox.get(0).insertBefore(node);
         },
         show: function (){
@@ -384,11 +417,13 @@ $(function (){
             this.popBox.remove();
             this.mask.remove();
             $(this.options.element).remove();
+            $(window).unbind('resize.pop');
+            this.mask.unbind('click.pop');
             this.popBox = null;
             this.mask = null;
         },
         addEvent: function (){
-            $(window).bind('resize.pop', $.proxy(this.sync,this));
+            $(window).bind('resize.pop', $.proxy(this.sync,this)).bind('scroll.pop',$.proxy(this.sync,this));
             this.mask.bind('click.pop',$.proxy(this.hide,this));
 
             if(this.options.close){
@@ -396,7 +431,7 @@ $(function (){
             }
         },
         removeEvent: function (){
-            $(window).unbind('resize.pop');
+            $(window).unbind('resize.pop').unbind('scroll.pop');
             this.mask.unbind('click.pop');
 
             if(this.options.close){

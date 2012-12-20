@@ -1,5 +1,15 @@
 <?php include_once("config.php5"); ?>
 <?php include_once(TEMPLATES_PATH."/header.php5"); ?>
+<div id="J-getScroe" class="hide">
+    <p class="getScrore">1000</p>
+    <div class="webkit-box">
+        <a href="javascript:void(0)" id="J-exit" style="display:none;">离开</a>
+        <span class="space flex first-space" style="display:none;"></span>
+        <a href="javascript:void(0)" id="J-recycle"  style="display:none;">再玩</a>
+        <span class="space flex second-space" style="display:none;"></span>
+        <a href="javascript:void(0)" id="J-next"  style="display:none;">下一题</a>
+    </div>
+</div>
 
 <div class="container center-box" id="J-container">
     <div class="loading" id="J-loading">
@@ -93,7 +103,9 @@
         </div>
         <div class="webkit-box controler">
             <p class="flex" id="J-maxTime">时限</p>
-            <p class="flex"><a href="javascript:void(0)" id="J-ok" style="display:none;">确定</a></p>
+            <p class="flex">
+                <a href="javascript:void(0)" id="J-ok" style="display:none;">确定</a>
+            </p>
             <p class="flex">
                 <a href="javascript:void(0)" id="J-filter">过滤</a>
                 <a href="javascript:void(0)" id="J-skip">跳过</a>
