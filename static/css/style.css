@@ -269,6 +269,10 @@ body{
     background:#f50;
     color:#fff;
 }
+.solution.filtered{
+    background:#000;
+    color:#000;
+}
 .space{
     width:50px;
     display:block;

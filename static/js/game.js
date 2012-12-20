@@ -23,6 +23,8 @@ $(function (){
     var currentScore = 0;
     //当前第几关
     var phases = 0;
+    //已经过滤了哪些题目
+    var filtered = localStorage.getItem('filtered') ? JSON.parse(localStorage.getItem('filtered')): [];
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
@@ -95,8 +97,9 @@ $(function (){
         });
         function success(data){
             if(data.data){
-                subjects = data.data;
-                originSubjects = data.data;
+                var s = data.data;
+                subjects = s;
+                originSubjects = s;
             }
         }
     }
@@ -106,6 +109,7 @@ $(function (){
         if(!data){
             return topicsHtml = '暂无主题';
         }
+
         var noParent = [];
         var haveParent = [];
 
@@ -200,13 +204,16 @@ $(function (){
             currentTopicHtml = obj.find('ins').html();
             goToSubject();
         });
+        topicBox.find('.back').click(function (){
+            topicBox.hide();
+            introduceBox.show();
+        });
     }
 
     //介绍模块
     function introducing(){
-        //subjects的数据在处理的过程中，会有变动
-        //因此每次开始游戏时，加载原始的题目数据
-        subjects = originSubjects;
+        //一个新用户开始玩游戏时，清除本地缓存的数据
+        localStorage.clear();
 
         loadingBox.hide();
         introduceBox.show();
@@ -230,12 +237,35 @@ $(function (){
     function starting(){
         introduceBox.hide();
         topicBox.show();
+        
+        //一个新用户开始玩游戏时，清除本地缓存的数据
+        localStorage.clear();
+        resetSubjectsData();
+    }
+
+    //恢复所有题目的数据
+    function resetSubjectsData(){
+        //subjects的数据在处理的过程中，会有变动
+        //因此每次开始游戏时，加载原始的题目数据
+        subjects = $.extend(true,[],originSubjects);
     }
 
     //去题目页面
     function goToSubject(){
         topicBox.hide();
         subjectBox.show();
+
+        resetSubjectsData();
+
+        var filtered = localStorage.getItem('filtered') ? JSON.parse(localStorage.getItem('filtered')): [];
+        //再一次玩游戏时，把已经答正确的题目过滤掉
+        $.each(subjects,function (k,v){
+            if(v && filtered.indexOf(v.id) !== -1){
+                subjects.splice(k,1,null);
+            }
+        })
+
+
         activitySubject = [];
         var topics = currentTopics;
 
@@ -248,14 +278,13 @@ $(function (){
         function getActivitySubject(){
             if(topics[0]){
                 $.each(subjects,function (k,v){
-                    if(!v){
-                        return false;
-                    }
-                    var subject_topicId = v.topics;
-                    if(subject_topicId.indexOf(topics[0]) !== -1){
-                        activitySubject.push(v);
-                        //过滤已经查询出的题目
-                        subjects.splice(k,1);
+                    if(v){
+                        var subject_topicId = v.topics;
+                        if(subject_topicId.indexOf(topics[0]) !== -1){
+                            activitySubject.push(v);
+                            //过滤已经查询出的题目
+                            subjects.splice(k,1,null);
+                        }
                     }
                 })
                 topics.splice(0,1);
@@ -266,30 +295,76 @@ $(function (){
         }
         getActivitySubject();
 
+        var score_html =    '<li class="1million phases" data-value="100000000">15<>1 MILLION</li>'+
+                            '<li data-value="500000">14<>500000</li>'+
+                            '<li data-value="25000">13<>250000</li>'+
+                            '<li data-value="15000">12<>150000</li>'+
+                            '<li data-value="80000">11<>80000</li>'+
+                            '<li class="60000score phases" data-value="60000">10<>60000</li>'+
+                            '<li data-value="40000">9<>40000</li>'+
+                            '<li data-value="30000">8<>30000</li>'+
+                            '<li data-value="20000">7<>20000</li>'+
+                            '<li data-value="10000">6<>10000</li>'+
+                            '<li class="8000score phases" data-value="8000">5<>8000</li>'+
+                            '<li data-value="4000">4<>4000</li>'+
+                            '<li data-value="3000">3<>3000</li>'+
+                            '<li data-value="2000">2<>2000</li>'+
+                            '<li class="next-score" data-value="1000">1<>1000</li>';
+        scoreBox.html(score_html);
+
         renderQuestion();
+    }
+
+
+    //没有题目
+    function noSubjects(){
+        $('#J-getScore p').html("<span style=\"font-size:35px;line-height:145px;display:block;\">对不起，没有最新的题目</span>");
+
+        pop = new Pop({
+            element: '#J-getScore',
+            width: 500,
+            afterShow: function (){
+                pop.mask.unbind('click.pop');
+            }
+        });
+        pop.show();
+
+        $('#J-getScore a').css('margin','initial');
+        $('#J-next').hide();
+        $('#J-exit').show();
+        $('#J-recycle').show();
+        $('.first-space').show();
     }
 
     //渲染一个问题
     function renderQuestion(){
         if(activitySubject.length <= 0){
-            return alert('对不起，已经没有题目了');
+            return noSubjects();
         }
         $.each(activitySubject,function (k,v){
-            currentQuestion = v;
-            activitySubject.splice(k,1);
-            return false;
+            if(v){
+              currentQuestion = v;
+              activitySubject.splice(k,1,null);
+              return false;
+            }else{
+                currentQuestion = false;
+            }
         });
+
+        if(!currentQuestion){
+            return noSubjects();
+        }
 
         var topic_des_box = $('#J-currentTopicDes-box'),
             questionAndsolutionsBox = $('#J-questionAndsolutionsBox'),
-            maxTimeBox = $('#J-maxTime'),
-            referenceBox = $('#J-reference');
+            maxTimeBox = $('#J-maxTime');
 
-        topic_des_box.html(currentTopicHtml);
+        topic_des_box.html(currentTopicHtml+'<p id="J-reference"></p>');
         maxTimeBox.html("时限："+currentQuestion.time+":00");
 
         var solutions = currentQuestion.solutions.split(','),
             solutionsHtml = '<p class="webkit-box">';
+        solutions = randomOrder(solutions);
         $.each(solutions,function (k,v){
             solutionsHtml += '<span class="solution flex" data-value="'+v+'">'+(++k)+' : '+v+'</span>';
             if(k %2 !== 0 || k === 0){
@@ -335,6 +410,55 @@ $(function (){
         });
 
         $('#J-next').unbind().click(nextSubject);
+
+        $('#J-exit').unbind().click(function (){
+            window.open('', '_self', '');
+            window.close();
+            localStorage.clear();
+        });
+        $('#J-recycle').unbind().click(function (){
+            topicBox.show();
+            subjectBox.hide();
+            pop && pop.hide();
+        });
+        $('#J-tip').click(function (){
+            currentQuestion && currentQuestion.reference && $('#J-reference').html(currentQuestion.reference);
+        });
+
+        $('#J-skip').unbind().click(function (){
+            $('#J-skip').unbind().remove();
+            renderQuestion();
+        });
+
+        $('#J-filter').unbind().click(function (){
+            $('#J-filter').unbind().remove();
+            filterSolution();
+        });
+    }
+
+    //过滤可选答案
+    function filterSolution(){
+        var questionAndsolutionsBox = $('#J-questionAndsolutionsBox'),
+            solutions = questionAndsolutionsBox.find('.solution');
+
+        var i = 0;
+        function filting(){
+            $.each(solutions,function (k,v){
+                var obj = $(v);
+                if($.trim(obj.attr('data-value')) !== currentQuestion.right_solution && !obj.hasClass('filtered') && i<2){
+                    if(k === ((parseInt(Math.random()*4+1))-1)){
+                        obj.addClass('filtered').unbind().css('cursor','default');
+                        i++;
+                        if(i < 2){
+                            filting();
+                        }
+                    }else{
+                        filting();
+                    }
+                }
+            })
+        }
+        filting();
     }
 
     //正确答题
@@ -377,6 +501,13 @@ $(function (){
         $('#J-exit').hide();
         $('#J-recycle').hide();
         $('.first-space').hide();
+
+        //在本地存储中保存已经答过题目的id
+        if(filtered.indexOf(currentQuestion.id) === -1){
+            filtered.push(currentQuestion.id);
+            localStorage.setItem('filtered',JSON.stringify(filtered));
+        }
+
         countScore();
     }
 
@@ -396,8 +527,6 @@ $(function (){
         if(currentScore === 100000000){
             phases = 3;
         }
-
-        console.log(currentScore,phases)
     }
 
     //错误答题
@@ -406,7 +535,10 @@ $(function (){
 
         pop = new Pop({
             element: '#J-getScore',
-            width: 500
+            width: 500,
+            afterShow: function (){
+                pop.mask.unbind('click.pop');
+            }
         });
         pop.show();
 
@@ -422,7 +554,6 @@ $(function (){
 
     //答题结束
     function answerEnd(){
-        console.log(currentAnswerResult)
     }
 
     //进入下一题
@@ -525,5 +656,38 @@ $(function (){
     function show(){
         this.popBox.css('opacity',0).show();
         $(this.options.element).css('opacity',0).show();
+    }
+
+    function randomOrder (targetArray)
+    {
+        var arrayLength = targetArray.length
+        //
+        //先创建一个正常顺序的数组
+        var tempArray1 = new Array();
+
+        for (var i = 0; i < arrayLength; i ++)
+        {
+            tempArray1 [i] = i
+        }
+        //
+        //再根据上一个数组创建一个随机乱序的数组
+        var tempArray2 = new Array();
+
+        for (var i = 0; i < arrayLength; i ++)
+        {
+            //从正常顺序数组中随机抽出元素
+            tempArray2 [i] = tempArray1.splice (Math.floor (Math.random () * tempArray1.length) , 1)
+        }
+        //
+        //最后创建一个临时数组存储 根据上一个乱序的数组从targetArray中取得数据
+        var tempArray3 = new Array();
+
+        for (var i = 0; i < arrayLength; i ++)
+        {
+            tempArray3 [i] = targetArray [tempArray2 [i]]
+        }
+        //
+        //返回最后得出的数组
+        return tempArray3
     }
 })

@@ -63,21 +63,7 @@
         <div class="webkit-box">
             <div class="score flex">
                 <ul id="J-score-box">
-                    <li class="1million phases" data-value="100000000">15<>1 MILLION</li>
-                    <li data-value="500000">14<>500000</li>
-                    <li data-value="25000">13<>250000</li>
-                    <li data-value="15000">12<>150000</li>
-                    <li data-value="80000">11<>80000</li>
-                    <li class="60000score phases" data-value="60000">10<>60000</li>
-                    <li data-value="40000">9<>40000</li>
-                    <li data-value="30000">8<>30000</li>
-                    <li data-value="20000">7<>20000</li>
-                    <li data-value="10000">6<>10000</li>
-                    <li class="8000score phases" data-value="8000">5<>8000</li>
-                    <li data-value="4000">4<>4000</li>
-                    <li data-value="3000">3<>3000</li>
-                    <li data-value="2000">2<>2000</li>
-                    <li class="next-score" data-value="1000">1<>1000</li>
+
                 </ul>
             </div>
             <div class="flex bwfw-logo"><img src="static/images/bwfw.png" /></div>
