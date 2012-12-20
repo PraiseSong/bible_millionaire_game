@@ -1,6 +1,6 @@
 <?php include_once("config.php5"); ?>
 <?php include_once(TEMPLATES_PATH."/header.php5"); ?>
-<div id="J-getScroe" class="hide">
+<div id="J-getScore" class="hide">
     <p class="getScrore">1000</p>
     <div class="webkit-box">
         <a href="javascript:void(0)" id="J-exit" style="display:none;">离开</a>
@@ -62,22 +62,22 @@
     <div id="J-subject-box" class="subject-box hide">
         <div class="webkit-box">
             <div class="score flex">
-                <ul>
-                    <li class="1million phases">15<>1 MILLION</li>
-                    <li>14<>500000</li>
-                    <li>13<>250000</li>
-                    <li>12<>150000</li>
-                    <li>11<>80000</li>
-                    <li class="60000scroe phases">10<>60000</li>
-                    <li>9<>40000</li>
-                    <li>8<>30000</li>
-                    <li>7<>20000</li>
-                    <li>6<>10000</li>
-                    <li class="8000scroe phases">5<>8000</li>
-                    <li>4<>4000</li>
-                    <li>3<>3000</li>
-                    <li>2<>2000</li>
-                    <li class="next-score">1<>1000</li>
+                <ul id="J-score-box">
+                    <li class="1million phases" data-value="100000000">15<>1 MILLION</li>
+                    <li data-value="500000">14<>500000</li>
+                    <li data-value="25000">13<>250000</li>
+                    <li data-value="15000">12<>150000</li>
+                    <li data-value="80000">11<>80000</li>
+                    <li class="60000score phases" data-value="60000">10<>60000</li>
+                    <li data-value="40000">9<>40000</li>
+                    <li data-value="30000">8<>30000</li>
+                    <li data-value="20000">7<>20000</li>
+                    <li data-value="10000">6<>10000</li>
+                    <li class="8000score phases" data-value="8000">5<>8000</li>
+                    <li data-value="4000">4<>4000</li>
+                    <li data-value="3000">3<>3000</li>
+                    <li data-value="2000">2<>2000</li>
+                    <li class="next-score" data-value="1000">1<>1000</li>
                 </ul>
             </div>
             <div class="flex bwfw-logo"><img src="static/images/bwfw.png" /></div>

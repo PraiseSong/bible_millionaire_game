@@ -43,7 +43,7 @@ body{
 }
 .container{
     width:820px;
-    height:700px;
+    height:750px;
     margin:0 auto;
     overflow:hidden;
 }
@@ -329,7 +329,7 @@ body{
     font-weight:bold;
     margin:0 auto 10px;
 }
-#J-getScroe .webkit-box a{
+#J-getScore .webkit-box a{
     border-radius:30px;
     color:#fff;
     font-size:35px;

@@ -5,6 +5,8 @@ $(function (){
     var topicsHtml = '';
     //最终的所有游戏题目数据
     var subjects = {};
+    //恢复所有游戏题目数据
+    var originSubjects = null;
     //当前选择的主题
     var currentTopics = [];
     //随机抽出的题目
@@ -17,11 +19,16 @@ $(function (){
     var currentAnswerResult = false;
     //浮层对象
     var pop = null;
+    //当前的得分
+    var currentScore = 0;
+    //当前第几关
+    var phases = 0;
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
         topicBox = $('#J-topics-box'),
-        subjectBox = $('#J-subject-box');
+        subjectBox = $('#J-subject-box'),
+        scoreBox = $('#J-score-box');
 
     //调整游戏界面
     function adjustLayout(){
@@ -89,6 +96,7 @@ $(function (){
         function success(data){
             if(data.data){
                 subjects = data.data;
+                originSubjects = data.data;
             }
         }
     }
@@ -196,6 +204,10 @@ $(function (){
 
     //介绍模块
     function introducing(){
+        //subjects的数据在处理的过程中，会有变动
+        //因此每次开始游戏时，加载原始的题目数据
+        subjects = originSubjects;
+
         loadingBox.hide();
         introduceBox.show();
         introduceBox.find('nav li').click(function (){
@@ -254,7 +266,6 @@ $(function (){
         }
         getActivitySubject();
 
-        console.log(activitySubject,subjects)
         renderQuestion();
     }
 
@@ -328,12 +339,59 @@ $(function (){
 
     //正确答题
     function right(){
+        var score = parseInt(scoreBox.find('.next-score').attr('data-value'),10);
+        function getScoreHtml(data){
+            var s = data;
+            var k = 0;
+            function getScore(data){
+                if(data < 1000){
+                    return data;
+                }
+                var result = '';
+                var b = data / 1000;
+                if(b >= 1000){
+                    k++;
+                    return getScore(b);
+                }else{
+                    result = b;
+                    for(var i=-1;i<k;i++){
+                        result += ',000';
+                    }
+                }
+                return result;
+            }
+
+            return getScore(s);
+        }
+
+        $('#J-getScore p').html(getScoreHtml(score));
         pop = new Pop({
-            element: '#J-getScroe',
+            element: '#J-getScore',
             width: 500
         });
         pop.show();
         $('#J-next').show();
+        countScore();
+    }
+
+    //计算分数
+    function countScore(){
+        var score = scoreBox.find('.next-score').attr('data-value');
+        currentScore += parseInt(score,10);
+
+        if(currentScore === 8000){
+            phases = 1;
+        }
+
+        if(currentScore === 60000){
+            phases = 2;
+        }
+
+        if(currentScore === 100000000){
+            phases = 3;
+        }
+
+        console.log(currentScore,phases)
     }
 
     //错误答题
@@ -352,6 +410,11 @@ $(function (){
     function nextSubject(){
         pop && pop.hide();
         $('#J-next').hide();
+        var next_score_node = scoreBox.find('.next-score').prev();
+        scoreBox.find('li').removeClass('next-score');
+        if(next_score_node.get(0)){
+            next_score_node.addClass('next-score');
+        }
         renderQuestion();
     }
 
