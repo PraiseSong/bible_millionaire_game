@@ -340,9 +340,11 @@ $(function (){
     //正确答题
     function right(){
         var score = parseInt(scoreBox.find('.next-score').attr('data-value'),10);
+        //获取分数的html
         function getScoreHtml(data){
             var s = data;
             var k = 0;
+            //处理分数为1,000,000
             function getScore(data){
                 if(data < 1000){
                     return data;
@@ -370,7 +372,11 @@ $(function (){
             width: 500
         });
         pop.show();
+        $('#J-getScore a').css('margin','0 auto');
         $('#J-next').show();
+        $('#J-exit').hide();
+        $('#J-recycle').hide();
+        $('.first-space').hide();
         countScore();
     }
 
@@ -396,9 +402,22 @@ $(function (){
 
     //错误答题
     function wrong(){
-        pop && pop.hide();
+        $('#J-getScore p').html(0);
 
-        console.log('wrong');
+        pop = new Pop({
+            element: '#J-getScore',
+            width: 500
+        });
+        pop.show();
+
+        $('#J-getScore a').css('margin','initial');
+        $('#J-next').hide();
+        $('#J-exit').show();
+        $('#J-recycle').show();
+        $('.first-space').show();
+
+        currentScore = 0;
+        phases = 0;
     }
 
     //答题结束
