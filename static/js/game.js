@@ -30,6 +30,10 @@ $(function (){
     var currentTimeStop = false;//暂定当前时间
     //提示暂停时间
     var tipTime = 30;//秒
+    //倒计时对象
+    var timer = null;
+    //是否已经显示闯关提示
+    var shownPhases = false;
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
@@ -330,7 +334,7 @@ $(function (){
 
         pop = new Pop({
             element: '#J-getScore',
-            width: 500,
+            width: 500,白
             afterShow: function (){
                 pop.mask.unbind('click.pop');
             }
@@ -398,14 +402,14 @@ $(function (){
 
         var time = maxTime.split(':'),
             minute = --time[0],
-            second = --time[1],
+            second = time[1],
             _currentTime = currentTime.split(':'),
             currentTimeMinute = minute,
             currentTimeSecond = second;
 
-        var timer = null;
-
         var currentTimeStopTimer = null;
+
+        timer && clearInterval(timer);
 
         timer = setInterval(looper,1000);
 
@@ -564,7 +568,10 @@ $(function (){
         $('#J-getScore p').html(getScoreHtml(score));
         pop = new Pop({
             element: '#J-getScore',
-            width: 500
+            width: 500,
+            afterShow: function (){
+                pop.mask.unbind('click.pop');
+            }
         });
         pop.show();
         $('#J-getScore a').css('margin','0 auto');
@@ -585,18 +592,26 @@ $(function (){
     //计算分数
     function countScore(){
         var score = scoreBox.find('.next-score').attr('data-value');
-        currentScore += parseInt(score,10);
+        currentScore = parseInt(score,10);
 
         if(currentScore === 8000){
+            shownPhases = false;
             phases = 1;
         }
 
         if(currentScore === 60000){
+            shownPhases = false;
             phases = 2;
         }
 
         if(currentScore === 100000000){
+            shownPhases = false;
             phases = 3;
+        }
+        if(phases === 1 && !shownPhases){
+            shownPhases = true;
+            $('#J-getScore .getScrore').html("<span style=\"font-size:40px;line-height:145px;display:block;\" class=\"passPhases\">恭喜闯过第 "+phases+" 关</span>")
+            pop && pop.show();
         }
     }
 
@@ -625,6 +640,7 @@ $(function (){
 
     //答题结束
     function answerEnd(){
+        timer && clearInterval(timer);
     }
 
     //进入下一题
