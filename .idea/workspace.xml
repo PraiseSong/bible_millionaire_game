@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/game.js" afterPath="$PROJECT_DIR$/static/js/game.js" />
     </list>
     <ignored path="bible_millionaire_game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,24 +34,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="25" selection-start="3057" selection-end="3057" vertical-scroll-proportion="0.41484717">
+            <state line="125" column="25" selection-start="3057" selection-end="3057" vertical-scroll-proportion="-10.961538">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="346" column="31" selection-start="10505" selection-end="10505" vertical-scroll-proportion="-15.730769">
-              <folding>
-                <marker date="1356070475000" expanded="true" signature="13:10545" placeholder="{...}" />
-                <marker date="1356070475000" expanded="true" signature="10029:10340" placeholder="{...}" />
-                <marker date="1356070475000" expanded="true" signature="10173:10256" placeholder="{&quot;element&quot;: '#J-getScore'...}" />
-              </folding>
+            <state line="404" column="30" selection-start="12377" selection-end="12377" vertical-scroll-proportion="0.37700146">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,10 +77,10 @@
         <option value="$PROJECT_DIR$/admin/index.php5" />
         <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
         <option value="$PROJECT_DIR$/admin/templates/header.php5" />
-        <option value="$PROJECT_DIR$/static/js/game.js" />
         <option value="$PROJECT_DIR$/index.php5" />
         <option value="$PROJECT_DIR$/app/importExcel.php5" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
+        <option value="$PROJECT_DIR$/static/js/game.js" />
       </list>
     </option>
   </component>
@@ -546,14 +543,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/game.js">
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="346" column="31" selection-start="10505" selection-end="10505" vertical-scroll-proportion="-15.730769">
-          <folding>
-            <marker date="1356070475000" expanded="true" signature="13:10545" placeholder="{...}" />
-            <marker date="1356070475000" expanded="true" signature="10029:10340" placeholder="{...}" />
-            <marker date="1356070475000" expanded="true" signature="10173:10256" placeholder="{&quot;element&quot;: '#J-getScore'...}" />
-          </folding>
+        <state line="125" column="25" selection-start="3057" selection-end="3057" vertical-scroll-proportion="-10.961538">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -564,9 +557,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+    <entry file="file://$PROJECT_DIR$/static/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="25" selection-start="3057" selection-end="3057" vertical-scroll-proportion="0.41484717">
+        <state line="404" column="30" selection-start="12377" selection-end="12377" vertical-scroll-proportion="0.37700146">
           <folding />
         </state>
       </provider>

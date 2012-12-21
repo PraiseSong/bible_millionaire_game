@@ -373,7 +373,8 @@ $(function (){
             maxTimeBox = $('#J-maxTime');
 
         topic_des_box.html(currentTopicHtml+'<p id="J-reference"></p>');
-        maxTimeBox.html("时限："+currentQuestion.time+":00");
+        var time_html = currentQuestion.time < 1 ? "时限：00:"+currentQuestion.time+"" : "时限："+currentQuestion.time+":00"
+        maxTimeBox.html(time_html);
 
         var solutions = currentQuestion.solutions.split(','),
             solutionsHtml = '<p class="webkit-box">';
@@ -400,8 +401,12 @@ $(function (){
         var maxTime = currentQuestion.time+":60",//分钟
             countDownBox = $('#J-maxTime');
 
+        if(currentQuestion.time < 1){
+            maxTime = "00:30";
+        }
+
         var time = maxTime.split(':'),
-            minute = --time[0],
+            minute = time[0] > 0 ? --time[0] : time[0],
             second = time[1],
             _currentTime = currentTime.split(':'),
             currentTimeMinute = minute,
@@ -448,6 +453,7 @@ $(function (){
                 if(currentTimeSecond < 10){
                     currentTimeSecond = '0'+currentTimeSecond+'';
                 }
+
                 countDownBox.html('时限：'+currentTimeMinute+":"+currentTimeSecond);
             }
         }
