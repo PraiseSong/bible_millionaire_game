@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/importExcel.php5" afterPath="$PROJECT_DIR$/app/importExcel.php5" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
     </list>
     <ignored path="bible_millionaire_game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,10 +33,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="273" column="14" selection-start="5834" selection-end="5834" vertical-scroll-proportion="-22.653847">
+            <state line="262" column="26" selection-start="5659" selection-end="5659" vertical-scroll-proportion="0.6390102">
               <folding />
             </state>
           </provider>
@@ -56,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="importExcel.php5" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="importExcel.php5" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/importExcel.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="45" selection-start="3094" selection-end="3094" vertical-scroll-proportion="0.7058824">
+            <state line="90" column="45" selection-start="3094" selection-end="3094" vertical-scroll-proportion="-9.36">
               <folding />
             </state>
           </provider>
@@ -90,10 +89,10 @@
         <option value="$PROJECT_DIR$/admin/index.php5" />
         <option value="$PROJECT_DIR$/admin/static/css/admin.css" />
         <option value="$PROJECT_DIR$/admin/templates/header.php5" />
-        <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/static/js/game.js" />
         <option value="$PROJECT_DIR$/index.php5" />
         <option value="$PROJECT_DIR$/app/importExcel.php5" />
+        <option value="$PROJECT_DIR$/static/css/style.css" />
       </list>
     </option>
   </component>
@@ -549,13 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="273" column="14" selection-start="5834" selection-end="5834" vertical-scroll-proportion="-22.653847">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php5">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="0" selection-start="2680" selection-end="2680" vertical-scroll-proportion="-1.3797468">
@@ -576,7 +568,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/importExcel.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="45" selection-start="3094" selection-end="3094" vertical-scroll-proportion="0.7058824">
+        <state line="90" column="45" selection-start="3094" selection-end="3094" vertical-scroll-proportion="-9.36">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="262" column="26" selection-start="5659" selection-end="5659" vertical-scroll-proportion="0.6390102">
           <folding />
         </state>
       </provider>
