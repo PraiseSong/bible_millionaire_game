@@ -48,7 +48,8 @@
 
      if ( $_FILES['file']['tmp_name'] )
      {
-         $dom = DOMDocument::load( $_FILES['file']['tmp_name'] );
+         $dom = new DOMDocument();
+         $dom -> load($_FILES['file']['tmp_name']);
 
          $rows = $dom->getElementsByTagName( 'Row' );
          $first_row = true;
@@ -87,7 +88,7 @@
          }
      }
 ?>
- <h3>你提交的数据如下：</h3>
+ <h3>你提交的数据如下：共<?php echo count($data); ?>条数据</h3>
  <table width="100%" style="border:1px solid #ddd;text-align:left;line-height:40px;" cellspacing="0" cellpadding="0">
      <tr style="background:#f2f2f2;border-bottom:1px solid #ddd;line-height:40px;">
          <th>内容</th>
@@ -101,7 +102,7 @@
          <th>当前状态</th>
      </tr>
      <?php foreach( $data as $row ) { ?>
-     <tr>
+     <tr class="tr">
          <td><?php echo( $row['content'] ); ?></td>
          <td><?php echo( $row['reference'] ); ?></td>
          <td><?php echo( $row['time'] ); ?></td>
@@ -114,6 +115,16 @@
      </tr>
      <?php } ?>
  </table>
+ <style type="text/css">
+     td{
+         border-bottom:1px solid #ddd;
+         padding:0 5px;
+     }
+     .tr:hover{
+         background:blue;
+         color:#fff;
+     }
+ </style>
 
 <?php
    endif;
