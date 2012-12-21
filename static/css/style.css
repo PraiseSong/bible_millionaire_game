@@ -45,7 +45,6 @@ body{
     width:820px;
     height:750px;
     margin:0 auto;
-    overflow:hidden;
 }
 .loading{
     text-align:center;
@@ -131,20 +130,18 @@ body{
     line-height:60px;
     padding:0 10px;
     cursor:pointer;
-    font-size:40px;
+    font-size:35px;
     margin:0 auto 30px;
     background:-webkit-linear-gradient(top, #55c1f3 5%, #066fa0 50%);
     border-radius:20px;
-    -webkit-box-shadow:2px 5px 2px #000;
-    border:5px solid #333;
+    -webkit-box-shadow:2px 5px 12px #000;
 }
 .introducing-main nav ul{
     margin-top:10px;
 }
 .introducing-main nav li:hover,.introducing-main nav li.current{
     color:yellow;
-    background:-webkit-linear-gradient(top, #e687fa 5%, #8c09a8 50%);
-    border:5px solid #f2c6fc;
+    background:-webkit-linear-gradient(top, #585858 5%, #333333 50%);
 }
 .introducing-main nav li:last-child{
     margin:0 auto;

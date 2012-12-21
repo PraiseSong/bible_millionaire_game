@@ -36,7 +36,7 @@
       <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="262" column="26" selection-start="5659" selection-end="5659" vertical-scroll-proportion="0.6390102">
+            <state line="125" column="25" selection-start="3057" selection-end="3057" vertical-scroll-proportion="0.41484717">
               <folding />
             </state>
           </provider>
@@ -51,15 +51,6 @@
                 <marker date="1356070475000" expanded="true" signature="10029:10340" placeholder="{...}" />
                 <marker date="1356070475000" expanded="true" signature="10173:10256" placeholder="{&quot;element&quot;: '#J-getScore'...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="importExcel.php5" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/importExcel.php5">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="45" selection-start="3094" selection-end="3094" vertical-scroll-proportion="-9.36">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -548,9 +539,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php5">
+    <entry file="file://$PROJECT_DIR$/app/importExcel.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="0" selection-start="2680" selection-end="2680" vertical-scroll-proportion="-1.3797468">
+        <state line="90" column="45" selection-start="3094" selection-end="3094" vertical-scroll-proportion="0.7058824">
           <folding />
         </state>
       </provider>
@@ -566,16 +557,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/importExcel.php5">
+    <entry file="file://$PROJECT_DIR$/index.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="45" selection-start="3094" selection-end="3094" vertical-scroll-proportion="-9.36">
+        <state line="65" column="0" selection-start="2680" selection-end="2680" vertical-scroll-proportion="-1.3797468">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="262" column="26" selection-start="5659" selection-end="5659" vertical-scroll-proportion="0.6390102">
+        <state line="125" column="25" selection-start="3057" selection-end="3057" vertical-scroll-proportion="0.41484717">
           <folding />
         </state>
       </provider>
