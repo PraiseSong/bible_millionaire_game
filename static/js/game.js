@@ -25,6 +25,11 @@ $(function (){
     var phases = 0;
     //已经过滤了哪些题目
     var filtered = localStorage.getItem('filtered') ? JSON.parse(localStorage.getItem('filtered')): [];
+    //游戏已耗时
+    var currentTime = "0:00";
+    var currentTimeStop = false;//暂定当前时间
+    //提示暂停时间
+    var tipTime = 30;//秒
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
@@ -381,7 +386,67 @@ $(function (){
         solutionsHtml += '</p>';
         questionAndsolutionsBox.html('<p class="solution-title">'+currentQuestion.content+'</p>'+solutionsHtml);
 
+        countDown();
+
         bindUItoQuestionPage();
+    }
+
+    //倒计时
+    function countDown(){
+        var maxTime = currentQuestion.time+":60",//分钟
+            countDownBox = $('#J-maxTime');
+
+        var time = maxTime.split(':'),
+            minute = --time[0],
+            second = --time[1],
+            _currentTime = currentTime.split(':'),
+            currentTimeMinute = minute,
+            currentTimeSecond = second;
+
+        var timer = null;
+
+        var currentTimeStopTimer = null;
+
+        timer = setInterval(looper,1000);
+
+        function looper(){
+            if(currentTimeStop){
+                currentTimeStop = false;
+                clearInterval(timer);
+
+                setTimeout(function (){
+                    timer = setInterval(looper,1000);
+                },30000);
+            }else{
+                callback();
+            }
+
+            function callback(){
+                if(currentTimeStopTimer){
+                    clearTimeout(currentTimeStopTimer);
+                }
+
+                if(currentTimeSecond <= second){
+                    currentTimeSecond = --second;
+
+                    if(currentTimeSecond === 0 && currentTimeMinute > 0){
+                        second = 60;
+                        currentTimeSecond = --second;
+
+                        currentTimeMinute = --minute;
+                    }
+                }
+                if(currentTimeMinute === 0 && currentTimeSecond === 0){
+                    wrong();
+                    clearInterval(timer);
+                }
+
+                if(currentTimeSecond < 10){
+                    currentTimeSecond = '0'+currentTimeSecond+'';
+                }
+                countDownBox.html('时限：'+currentTimeMinute+":"+currentTimeSecond);
+            }
+        }
     }
 
     //绑定事件到题目页面
@@ -427,6 +492,8 @@ $(function (){
         });
         $('#J-tip').click(function (){
             currentQuestion && currentQuestion.reference && $('#J-reference').html(currentQuestion.reference);
+            currentTimeStop = true;
+            $('#J-tip').unbind();
         });
 
         $('#J-skip').unbind().click(function (){

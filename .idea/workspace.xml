@@ -27,7 +27,7 @@
       <file leaf-file-name="index.php5" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php5">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="49" selection-start="3875" selection-end="3883" vertical-scroll-proportion="-5.177215">
+            <state line="90" column="32" selection-start="3649" selection-end="3658" vertical-scroll-proportion="-4.227848">
               <folding />
             </state>
           </provider>
@@ -45,7 +45,7 @@
       <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="245" column="28" selection-start="7079" selection-end="7079" vertical-scroll-proportion="0.5298399">
+            <state line="395" column="42" selection-start="12076" selection-end="12076" vertical-scroll-proportion="0.48617175">
               <folding />
             </state>
           </provider>
@@ -549,14 +549,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php5">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="49" selection-start="3875" selection-end="3883" vertical-scroll-proportion="-5.177215">
+        <state line="90" column="32" selection-start="3649" selection-end="3658" vertical-scroll-proportion="-4.227848">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="245" column="28" selection-start="7079" selection-end="7079" vertical-scroll-proportion="0.5298399">
+        <state line="395" column="42" selection-start="12076" selection-end="12076" vertical-scroll-proportion="0.48617175">
           <folding />
         </state>
       </provider>
