@@ -334,7 +334,7 @@ $(function (){
 
         pop = new Pop({
             element: '#J-getScore',
-            width: 500,白
+            width: 500,
             afterShow: function (){
                 pop.mask.unbind('click.pop');
             }

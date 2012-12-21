@@ -45,8 +45,12 @@
       <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="336" column="24" selection-start="10235" selection-end="10235" vertical-scroll-proportion="0.37700146">
-              <folding />
+            <state line="336" column="23" selection-start="10234" selection-end="10234" vertical-scroll-proportion="0.37700146">
+              <folding>
+                <marker date="1356070475000" expanded="true" signature="13:10545" placeholder="{...}" />
+                <marker date="1356070475000" expanded="true" signature="10029:10340" placeholder="{...}" />
+                <marker date="1356070475000" expanded="true" signature="10173:10256" placeholder="{&quot;element&quot;: '#J-getScore'...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -556,8 +560,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="336" column="24" selection-start="10235" selection-end="10235" vertical-scroll-proportion="0.37700146">
-          <folding />
+        <state line="336" column="23" selection-start="10234" selection-end="10234" vertical-scroll-proportion="0.37700146">
+          <folding>
+            <marker date="1356070475000" expanded="true" signature="13:10545" placeholder="{...}" />
+            <marker date="1356070475000" expanded="true" signature="10029:10340" placeholder="{...}" />
+            <marker date="1356070475000" expanded="true" signature="10173:10256" placeholder="{&quot;element&quot;: '#J-getScore'...}" />
+          </folding>
         </state>
       </provider>
     </entry>
