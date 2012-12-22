@@ -1,6 +1,13 @@
 <?php include_once("config.php5"); ?>
 <?php include_once(TEMPLATES_PATH."/header.php5"); ?>
 <div id="J-getScore" class="hide">
+    <audio src="static/mp3/btn-click.mp3" id="J-audio-click"></audio>
+    <audio src="static/mp3/right.mp3" id="J-audio-right"></audio>
+    <audio src="static/mp3/wrong.mp3" id="J-audio-wrong"></audio>
+    <audio src="static/mp3/passPhases.mp3" id="J-audio-passPhases"></audio>
+    <audio src="static/mp3/tip.mp3" id="J-audio-tip"></audio>
+    <audio src="static/mp3/start.mp3" autoplay="autoplay"></audio>
+
     <p class="getScrore">1000</p>
     <div class="webkit-box">
         <a href="javascript:void(0)" id="J-exit" style="display:none;">离开</a>
@@ -19,7 +26,7 @@
             <nav class="block">
                 <img src="static/images/logo.png" id="J-ps-logo"/>
                 <ul>
-                    <li class="current" id="J-starting">开始游戏</li>
+                    <li class="current" id="J-starting" data-role="rules">开始游戏</li>
                     <li data-role="rules">游戏规则</li>
                     <li data-role="people">制作人员</li>
                 </ul>

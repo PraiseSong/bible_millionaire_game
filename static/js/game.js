@@ -82,6 +82,14 @@ $(function (){
         getSubjects();
     }
 
+    //雇用音效
+    function openAudio(){
+        $('.back,.solution').live('click',function (){
+            $('#J-audio-click').get(0).play();
+        });
+    }
+    openAudio();
+
     //获取所有游戏主题
     function getTopics(){
         var ajaxurl = 'app/ajax.php5';
@@ -543,6 +551,8 @@ $(function (){
 
     //显示提示时间
     function showTipTime(){
+        $('#J-audio-tip').get(0).play();
+
         currentTimeStop = true;
 
         var box = $('#J-reference'),
@@ -655,6 +665,7 @@ $(function (){
         if(rightAnswer === 15){
             passPhaes();
         }
+        $('#J-audio-right').get(0).play();
     }
 
     //通关
@@ -664,6 +675,7 @@ $(function (){
         $('#J-next').hide();
         $('#J-exit').show();
         $('.first-space').hide();
+        $('#J-audio-passPhases').get(0).play();
     }
 
     //计算分数
@@ -717,6 +729,7 @@ $(function (){
             rightAnswer = 0;
             $('#J-getScore p').html("<span style=\"font-size:30px;line-height:145px;display:block;\">当前得分："+getScoreHtml(currentScore)+"</span>");
         }
+        $('#J-audio-wrong').get(0).play();
     }
 
     //答题结束
