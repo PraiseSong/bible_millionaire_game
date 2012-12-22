@@ -410,7 +410,7 @@ $(function (){
 
         topic_des_box.html(currentTopicHtml+'<div id="J-reference"></div>');
         var time_html = currentQuestion.time < 1 ? "时限：00:"+currentQuestion.time+"" : "时限："+currentQuestion.time+":00"
-        maxTimeBox.html(time_html);
+        maxTimeBox.html('时限: 00:30');
 
         var solutions = currentQuestion.solutions.split(','),
             solutionsHtml = '<p class="webkit-box">';
@@ -437,16 +437,16 @@ $(function (){
         var maxTime = currentQuestion.time+":60",//分钟
             countDownBox = $('#J-maxTime');
 
-        if(currentQuestion.time < 1){
+        //if(currentQuestion.time < 1){
             maxTime = "00:30";
-        }
+        //}
 
         var time = maxTime.split(':'),
             minute = time[0] > 0 ? --time[0] : time[0],
             second = time[1],
             _currentTime = currentTime.split(':'),
-            currentTimeMinute = minute,
-            currentTimeSecond = second;
+            currentTimeMinute = parseInt(minute,10),
+            currentTimeSecond = parseInt(second,10);
 
         timer && clearInterval(timer);
 
@@ -479,7 +479,7 @@ $(function (){
                     clearInterval(timer);
                 }
 
-                countDownBox.html('时限：'+currentTimeMinute+":"+(currentTimeSecond < 10 ? "0"+currentTimeSecond+"" : currentTimeSecond));
+                countDownBox.html('时限: '+(currentTimeMinute < 10 ? "0"+currentTimeMinute+"" : currentTimeMinute)+":"+(currentTimeSecond < 10 ? "0"+currentTimeSecond+"" : currentTimeSecond));
             }
         }
     }
