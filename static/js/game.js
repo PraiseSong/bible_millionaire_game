@@ -410,8 +410,6 @@ $(function (){
             return noSubjects();
         }
 
-        currentTimeStop = false;
-
         var topic_des_box = $('#J-currentTopicDes-box'),
             questionAndsolutionsBox = $('#J-questionAndsolutionsBox'),
             maxTimeBox = $('#J-maxTime');
@@ -459,12 +457,13 @@ $(function (){
         timer && clearInterval(timer);
 
         timer = setInterval(looper,1000);
-
-        function looper(){
+console.log(0,currentTimeStop)
+        function looper(){console.log(0,currentTimeStop)
             if(currentTimeStop){
                 clearInterval(timer);
 
                 setTimeout(function (){
+                    timer && clearInterval(timer);
                     timer = setInterval(looper,1000);
                 },30000);
             }else{
@@ -787,6 +786,7 @@ $(function (){
     function answerEnd(){
         timer && clearInterval(timer);
         tipTimer && clearInterval(tipTimer);
+        currentTimeStop = false;
     }
 
     //进入下一题
