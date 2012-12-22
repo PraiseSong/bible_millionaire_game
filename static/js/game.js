@@ -36,6 +36,8 @@ $(function (){
     var shownPhases = false;
     //当前答对了几道题目
     var rightAnswer = 0;
+    //logo动画对象
+    var rotatingLogo = null;
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
@@ -278,6 +280,15 @@ $(function (){
     function goToSubject(){
         topicBox.hide();
         subjectBox.show();
+
+        rotatingLogo = setInterval(function (){
+            var logo = $('#J-subject-logo');
+            if(logo.hasClass('rotating2')){
+                logo.attr('class','rotating3');
+            }else if(logo.hasClass('rotating3')){
+                logo.attr('class','rotating2');
+            }
+        },10000);
 
         resetSubjectsData();
 
@@ -528,6 +539,7 @@ $(function (){
         subjectBox.hide();
         introduceBox.show();
         pop && pop.hide();
+        clearInterval(rotatingLogo);
     }
 
     //重新玩游戏
@@ -537,6 +549,7 @@ $(function (){
         pop && pop.hide();
         phases = 0;
         currentScore = 0;
+        clearInterval(rotatingLogo);
     }
 
     //显示提示时间

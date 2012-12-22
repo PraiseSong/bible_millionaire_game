@@ -71,6 +71,14 @@ body{
         -webkit-transform: rotateY(360deg);
     }
 }
+@-webkit-keyframes rotating3 {
+    from{
+        -webkit-transform: rotateX(0deg);
+    }
+    to{
+        -webkit-transform: rotateX(360deg);
+    }
+}
 @-webkit-keyframes fling {
     from{
         -webkit-transform: translate(-600px,-600px) rotate(0deg);
@@ -95,12 +103,23 @@ body{
         -webkit-transform: translate(0,0) rotate(360deg);
     }
 }
+@-webkit-keyframes zoom {
+    from{
+        -webkit-transform: scale(0);
+    }
+    to{
+        -webkit-transform: scale(1);
+    }
+}
 
 .rotating {
     -webkit-animation: rotating 1.5s ease-out infinite;
 }
 .rotating2 {
     -webkit-animation: rotating 2s ease-in 2;
+}
+.rotating3 {
+    -webkit-animation: rotating3 2s ease-in 2;
 }
 .fling{
     -webkit-animation: fling .8s ease-in;
@@ -174,7 +193,7 @@ body{
 .topics-tree span.nohover{
     cursor:default;
 }
-.topics-tree ins:hover{
+.topics-tree ins:hover,.topics-tree *[data-topic-level="1"] .nohover li ins:hover{
     background:#fff;
 }
 .topics-tree .nohover ins:hover{
@@ -203,10 +222,13 @@ body{
 .back{
     font-size:40px;
     display:block;
-    margin-top:50px;
+    margin:50px auto 0;
     text-align:center;
     letter-spacing: 10px;
     cursor:pointer;
+    width:77px;
+    height:77px;
+    background:url(../images/back.png) no-repeat;
 }
 .back:hover{
     color:#fff;
@@ -223,6 +245,10 @@ body{
     left:0;
     top:0;
     z-index:2;
+    -webkit-animation:zoom .8s ease;
+}
+.pop-box{
+    -webkit-animation:zoom .8s ease;
 }
 .webkit-box{
     display:-webkit-box;
@@ -264,7 +290,7 @@ body{
     padding-left:20px;
     display:block;
     border:5px solid #999;
-    line-height:60px;
+    line-height:45px;
     cursor:pointer;
 }
 .solution.current{
@@ -292,6 +318,9 @@ body{
     border-radius:50px;
     padding:3px 20px;
     cursor:pointer;
+}
+.controler p:last-child a:hover{
+    background:#d2eeff;
 }
 .controler .flex{
     width:auto;
@@ -344,6 +373,7 @@ body{
     display:block;
     width:150px;
     margin:0 auto;
+    border:3px solid #fff;
 }
 #J-exit{
     background:#ff0000;
@@ -353,4 +383,9 @@ body{
 }
 #J-next{
     background:blue;
+}
+.introducing-main .content li{
+    font-size:30px;
+    line-height:40px;
+    margin-top:10px;
 }

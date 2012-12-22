@@ -62,7 +62,7 @@
         <div class="introducing-main">
             <nav class="block">
                 <img src="static/images/logo.png" />
-                <a href="javascript:void(0)" class="back"><返回</a>
+                <a href="javascript:void(0)" class="back"></a>
             </nav>
             <div class="flex">
                 <div data-role="rules" class="panel">
@@ -80,7 +80,7 @@
 
                 </ul>
             </div>
-            <div class="flex bwfw-logo"><img src="static/images/bwfw.png" /></div>
+            <div class="flex bwfw-logo"><img src="static/images/bwfw.png" class="rotating3" id="J-subject-logo" /></div>
             <div class="currentTopicDes flex" id="J-currentTopicDes-box">
                 当前的主题内容
                 <div id="J-reference">经文参考</div>
