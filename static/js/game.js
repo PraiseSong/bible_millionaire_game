@@ -563,7 +563,12 @@ $(function (){
         }
         //currentQuestion && currentQuestion.reference && $('#J-reference').html(currentQuestion.reference);
 
-        if(currentQuestion.reference.indexOf(':') === -1){return;}
+        if(currentQuestion.reference.indexOf(':') === -1){
+            $('#J-reference').html(currentQuestion.reference);
+            countDownTipTime();
+            return false;
+        }
+
         var reference = currentQuestion.reference.split(/\s+/);
 
         if(!reference){return;}
@@ -593,11 +598,13 @@ $(function (){
             }
         });
 
-        $('#J-audio-tip').get(0).play();
 
-        currentTimeStop = true;
 
         function countDownTipTime(){
+            $('#J-audio-tip').get(0).play();
+
+            currentTimeStop = true;
+
             var box = $('#J-reference'),
                 time = '00:30';
 
