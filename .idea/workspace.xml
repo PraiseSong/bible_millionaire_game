@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bible.php5" afterPath="$PROJECT_DIR$/app/bible.php5" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/game.js" afterPath="$PROJECT_DIR$/static/js/game.js" />
     </list>
     <ignored path="bible_millionaire_game.iws" />
@@ -48,7 +46,7 @@
       <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="577" column="0" selection-start="17421" selection-end="17421" vertical-scroll-proportion="2.768559">
+            <state line="412" column="32" selection-start="12154" selection-end="12154" vertical-scroll-proportion="0.69868994">
               <folding />
             </state>
           </provider>
@@ -90,8 +88,8 @@
         <option value="$PROJECT_DIR$/app/importExcel.php5" />
         <option value="$PROJECT_DIR$/index.php5" />
         <option value="$PROJECT_DIR$/app/bible.php5" />
-        <option value="$PROJECT_DIR$/static/js/game.js" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
+        <option value="$PROJECT_DIR$/static/js/game.js" />
       </list>
     </option>
   </component>
@@ -590,7 +588,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="577" column="0" selection-start="17421" selection-end="17421" vertical-scroll-proportion="2.768559">
+        <state line="412" column="32" selection-start="12154" selection-end="12154" vertical-scroll-proportion="0.69868994">
           <folding />
         </state>
       </provider>

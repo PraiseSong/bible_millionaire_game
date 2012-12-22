@@ -410,6 +410,8 @@ $(function (){
             return noSubjects();
         }
 
+        currentTimeStop = false;
+
         var topic_des_box = $('#J-currentTopicDes-box'),
             questionAndsolutionsBox = $('#J-questionAndsolutionsBox'),
             maxTimeBox = $('#J-maxTime');
