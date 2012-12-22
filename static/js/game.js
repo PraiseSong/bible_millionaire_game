@@ -84,7 +84,13 @@ $(function (){
 
     //雇用音效
     function openAudio(){
-        $('.back,.solution').live('click',function (){
+        $('.back').live('click',function (){
+            $('#J-audio-click').get(0).play();
+        });
+        $('.solution').live('click',function (){
+            if($(this).hasClass('filtered')){
+                return false;
+            }
             $('#J-audio-click').get(0).play();
         });
     }
