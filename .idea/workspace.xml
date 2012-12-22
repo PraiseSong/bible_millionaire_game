@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81b7c779-2fc5-4f1a-a1e4-244c5dd8e751" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php5" afterPath="$PROJECT_DIR$/index.php5" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/game.js" afterPath="$PROJECT_DIR$/static/js/game.js" />
     </list>
     <ignored path="bible_millionaire_game.iws" />
@@ -48,7 +45,7 @@
       <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="539" column="5" selection-start="16339" selection-end="16339" vertical-scroll-proportion="0.2590799">
+            <state line="724" column="42" selection-start="21330" selection-end="21330" vertical-scroll-proportion="0.39951575">
               <folding />
             </state>
           </provider>
@@ -562,7 +559,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="539" column="5" selection-start="16339" selection-end="16339" vertical-scroll-proportion="0.2590799">
+        <state line="724" column="42" selection-start="21330" selection-end="21330" vertical-scroll-proportion="0.39951575">
           <folding />
         </state>
       </provider>

@@ -32,6 +32,8 @@ $(function (){
     var tipTime = 30;//秒
     //倒计时对象
     var timer = null;
+    //提示倒计时对象
+    var tipTimer = null;
     //是否已经显示闯关提示
     var shownPhases = false;
     //当前答对了几道题目
@@ -550,7 +552,7 @@ $(function (){
             minute = time[0],
             second = time[1];
 
-        var timer = setInterval(callback,1000);
+        tipTimer = setInterval(callback,1000);
 
         if(!$('#J-tipTime-box').get(0)){
             box.append('<p id="J-tipTime-box">'+time.join(":")+'</p>');
@@ -558,7 +560,7 @@ $(function (){
         function callback(){
             if(second === 0){
                 currentTimeStop = false;
-                clearInterval(timer);
+                clearInterval(tipTimer);
             }else{
                 if(second>0 && second <= 30){
                     second--;
@@ -720,6 +722,7 @@ $(function (){
     //答题结束
     function answerEnd(){
         timer && clearInterval(timer);
+        tipTimer && clearInterval(tipTimer);
     }
 
     //进入下一题
