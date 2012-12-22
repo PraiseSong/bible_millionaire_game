@@ -733,6 +733,7 @@ $(function (){
         $('#J-exit').show();
         $('.first-space').hide();
         $('#J-audio-passPhases').get(0).play();
+        rightAnswer = 0;
     }
 
     //计算分数
