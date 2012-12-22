@@ -323,14 +323,13 @@ $(function (){
                     }
                 })
                 topics.splice(0,1);
+
                 if(topics[0]){
                     getActivitySubject();
                 }
             }
         }
         getActivitySubject();
-
-        activitySubject = randomOrder(activitySubject);
 
         var score_html =    '<li class="1million phases" data-value="100000000">15<>1 MILLION</li>'+
                             '<li data-value="500000">14<>500000</li>'+
@@ -368,15 +367,15 @@ $(function (){
         });
         pop.show();
 
-        $('#J-getScore a').css('margin','initial');
         $('#J-next').hide();
         $('#J-exit').show();
-        $('#J-recycle').show();
         $('.first-space').show();
     }
 
     //渲染一个问题
     function renderQuestion(){
+        activitySubject = randomOrder(activitySubject);
+
         if(activitySubject.length <= 0){
             return noSubjects();
         }
@@ -511,9 +510,7 @@ $(function (){
             window.close();*/
             exit();
         });
-        $('#J-recycle').unbind().click(function (){
-            playAgain();
-        });
+
         $('#J-tip').click(function (){
             currentQuestion && currentQuestion.reference && $('#J-reference').html(currentQuestion.reference);
             $('#J-tip').unbind();
@@ -539,16 +536,6 @@ $(function (){
         subjectBox.hide();
         introduceBox.show();
         pop && pop.hide();
-        clearInterval(rotatingLogo);
-    }
-
-    //重新玩游戏
-    function playAgain(){
-        topicBox.show();
-        subjectBox.hide();
-        pop && pop.hide();
-        phases = 0;
-        currentScore = 0;
         clearInterval(rotatingLogo);
     }
 
@@ -649,10 +636,8 @@ $(function (){
             }
         });
         pop.show();
-        $('#J-getScore a').css('margin','0 auto');
         $('#J-next').show();
         $('#J-exit').hide();
-        $('#J-recycle').hide();
         $('.first-space').hide();
 
         //在本地存储中保存已经答过题目的id
@@ -674,10 +659,8 @@ $(function (){
     function passPhaes(){
         $('#J-getScore .getScrore').html("<span style=\"font-size:40px;line-height:145px;display:block;\" class=\"passPhases\">恭喜你，通关！</span>")
         pop && pop.show();
-        $('#J-getScore a').css('margin','0 auto');
         $('#J-next').hide();
         $('#J-exit').show();
-        $('#J-recycle').hide();
         $('.first-space').hide();
     }
 
@@ -720,10 +703,8 @@ $(function (){
         });
         pop.show();
 
-        $('#J-getScore a').css('margin','initial');
         $('#J-next').hide();
         $('#J-exit').show();
-        $('#J-recycle').show();
         $('.first-space').show();
 
         if(phases === 0){

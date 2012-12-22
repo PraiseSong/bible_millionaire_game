@@ -4,9 +4,6 @@
     <p class="getScrore">1000</p>
     <div class="webkit-box">
         <a href="javascript:void(0)" id="J-exit" style="display:none;">离开</a>
-        <span class="space flex first-space" style="display:none;"></span>
-        <a href="javascript:void(0)" id="J-recycle"  style="display:none;">再玩</a>
-        <span class="space flex second-space" style="display:none;"></span>
         <a href="javascript:void(0)" id="J-next"  style="display:none;">下一题</a>
     </div>
 </div>
