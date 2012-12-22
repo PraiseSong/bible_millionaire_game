@@ -34,6 +34,8 @@ $(function (){
     var timer = null;
     //是否已经显示闯关提示
     var shownPhases = false;
+    //当前答对了几道题目
+    var rightAnswer = 0;
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
@@ -492,9 +494,9 @@ $(function (){
         $('#J-next').unbind().click(nextSubject);
 
         $('#J-exit').unbind().click(function (){
-            window.open('', '_self', '');
-            window.close();
-            localStorage.clear();
+            /*window.open('', '_self', '');
+            window.close();*/
+            exit();
         });
         $('#J-recycle').unbind().click(function (){
             playAgain();
@@ -515,6 +517,15 @@ $(function (){
             $('#J-filter').unbind().hide();
             filterSolution();
         });
+    }
+
+    //离开游戏
+    function exit(){
+        localStorage.clear();
+        topicBox.hide();
+        subjectBox.hide();
+        introduceBox.show();
+        pop && pop.hide();
     }
 
     //重新玩游戏
@@ -636,6 +647,23 @@ $(function (){
         }
 
         countScore();
+
+        rightAnswer++;
+
+        if(rightAnswer === 15){
+            passPhaes();
+        }
+    }
+
+    //通关
+    function passPhaes(){
+        $('#J-getScore .getScrore').html("<span style=\"font-size:40px;line-height:145px;display:block;\" class=\"passPhases\">恭喜你，通关！</span>")
+        pop && pop.show();
+        $('#J-getScore a').css('margin','0 auto');
+        $('#J-next').hide();
+        $('#J-exit').show();
+        $('#J-recycle').hide();
+        $('.first-space').hide();
     }
 
     //计算分数
@@ -688,6 +716,7 @@ $(function (){
         }
 
         if(phases > 0){
+            rightAnswer = 0;
             $('#J-getScore p').html("<span style=\"font-size:30px;line-height:145px;display:block;\">当前得分："+getScoreHtml(currentScore)+"</span>");
         }
     }
