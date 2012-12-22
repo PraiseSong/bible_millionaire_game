@@ -174,7 +174,7 @@ $(function (){
                     c += subTopicsCallback(v.subTopics);
                 }
 
-                html += '<li data-topic-id="'+ id+'"><span>'+ c+'</span></li>';
+                html += '<li data-topic-id="'+ id+'"><span class="nohover">'+ c+'</span></li>';
             }
 
             html += '</ul>';
@@ -211,7 +211,7 @@ $(function (){
         $('#J-topics').html(topicsHtml).find('li').click(function (e){
             e.stopPropagation();
             var obj = $(this);
-            if(obj.find('.nohover').get(0)){
+            if($(obj.find('span')[0]).hasClass('nohover')){
                 return false;
             }
             var parents = obj.parents('li');
