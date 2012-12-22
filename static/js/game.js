@@ -508,6 +508,7 @@ $(function (){
         $('#J-skip').unbind().click(function (){
             $('#J-skip').unbind().hide();
             renderQuestion();
+            $('#J-ok').hide();
         });
 
         $('#J-filter').unbind().click(function (){
@@ -656,7 +657,7 @@ $(function (){
             shownPhases = false;
             phases = 3;
         }
-        if(phases === 1 && !shownPhases){
+        if(phases !== 0 && !shownPhases){
             shownPhases = true;
             $('#J-getScore .getScrore').html("<span style=\"font-size:40px;line-height:145px;display:block;\" class=\"passPhases\">恭喜闯过第 "+phases+" 关</span>")
             pop && pop.show();
