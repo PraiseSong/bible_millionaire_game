@@ -521,7 +521,7 @@ $(function (){
             exit();
         });
 
-        $('#J-tip').click(function (){
+        $('#J-tip').unbind().click(function (){
             currentQuestion && currentQuestion.reference && $('#J-reference').html(currentQuestion.reference);
             $('#J-tip').unbind();
             showTipTime();
