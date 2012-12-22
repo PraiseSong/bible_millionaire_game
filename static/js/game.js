@@ -319,6 +319,8 @@ $(function (){
         }
         getActivitySubject();
 
+        activitySubject = randomOrder(activitySubject);
+
         var score_html =    '<li class="1million phases" data-value="100000000">15<>1 MILLION</li>'+
                             '<li data-value="500000">14<>500000</li>'+
                             '<li data-value="25000">13<>250000</li>'+

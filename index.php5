@@ -24,18 +24,32 @@
                 <ul>
                     <li class="current" id="J-starting">开始游戏</li>
                     <li data-role="rules">游戏规则</li>
-                    <li data-role="push">诚意推介</li>
                     <li data-role="people">制作人员</li>
                 </ul>
             </nav>
             <div class="flex">
                 <div data-role="rules" class="panel">
                     <h1>游戏规则</h1>
-                    <div class="content">这里是游戏规则的内容</div>
-                </div>
-                <div data-role="push" class="hide panel">
-                    <h1>诚意推介</h1>
-                    <div class="content">这里是诚意推介的内容</div>
+                    <div class="content">
+                        <ul>
+                            <li>
+                                1、在规定时间内，独立回答电脑中的题目
+                            </li>
+                            <li>
+                                2、每获一次晋级，即可获得2个快乐果
+                            </li>
+                            <li>
+                                3、持绿卡人员，可得一次现场30秒内求助机会（除工作人员外），仅限一题
+                                三种求助方式：过滤，跳过，提示
+                            </li>
+                            <li>
+                                4、每人仅限玩两次，不得重复选题，间隔需30分钟以上
+                            </li>
+                            <li>
+                                5、通过人员不得泄露题目
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div data-role="people" class="hide panel">
                     <h1>制作人员</h1>
