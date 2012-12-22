@@ -457,8 +457,8 @@ $(function (){
         timer && clearInterval(timer);
 
         timer = setInterval(looper,1000);
-console.log(0,currentTimeStop)
-        function looper(){console.log(0,currentTimeStop)
+
+        function looper(){
             if(currentTimeStop){
                 clearInterval(timer);
 
