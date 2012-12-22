@@ -163,6 +163,64 @@ class Bible{
             return json_encode($result);
         }
     }
+
+    public function queryBibleByBooktitle(){
+        $booktitle = isset($_GET['booktitle']) ? $_GET['booktitle']: null;
+        $article = isset($_GET['article']) ? $_GET['article']: null;
+        $data = '';
+        $resultStatus = 101;
+        $result = array();
+        $text = '';
+        $verse_start = isset($_GET['verse_start']) ? $_GET['verse_start']: null;
+        $verse_stop = isset($_GET['verse_stop']) ? $_GET['verse_stop']: null;
+        $article_text = '';
+
+        if($verse_stop < $verse_start){
+            $result['resultStatus']=$resultStatus;
+            $result['data']=$data;
+            $result['memo']="对不起，后面的节数不能小于前面的节数";
+        }elseif(!$this->db){
+            $result['resultStatus']=$resultStatus;
+            $result['data']=$data;
+        }elseif(!$booktitle){
+            $result['resultStatus']=$resultStatus;
+            $result['data']=$data;
+            $result['memo']="缺少书卷ID";
+        }elseif(!$article){
+            $result['resultStatus']=$resultStatus;
+            $result['data']=$data;
+            $result['memo']="没有提供章节参数";
+        }elseif(!$verse_start || !$verse_stop){
+            $result['memo']="没有提供章节参数";
+        }else{
+            if($verse_stop > $verse_start){
+                for($i = $verse_start;$i<=$verse_stop;$i++){
+                    $space_row = $this->db->queryManyObject("SELECT * FROM `$this->tablename` where `BookTitle`='$booktitle' and `Verse`='$article:$i'");
+                    if(empty($article_text)){
+                        $article_text = $space_row[0]->BookTitle.$article.':'.$verse_start.'-'.$verse_stop.' ';
+                        $text.=$article_text;
+                    }
+                    if($space_row[0]->TextData){
+                        $text .= ($i === $verse_start ? '' : "<sup style=\"font-size:10px;\">$i</sup>").$space_row[0]->TextData;
+                    }else{
+                        $text .= "<span style=\"color:#ff0000;\"> 对不起，没有找到第<span>$i</span>节</span>";
+                    }
+                }
+            }elseif($verse_stop === $verse_start){
+                $row = $this->db->queryManyObject("SELECT * FROM `$this->tablename` where `BookTitle`='$booktitle' and `Verse`='$article:$verse_start'");
+                if($row[0]->TextData){
+                    $text .= $row[0]->BookTitle.$row[0]->Verse.' '.$row[0]->TextData;
+                }
+            }
+
+
+            $data = $text;
+            $result['resultStatus']=100;
+            $result['data']=$data;
+
+            return json_encode($result);
+        }
+    }
 }
 
 if(isset($_GET['action']) && $action = $_GET['action']){
@@ -180,6 +238,9 @@ if(isset($_GET['action']) && $action = $_GET['action']){
             break;
         case 'query_bible':
             print $bible->queryBible();
+            break;
+        case 'query_bible_by_booktitle':
+            print $bible->queryBibleByBooktitle();
             break;
         default:
             break;

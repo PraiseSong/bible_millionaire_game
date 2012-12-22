@@ -351,7 +351,13 @@ body{
 #J-reference{
     font-size:14px;
     font-weight:normal;
-    padding:0 35px;
+    margin-left:35px;
+    text-align: left;
+}
+#J-tipTime-box{
+    text-align:center;
+    padding:10px 0;
+    font-size:30px;
 }
 .getScrore{
     text-align:center;
@@ -363,6 +369,9 @@ body{
     border-radius:30px;
     font-weight:bold;
     margin:0 auto 10px;
+}
+sup{
+    color:#f50;
 }
 #J-getScore .webkit-box a{
     border-radius:30px;

@@ -528,7 +528,6 @@ $(function (){
         });
 
         $('#J-tip').unbind().click(function (){
-            currentQuestion && currentQuestion.reference && $('#J-reference').html(currentQuestion.reference);
             $('#J-tip').unbind();
             showTipTime();
         });
@@ -557,34 +556,71 @@ $(function (){
 
     //显示提示时间
     function showTipTime(){
+        if(!currentQuestion.reference){
+            return;
+        }
+        //currentQuestion && currentQuestion.reference && $('#J-reference').html(currentQuestion.reference);
+
+        if(currentQuestion.reference.indexOf(':') === -1){return;}
+        var reference = currentQuestion.reference.split(/\s+/);
+
+        if(!reference){return;}
+
+        var booktitle = reference[0];
+        var article_verse = reference[1].split(':');
+        var article = article_verse[0];
+        var verse = article_verse[1];
+        if(verse.indexOf('-') !== -1){
+            verse = verse.split(/\-/);
+        }else{
+            verse = [verse,verse];
+        }
+
+        $.ajax('app/bible.php5',{
+            data: 'action=query_bible_by_booktitle&booktitle='+encodeURI(booktitle)+'&article='+article+'&verse_start='+verse[0]+'&verse_stop='+verse[1]+'',
+            dataType: 'json',
+            success: function (data){
+                if(data.data){
+                    $('#J-reference').html(data.data);
+                    countDownTipTime();
+                }
+            },
+            error: function (){
+                $('#J-reference').html(currentQuestion.reference);
+                countDownTipTime();
+            }
+        });
+
         $('#J-audio-tip').get(0).play();
 
         currentTimeStop = true;
 
-        var box = $('#J-reference'),
-            time = '00:30';
+        function countDownTipTime(){
+            var box = $('#J-reference'),
+                time = '00:30';
 
-        var time = time.split(':'),
-            minute = time[0],
-            second = time[1];
+            var time = time.split(':'),
+                minute = time[0],
+                second = time[1];
 
-        tipTimer = setInterval(callback,1000);
+            tipTimer = setInterval(callback,1000);
 
-        if(!$('#J-tipTime-box').get(0)){
-            box.append('<p id="J-tipTime-box">'+time.join(":")+'</p>');
-        }
-        function callback(){
-            if(second === 0){
-                currentTimeStop = false;
-                clearInterval(tipTimer);
-            }else{
-                if(second>0 && second <= 30){
-                    second--;
+            if(!$('#J-tipTime-box').get(0)){
+                box.append('<p id="J-tipTime-box">'+time.join(":")+'</p>');
+            }
+            function callback(){
+                if(second === 0){
+                    currentTimeStop = false;
+                    clearInterval(tipTimer);
+                }else{
+                    if(second>0 && second <= 30){
+                        second--;
 
-                    if(second < 10){
+                        if(second < 10){
 
+                        }
+                        $('#J-tipTime-box').html(''+minute+':'+(second < 10 ? "0"+second+"" : second)+'');
                     }
-                    $('#J-tipTime-box').html(''+minute+':'+(second < 10 ? "0"+second+"" : second)+'');
                 }
             }
         }
