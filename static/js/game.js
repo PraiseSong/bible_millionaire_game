@@ -188,11 +188,18 @@ $(function (){
             var html = '<ul class="subTopics-box" data-topic-level="'+tem+'">';
 
             $.each(data,function (k,v){
+                var classname = '';
+                if(v.content === "红卡" || v.content === '绿卡'){
+                    classname = 'class="nohover"'
+                }
+
                 var c = '<ins>'+v.content+'</ins>';
+
                 if(v.subTopics){
                     c += subTopicsCallback(v.subTopics);
                 }
-                html += '<li data-topic-id="'+ v.id+'"><span>'+ c+'</span></li>';
+
+                html += '<li data-topic-id="'+ v.id+'"><span '+classname+'>'+ c+'</span></li>';
                 subTopicsCallbackCount = tem;
             });
 
@@ -204,6 +211,9 @@ $(function (){
         $('#J-topics').html(topicsHtml).find('li').click(function (e){
             e.stopPropagation();
             var obj = $(this);
+            if(obj.find('.nohover').get(0)){
+                return false;
+            }
             var parents = obj.parents('li');
             currentTopics = [];
             currentTopics.push(obj.attr('data-topic-id'));

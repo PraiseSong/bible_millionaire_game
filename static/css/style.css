@@ -171,8 +171,14 @@ body{
     cursor:pointer;
     display:block;
 }
+.topics-tree span.nohover{
+    cursor:default;
+}
 .topics-tree ins:hover{
     background:#fff;
+}
+.topics-tree .nohover ins:hover{
+    background:none;
 }
 .topics-tree ins{
     border-radius:20px;
