@@ -40,6 +40,8 @@ $(function (){
     var rightAnswer = 0;
     //logo动画对象
     var rotatingLogo = null;
+    //是否已经显示回答结果
+    var shownAnswerResult = false;
 
     var introduceBox = $('#J-introducing'),
         loadingBox = $('#J-loading'),
@@ -436,6 +438,8 @@ $(function (){
         countDown();
 
         bindUItoQuestionPage();
+
+        shownAnswerResult = false;
     }
 
     //倒计时
@@ -464,7 +468,10 @@ $(function (){
 
                 setTimeout(function (){
                     timer && clearInterval(timer);
-                    timer = setInterval(looper,1000);
+
+                    if(!shownAnswerResult){
+                        timer = setInterval(looper,1000);
+                    }
                 },30000);
             }else{
                 callback();
@@ -784,6 +791,7 @@ $(function (){
 
     //答题结束
     function answerEnd(){
+        shownAnswerResult = true;
         timer && clearInterval(timer);
         tipTimer && clearInterval(tipTimer);
         currentTimeStop = false;
