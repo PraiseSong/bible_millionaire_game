@@ -334,6 +334,8 @@ $(function (){
                             '<li class="next-score" data-value="1000">1<>1000</li>';
         scoreBox.html(score_html);
 
+        $('#J-ok').hide();
+
         renderQuestion();
     }
 
@@ -382,7 +384,7 @@ $(function (){
             questionAndsolutionsBox = $('#J-questionAndsolutionsBox'),
             maxTimeBox = $('#J-maxTime');
 
-        topic_des_box.html(currentTopicHtml+'<p id="J-reference"></p>');
+        topic_des_box.html(currentTopicHtml+'<div id="J-reference"></div>');
         var time_html = currentQuestion.time < 1 ? "时限：00:"+currentQuestion.time+"" : "时限："+currentQuestion.time+":00"
         maxTimeBox.html(time_html);
 
@@ -422,15 +424,12 @@ $(function (){
             currentTimeMinute = minute,
             currentTimeSecond = second;
 
-        var currentTimeStopTimer = null;
-
         timer && clearInterval(timer);
 
         timer = setInterval(looper,1000);
 
         function looper(){
             if(currentTimeStop){
-                currentTimeStop = false;
                 clearInterval(timer);
 
                 setTimeout(function (){
@@ -441,10 +440,6 @@ $(function (){
             }
 
             function callback(){
-                if(currentTimeStopTimer){
-                    clearTimeout(currentTimeStopTimer);
-                }
-
                 if(currentTimeSecond <= second){
                     currentTimeSecond = --second;
 
@@ -460,11 +455,7 @@ $(function (){
                     clearInterval(timer);
                 }
 
-                if(currentTimeSecond < 10){
-                    currentTimeSecond = '0'+currentTimeSecond+'';
-                }
-
-                countDownBox.html('时限：'+currentTimeMinute+":"+currentTimeSecond);
+                countDownBox.html('时限：'+currentTimeMinute+":"+(currentTimeSecond < 10 ? "0"+currentTimeSecond+"" : currentTimeSecond));
             }
         }
     }
@@ -506,14 +497,12 @@ $(function (){
             localStorage.clear();
         });
         $('#J-recycle').unbind().click(function (){
-            topicBox.show();
-            subjectBox.hide();
-            pop && pop.hide();
+            playAgain();
         });
         $('#J-tip').click(function (){
             currentQuestion && currentQuestion.reference && $('#J-reference').html(currentQuestion.reference);
-            currentTimeStop = true;
             $('#J-tip').unbind();
+            showTipTime();
         });
 
         $('#J-skip').unbind().click(function (){
@@ -525,6 +514,48 @@ $(function (){
             $('#J-filter').unbind().hide();
             filterSolution();
         });
+    }
+
+    //重新玩游戏
+    function playAgain(){
+        topicBox.show();
+        subjectBox.hide();
+        pop && pop.hide();
+        phases = 0;
+        currentScore = 0;
+    }
+
+    //显示提示时间
+    function showTipTime(){
+        currentTimeStop = true;
+
+        var box = $('#J-reference'),
+            time = '00:30';
+
+        var time = time.split(':'),
+            minute = time[0],
+            second = time[1];
+
+        var timer = setInterval(callback,1000);
+
+        if(!$('#J-tipTime-box').get(0)){
+            box.append('<p id="J-tipTime-box">'+time.join(":")+'</p>');
+        }
+        function callback(){
+            if(second === 0){
+                currentTimeStop = false;
+                clearInterval(timer);
+            }else{
+                if(second>0 && second <= 30){
+                    second--;
+
+                    if(second < 10){
+
+                    }
+                    $('#J-tipTime-box').html(''+minute+':'+(second < 10 ? "0"+second+"" : second)+'');
+                }
+            }
+        }
     }
 
     //过滤可选答案
@@ -552,34 +583,35 @@ $(function (){
         filting();
     }
 
+    //获取转换后的分数
+    function getScoreHtml(data){
+        var s = data;
+        var k = 0;
+        //处理分数为1,000,000
+        function getScore(data){
+            if(data < 1000){
+                return data;
+            }
+            var result = '';
+            var b = data / 1000;
+            if(b >= 1000){
+                k++;
+                return getScore(b);
+            }else{
+                result = b;
+                for(var i=-1;i<k;i++){
+                    result += ',000';
+                }
+            }
+            return result;
+        }
+
+        return getScore(s);
+    }
+
     //正确答题
     function right(){
         var score = parseInt(scoreBox.find('.next-score').attr('data-value'),10);
-        //获取分数的html
-        function getScoreHtml(data){
-            var s = data;
-            var k = 0;
-            //处理分数为1,000,000
-            function getScore(data){
-                if(data < 1000){
-                    return data;
-                }
-                var result = '';
-                var b = data / 1000;
-                if(b >= 1000){
-                    k++;
-                    return getScore(b);
-                }else{
-                    result = b;
-                    for(var i=-1;i<k;i++){
-                        result += ',000';
-                    }
-                }
-                return result;
-            }
-
-            return getScore(s);
-        }
 
         $('#J-getScore p').html(getScoreHtml(score));
         pop = new Pop({
@@ -650,8 +682,13 @@ $(function (){
         $('#J-recycle').show();
         $('.first-space').show();
 
-        currentScore = 0;
-        phases = 0;
+        if(phases === 0){
+            currentScore = 0;
+        }
+
+        if(phases > 0){
+            $('#J-getScore p').html("<span style=\"font-size:30px;line-height:145px;display:block;\">当前得分："+getScoreHtml(currentScore)+"</span>");
+        }
     }
 
     //答题结束
@@ -663,6 +700,7 @@ $(function (){
     function nextSubject(){
         pop && pop.hide();
         $('#J-next').hide();
+        $('#J-ok').hide();
         var next_score_node = scoreBox.find('.next-score').prev();
         scoreBox.find('li').removeClass('next-score');
         if(next_score_node.get(0)){

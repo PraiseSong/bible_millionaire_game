@@ -69,7 +69,7 @@
             <div class="flex bwfw-logo"><img src="static/images/bwfw.png" /></div>
             <div class="currentTopicDes flex" id="J-currentTopicDes-box">
                 当前的主题内容
-                <p id="J-reference">经文参考</p>
+                <div id="J-reference">经文参考</div>
             </div>
         </div>
         <div class="questionAndsolutionsBox" id="J-questionAndsolutionsBox">
