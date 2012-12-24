@@ -57,7 +57,9 @@
                 </div>
                 <div data-role="people" class="hide panel">
                     <h1>制作人员</h1>
-                    <div class="content">这里是制作人员的内容</div>
+                    <div class="content">
+                        杭州基督教磐石堂
+                    </div>
                 </div>
             </div>
         </div>
