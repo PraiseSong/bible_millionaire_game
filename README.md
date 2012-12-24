@@ -5,6 +5,6 @@ bible_millionaire_game
 
 游戏访问地址: [Cross Game](http://cross.hk/game)
 
-开发者：[颂赞](http://labs.cross.hk)
+开发者：[Praise Song](http://labs.cross.hk)
 
 PD: 林女
